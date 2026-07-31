@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Running Light Loader</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+    background:#101820;
+    font-family:Arial,sans-serif;
+}
+
+.loader{
+    text-align:center;
+}
+
+.loading-text{
+    color:#fff;
+    font-size:20px;
+    font-weight:bold;
+    margin-bottom:25px;
+    letter-spacing:4px;
+}
+
+.bar{
+    width:320px;
+    height:14px;
+    background:#2d2d2d;
+    border-radius:20px;
+    overflow:hidden;
+    position:relative;
+}
+
+.light{
+    position:absolute;
+    top:0;
+    left:-80px;
+    width:80px;
+    height:100%;
+    border-radius:20px;
+    background:linear-gradient(
+        90deg,
+        transparent,
+        #ffcc00,
+        #ffffff,
+        #ffcc00,
+        transparent
+    );
+    animation:run 1.2s linear infinite;
+}
+
+@keyframes run{
+    from{
+        left:-80px;
+    }
+    to{
+        left:320px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="loader">
+    <div class="loading-text">LOADING...</div>
+
+    <div class="bar">
+        <div class="light"></div>
+    </div>
+</div>
+
+</body>
+</html>

@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>LOZADA Hacker Effect</title>
+<title>Fight Intro Animation</title>
 
 <style>
 
@@ -15,138 +15,169 @@
 
 body{
     background:#000;
-    color:#00ff66;
-    font-family:Consolas, monospace;
     overflow:hidden;
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-family:Arial,sans-serif;
 }
 
 /* Background Glow */
+
 body::before{
     content:"";
-    position:fixed;
+    position:absolute;
     inset:0;
-    background:
-    radial-gradient(circle at center,
-    rgba(0,255,100,.08),
-    transparent 70%);
+    background:radial-gradient(circle,#222 0%,#000 80%);
 }
 
-/* Terminal */
+/* Main */
 
-.terminal{
-
-    width:90%;
-    max-width:900px;
-
-    margin:40px auto;
-
-    border:2px solid #00ff66;
-
-    padding:20px;
-
-    box-shadow:0 0 25px #00ff66;
-
-    background:rgba(0,20,0,.85);
-
-    height:80vh;
-
-    overflow:hidden;
-
+.container{
+    text-align:center;
+    position:relative;
 }
 
-.title{
+/* YOU */
 
-    font-size:24px;
-
-    margin-bottom:20px;
-
-    color:#00ff99;
-
+.you{
+    font-size:70px;
+    color:#00ffff;
+    font-weight:bold;
+    opacity:0;
+    transform:translateX(-900px);
+    animation:youMove 1.2s forwards;
+    text-shadow:0 0 20px cyan;
 }
 
-.line{
+/* ARE */
 
-    margin:10px 0;
-
-    white-space:nowrap;
-
-    overflow:hidden;
-
-    border-right:2px solid #00ff66;
-
-    animation:blink .8s infinite;
-
+.are{
+    font-size:40px;
+    color:white;
+    margin:15px 0;
+    opacity:0;
+    animation:show 0.4s forwards;
+    animation-delay:1s;
 }
 
-@keyframes blink{
+/* INVITED */
 
-50%{
-
-border-color:transparent;
-
+.invited{
+    font-size:90px;
+    color:#ffcc00;
+    font-weight:bold;
+    opacity:0;
+    transform:translateX(900px);
+    animation:inviteMove 1.2s forwards;
+    animation-delay:1.1s;
+    text-shadow:
+    0 0 15px yellow,
+    0 0 40px orange;
 }
 
-}
+/* Impact */
 
-/* Progress */
+.flash{
 
-.progress{
+position:absolute;
 
-margin-top:25px;
+top:50%;
 
-width:100%;
+left:50%;
 
-height:18px;
+width:20px;
 
-background:#022;
+height:20px;
 
-border:1px solid #00ff66;
+border-radius:50%;
+
+background:white;
+
+transform:translate(-50%,-50%);
+
+opacity:0;
+
+animation:flash 0.5s;
+
+animation-delay:2.1s;
 
 }
 
-.bar{
+/* Shake */
 
-height:100%;
+.container{
 
-width:0%;
+animation:shake .3s;
 
-background:#00ff66;
-
-animation:load 8s linear forwards;
+animation-delay:2.1s;
 
 }
 
-@keyframes load{
+/* Animations */
+
+@keyframes youMove{
 
 100%{
 
-width:100%;
+opacity:1;
+
+transform:translateX(0);
 
 }
 
 }
 
-/* Footer */
+@keyframes inviteMove{
 
-.status{
+100%{
 
-margin-top:20px;
+opacity:1;
 
-font-size:20px;
+transform:translateX(0);
 
-color:#00ff66;
+}
 
-animation:flash 1s infinite;
+}
+
+@keyframes show{
+
+100%{
+
+opacity:1;
+
+}
 
 }
 
 @keyframes flash{
 
-50%{
+0%{
 
-opacity:.4;
+opacity:1;
+
+transform:translate(-50%,-50%) scale(.2);
 
 }
+
+100%{
+
+opacity:0;
+
+transform:translate(-50%,-50%) scale(20);
+
+}
+
+}
+
+@keyframes shake{
+
+0%{transform:translate(4px,0);}
+25%{transform:translate(-4px,0);}
+50%{transform:translate(4px,0);}
+75%{transform:translate(-4px,0);}
+100%{transform:translate(0,0);}
 
 }
 
@@ -156,79 +187,23 @@ opacity:.4;
 
 <body>
 
-<div class="terminal">
+<div class="container">
 
-<div class="title">
-LOZADA SECURITY TERMINAL
+<div class="flash"></div>
+
+<div class="you">
+YOU
 </div>
 
-<div id="output"></div>
-
-<div class="progress">
-
-<div class="bar"></div>
-
+<div class="are">
+ARE
 </div>
 
-<div class="status" id="status">
-Initializing...
+<div class="invited">
+INVITED
 </div>
 
 </div>
-
-<script>
-
-const lines=[
-
-"> Connecting to Secure Server...",
-
-"> Loading Employee Database...",
-
-"> Checking Firewall...",
-
-"> Decrypting Files...",
-
-"> Loading Payroll Module...",
-
-"> Loading Attendance Module...",
-
-"> Verifying User Access...",
-
-"> Access Granted."
-
-];
-
-const output=document.getElementById("output");
-
-let i=0;
-
-function printLine(){
-
-if(i<lines.length){
-
-let div=document.createElement("div");
-
-div.className="line";
-
-div.innerHTML=lines[i];
-
-output.appendChild(div);
-
-i++;
-
-setTimeout(printLine,900);
-
-}else{
-
-document.getElementById("status").innerHTML="SYSTEM READY ✔";
-
-}
-
-}
-
-printLine();
-
-</script>
 
 </body>
 </html>

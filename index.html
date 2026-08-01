@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Fight Intro Animation</title>
+<title>LOZADA ERP - Boot Screen</title>
 
 <style>
 
@@ -15,169 +15,141 @@
 
 body{
     background:#000;
+    color:#00ff66;
+    font-family:Consolas,monospace;
     overflow:hidden;
-    height:100vh;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    font-family:Arial,sans-serif;
 }
 
-/* Background Glow */
+/* Grid Background */
 
 body::before{
     content:"";
-    position:absolute;
+    position:fixed;
     inset:0;
-    background:radial-gradient(circle,#222 0%,#000 80%);
+    background:
+    linear-gradient(rgba(0,255,100,.05) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(0,255,100,.05) 1px,transparent 1px);
+    background-size:40px 40px;
 }
 
-/* Main */
+/* Terminal */
 
-.container{
-    text-align:center;
-    position:relative;
+#terminal{
+    width:90%;
+    max-width:1000px;
+    height:90vh;
+    margin:25px auto;
+    border:2px solid #00ff66;
+    background:#021002;
+    box-shadow:0 0 25px #00ff66;
+    padding:20px;
+    overflow:hidden;
 }
 
-/* YOU */
-
-.you{
-    font-size:70px;
-    color:#00ffff;
-    font-weight:bold;
-    opacity:0;
-    transform:translateX(-900px);
-    animation:youMove 1.2s forwards;
-    text-shadow:0 0 20px cyan;
+#title{
+    font-size:28px;
+    color:#00ffaa;
+    margin-bottom:20px;
 }
 
-/* ARE */
-
-.are{
-    font-size:40px;
-    color:white;
-    margin:15px 0;
-    opacity:0;
-    animation:show 0.4s forwards;
-    animation-delay:1s;
+#output{
+    line-height:1.8;
+    font-size:18px;
 }
 
-/* INVITED */
-
-.invited{
-    font-size:90px;
-    color:#ffcc00;
-    font-weight:bold;
-    opacity:0;
-    transform:translateX(900px);
-    animation:inviteMove 1.2s forwards;
-    animation-delay:1.1s;
-    text-shadow:
-    0 0 15px yellow,
-    0 0 40px orange;
+.cursor{
+    animation:blink .8s infinite;
 }
 
-/* Impact */
+@keyframes blink{
 
-.flash{
+50%{
 
-position:absolute;
+opacity:0;
 
-top:50%;
+}
 
-left:50%;
+}
 
-width:20px;
+/* Progress */
+
+.progress{
+
+margin-top:30px;
 
 height:20px;
 
-border-radius:50%;
+background:#022;
 
-background:white;
+border:1px solid #00ff66;
 
-transform:translate(-50%,-50%);
+}
+
+.bar{
+
+height:100%;
+
+width:0;
+
+background:linear-gradient(90deg,#00ff66,#00ffaa);
+
+transition:.5s;
+
+}
+
+/* Final Logo */
+
+#logo{
+
+display:none;
+
+text-align:center;
+
+margin-top:40px;
+
+animation:zoom 1s;
+
+}
+
+#logo h1{
+
+font-size:65px;
+
+letter-spacing:8px;
+
+color:#fff;
+
+text-shadow:0 0 20px #00ff66;
+
+}
+
+#logo h2{
+
+font-size:22px;
+
+margin-top:15px;
+
+color:#00ffaa;
+
+}
+
+@keyframes zoom{
+
+from{
+
+transform:scale(.3);
 
 opacity:0;
 
-animation:flash 0.5s;
-
-animation-delay:2.1s;
-
 }
 
-/* Shake */
+to{
 
-.container{
-
-animation:shake .3s;
-
-animation-delay:2.1s;
-
-}
-
-/* Animations */
-
-@keyframes youMove{
-
-100%{
-
-opacity:1;
-
-transform:translateX(0);
-
-}
-
-}
-
-@keyframes inviteMove{
-
-100%{
-
-opacity:1;
-
-transform:translateX(0);
-
-}
-
-}
-
-@keyframes show{
-
-100%{
+transform:scale(1);
 
 opacity:1;
 
 }
-
-}
-
-@keyframes flash{
-
-0%{
-
-opacity:1;
-
-transform:translate(-50%,-50%) scale(.2);
-
-}
-
-100%{
-
-opacity:0;
-
-transform:translate(-50%,-50%) scale(20);
-
-}
-
-}
-
-@keyframes shake{
-
-0%{transform:translate(4px,0);}
-25%{transform:translate(-4px,0);}
-50%{transform:translate(4px,0);}
-75%{transform:translate(-4px,0);}
-100%{transform:translate(0,0);}
 
 }
 
@@ -187,23 +159,117 @@ transform:translate(-50%,-50%) scale(20);
 
 <body>
 
-<div class="container">
+<div id="terminal">
 
-<div class="flash"></div>
-
-<div class="you">
-YOU
+<div id="title">
+LOZADA ERP SECURITY TERMINAL
 </div>
 
-<div class="are">
-ARE
-</div>
+<div id="output"></div>
 
-<div class="invited">
-INVITED
-</div>
+<div class="progress">
+
+<div class="bar" id="bar"></div>
 
 </div>
+
+<div id="logo">
+
+<h1>LOZADA ERP</h1>
+
+<h2>SYSTEM READY ✔</h2>
+
+</div>
+
+</div>
+
+<script>
+
+const logs=[
+
+"> Booting System...",
+
+"> Initializing Kernel...",
+
+"> Loading Core Engine...",
+
+"> Loading Employee Module...",
+
+"> Loading Payroll Module...",
+
+"> Loading Attendance Module...",
+
+"> Loading Inventory Module...",
+
+"> Loading Accounting Module...",
+
+"> Loading Reports Module...",
+
+"> Loading Settings Module...",
+
+"> Connecting Firebase...",
+
+"> Connection Successful.",
+
+"> Synchronizing Database...",
+
+"> Checking User Permission...",
+
+"> Loading Security Keys...",
+
+"> Encrypting Session...",
+
+"> Verifying System License...",
+
+"> Security Check Passed.",
+
+"> Starting Dashboard Services...",
+
+"> System Ready."
+
+];
+
+let i=0;
+
+const output=document.getElementById("output");
+
+const bar=document.getElementById("bar");
+
+function typeLine(){
+
+if(i<logs.length){
+
+const div=document.createElement("div");
+
+div.innerHTML=logs[i]+" <span class='cursor'>█</span>";
+
+output.appendChild(div);
+
+output.scrollTop=output.scrollHeight;
+
+bar.style.width=((i+1)/logs.length*100)+"%";
+
+i++;
+
+setTimeout(typeLine,450);
+
+}else{
+
+setTimeout(showLogo,800);
+
+}
+
+}
+
+function showLogo(){
+
+document.getElementById("logo").style.display="block";
+
+}
+
+typeLine();
+
+</script>
 
 </body>
 </html>

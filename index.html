@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Microchip Loading</title>
+<title>LOZADA Hacker Effect</title>
 
 <style>
 
@@ -14,329 +14,219 @@
 }
 
 body{
-    background:#070b14;
-    font-family:Arial,Helvetica,sans-serif;
+    background:#000;
+    color:#00ff66;
+    font-family:Consolas, monospace;
     overflow:hidden;
 }
 
-.loader{
+/* Background Glow */
+body::before{
+    content:"";
     position:fixed;
     inset:0;
-    display:flex;
-    justify-content:center;
-    align-items:center;
+    background:
+    radial-gradient(circle at center,
+    rgba(0,255,100,.08),
+    transparent 70%);
 }
 
-/* ==========================
-   CHIP
-========================== */
+/* Terminal */
 
-.chip{
-    width:260px;
-    height:170px;
-    background:linear-gradient(145deg,#242b38,#111722);
-    border:3px solid #3b4455;
-    border-radius:18px;
-    position:relative;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    flex-direction:column;
-    box-shadow:
-        0 0 40px rgba(0,255,255,.15),
-        inset 0 0 25px rgba(255,255,255,.06);
+.terminal{
+
+    width:90%;
+    max-width:900px;
+
+    margin:40px auto;
+
+    border:2px solid #00ff66;
+
+    padding:20px;
+
+    box-shadow:0 0 25px #00ff66;
+
+    background:rgba(0,20,0,.85);
+
+    height:80vh;
+
+    overflow:hidden;
+
 }
 
-.chip h1{
-    color:white;
-    font-size:32px;
-    letter-spacing:3px;
+.title{
+
+    font-size:24px;
+
+    margin-bottom:20px;
+
+    color:#00ff99;
+
 }
-
-.chip p{
-    color:#7cf7ff;
-    margin-top:10px;
-    letter-spacing:5px;
-}
-
-/* ==========================
-   CHIP PINS
-========================== */
-
-.pin{
-    position:absolute;
-    width:12px;
-    height:18px;
-    background:#8b93a5;
-    border-radius:3px;
-}
-
-.t1{top:-18px;left:35px;}
-.t2{top:-18px;left:75px;}
-.t3{top:-18px;left:115px;}
-.t4{top:-18px;left:155px;}
-.t5{top:-18px;left:195px;}
-
-.b1{bottom:-18px;left:35px;}
-.b2{bottom:-18px;left:75px;}
-.b3{bottom:-18px;left:115px;}
-.b4{bottom:-18px;left:155px;}
-.b5{bottom:-18px;left:195px;}
-
-.l1{left:-18px;top:30px;}
-.l2{left:-18px;top:60px;}
-.l3{left:-18px;top:90px;}
-.l4{left:-18px;top:120px;}
-
-.r1{right:-18px;top:30px;}
-.r2{right:-18px;top:60px;}
-.r3{right:-18px;top:90px;}
-.r4{right:-18px;top:120px;}
-
-/* ==========================
-   CIRCUIT LINES
-========================== */
 
 .line{
-    position:absolute;
-    height:4px;
-    background:#263246;
+
+    margin:10px 0;
+
+    white-space:nowrap;
+
     overflow:hidden;
-}
 
-.left1{
-    width:260px;
-    left:-260px;
-    top:50px;
-}
+    border-right:2px solid #00ff66;
 
-.left2{
-    width:260px;
-    left:-260px;
-    top:85px;
-}
-
-.left3{
-    width:260px;
-    left:-260px;
-    top:120px;
-}
-
-.right1{
-    width:260px;
-    right:-260px;
-    top:50px;
-}
-
-.right2{
-    width:260px;
-    right:-260px;
-    top:85px;
-}
-
-.right3{
-    width:260px;
-    right:-260px;
-    top:120px;
-}
-
-/* ==========================
-   RUNNING LIGHTS
-========================== */
-
-.light{
-    position:absolute;
-    width:60px;
-    height:100%;
-    border-radius:20px;
-}
-    /* =========================================
-   RUNNING LIGHT COLORS
-========================================= */
-
-.left1 .light{
-    background:linear-gradient(90deg,transparent,#00e5ff,#ffffff,#00e5ff,transparent);
-    animation:runLeft 2s linear infinite;
-}
-
-.left2 .light{
-    background:linear-gradient(90deg,transparent,#ff00ff,#ffffff,#ff00ff,transparent);
-    animation:runLeft 2.5s linear infinite;
-}
-
-.left3 .light{
-    background:linear-gradient(90deg,transparent,#00ff66,#ffffff,#00ff66,transparent);
-    animation:runLeft 1.8s linear infinite;
-}
-
-.right1 .light{
-    background:linear-gradient(90deg,transparent,#ffcc00,#ffffff,#ffcc00,transparent);
-    animation:runRight 2.2s linear infinite;
-}
-
-.right2 .light{
-    background:linear-gradient(90deg,transparent,#ff3333,#ffffff,#ff3333,transparent);
-    animation:runRight 1.9s linear infinite;
-}
-
-.right3 .light{
-    background:linear-gradient(90deg,transparent,#00bfff,#ffffff,#00bfff,transparent);
-    animation:runRight 2.6s linear infinite;
-}
-
-/* Glow */
-
-.light{
-    box-shadow:
-        0 0 10px currentColor,
-        0 0 20px currentColor,
-        0 0 35px currentColor;
-}
-
-/* =========================================
-   ANIMATION
-========================================= */
-
-@keyframes runLeft{
-
-    from{
-        left:-60px;
-    }
-
-    to{
-        left:260px;
-    }
+    animation:blink .8s infinite;
 
 }
 
-@keyframes runRight{
+@keyframes blink{
 
-    from{
-        right:-60px;
-    }
+50%{
 
-    to{
-        right:260px;
-    }
+border-color:transparent;
 
 }
 
-/* =========================================
-   CHIP GLOW
-========================================= */
+}
 
-.chip::before{
+/* Progress */
 
-content:"";
+.progress{
 
-position:absolute;
+margin-top:25px;
 
-inset:-4px;
+width:100%;
 
-border-radius:20px;
+height:18px;
 
-background:linear-gradient(
-45deg,
-#00e5ff,
-#00ff88,
-#ffcc00,
-#ff0066,
-#8a2be2,
-#00e5ff
-);
+background:#022;
 
-background-size:400%;
-
-z-index:-1;
-
-filter:blur(12px);
-
-animation:borderGlow 6s linear infinite;
+border:1px solid #00ff66;
 
 }
 
-@keyframes borderGlow{
+.bar{
 
-0%{background-position:0% 50%;}
+height:100%;
 
-100%{background-position:400% 50%;}
+width:0%;
+
+background:#00ff66;
+
+animation:load 8s linear forwards;
 
 }
-    </style>
+
+@keyframes load{
+
+100%{
+
+width:100%;
+
+}
+
+}
+
+/* Footer */
+
+.status{
+
+margin-top:20px;
+
+font-size:20px;
+
+color:#00ff66;
+
+animation:flash 1s infinite;
+
+}
+
+@keyframes flash{
+
+50%{
+
+opacity:.4;
+
+}
+
+}
+
+</style>
 
 </head>
 
 <body>
 
-<div class="loader">
+<div class="terminal">
 
-    <div class="chip">
+<div class="title">
+LOZADA SECURITY TERMINAL
+</div>
 
-        <!-- TOP PINS -->
-        <div class="pin t1"></div>
-        <div class="pin t2"></div>
-        <div class="pin t3"></div>
-        <div class="pin t4"></div>
-        <div class="pin t5"></div>
+<div id="output"></div>
 
-        <!-- BOTTOM PINS -->
-        <div class="pin b1"></div>
-        <div class="pin b2"></div>
-        <div class="pin b3"></div>
-        <div class="pin b4"></div>
-        <div class="pin b5"></div>
+<div class="progress">
 
-        <!-- LEFT PINS -->
-        <div class="pin l1"></div>
-        <div class="pin l2"></div>
-        <div class="pin l3"></div>
-        <div class="pin l4"></div>
+<div class="bar"></div>
 
-        <!-- RIGHT PINS -->
-        <div class="pin r1"></div>
-        <div class="pin r2"></div>
-        <div class="pin r3"></div>
-        <div class="pin r4"></div>
+</div>
 
-        <!-- LEFT LINES -->
-        <div class="line left1">
-            <div class="light"></div>
-        </div>
-
-        <div class="line left2">
-            <div class="light"></div>
-        </div>
-
-        <div class="line left3">
-            <div class="light"></div>
-        </div>
-
-        <!-- RIGHT LINES -->
-        <div class="line right1">
-            <div class="light"></div>
-        </div>
-
-        <div class="line right2">
-            <div class="light"></div>
-        </div>
-
-        <div class="line right3">
-            <div class="light"></div>
-        </div>
-
-        <h1>CPU</h1>
-        <p>LOADING...</p>
-
-    </div>
+<div class="status" id="status">
+Initializing...
+</div>
 
 </div>
 
 <script>
 
-// Demo lamang.
-// Dito tayo maglalagay ng loading logic sa susunod.
+const lines=[
 
-console.log("Microchip Loader Ready!");
+"> Connecting to Secure Server...",
+
+"> Loading Employee Database...",
+
+"> Checking Firewall...",
+
+"> Decrypting Files...",
+
+"> Loading Payroll Module...",
+
+"> Loading Attendance Module...",
+
+"> Verifying User Access...",
+
+"> Access Granted."
+
+];
+
+const output=document.getElementById("output");
+
+let i=0;
+
+function printLine(){
+
+if(i<lines.length){
+
+let div=document.createElement("div");
+
+div.className="line";
+
+div.innerHTML=lines[i];
+
+output.appendChild(div);
+
+i++;
+
+setTimeout(printLine,900);
+
+}else{
+
+document.getElementById("status").innerHTML="SYSTEM READY ✔";
+
+}
+
+}
+
+printLine();
 
 </script>
 

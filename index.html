@@ -1,64 +1,168 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
 <meta charset="UTF-8">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>LOZADA ERP - Boot Screen</title>
+
+<title>LOZADA OS Boot</title>
 
 <style>
 
 *{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
+margin:0;
+padding:0;
+box-sizing:border-box;
 }
 
 body{
-    background:#000;
-    color:#00ff66;
-    font-family:Consolas,monospace;
-    overflow:hidden;
+
+background:#000;
+
+color:#00ff66;
+
+font-family:Consolas,monospace;
+
+overflow:hidden;
+
 }
 
-/* Grid Background */
+/* =============================
+
+BACKGROUND GRID
+
+============================= */
 
 body::before{
-    content:"";
-    position:fixed;
-    inset:0;
-    background:
-    linear-gradient(rgba(0,255,100,.05) 1px,transparent 1px),
-    linear-gradient(90deg,rgba(0,255,100,.05) 1px,transparent 1px);
-    background-size:40px 40px;
+
+content:"";
+
+position:fixed;
+
+inset:0;
+
+background:
+
+linear-gradient(rgba(0,255,80,.05) 1px,transparent 1px),
+
+linear-gradient(90deg,rgba(0,255,80,.05) 1px,transparent 1px);
+
+background-size:35px 35px;
+
+pointer-events:none;
+
 }
 
-/* Terminal */
+/* =============================
+
+CRT EFFECT
+
+============================= */
+
+body::after{
+
+content:"";
+
+position:fixed;
+
+inset:0;
+
+background:
+
+linear-gradient(
+
+transparent 50%,
+
+rgba(0,0,0,.18) 50%
+
+);
+
+background-size:100% 4px;
+
+opacity:.25;
+
+animation:flicker .15s infinite;
+
+pointer-events:none;
+
+}
+
+@keyframes flicker{
+
+0%{opacity:.18;}
+
+50%{opacity:.28;}
+
+100%{opacity:.18;}
+
+}
+
+/* =============================
+
+TERMINAL
+
+============================= */
 
 #terminal{
-    width:90%;
-    max-width:1000px;
-    height:90vh;
-    margin:25px auto;
-    border:2px solid #00ff66;
-    background:#021002;
-    box-shadow:0 0 25px #00ff66;
-    padding:20px;
-    overflow:hidden;
+
+width:92%;
+
+height:92vh;
+
+margin:20px auto;
+
+border:2px solid #00ff66;
+
+background:#031003;
+
+box-shadow:
+
+0 0 20px #00ff66,
+
+0 0 60px rgba(0,255,100,.25);
+
+padding:25px;
+
+overflow:hidden;
+
+position:relative;
+
 }
 
-#title{
-    font-size:28px;
-    color:#00ffaa;
-    margin-bottom:20px;
+#header{
+
+font-size:28px;
+
+font-weight:bold;
+
+color:#00ffaa;
+
+margin-bottom:20px;
+
+text-shadow:0 0 15px #00ffaa;
+
 }
 
 #output{
-    line-height:1.8;
-    font-size:18px;
+
+font-size:18px;
+
+line-height:1.8;
+
+height:75vh;
+
+overflow:hidden;
+
+white-space:pre-wrap;
+
 }
 
 .cursor{
-    animation:blink .8s infinite;
+
+animation:blink .8s infinite;
+
 }
 
 @keyframes blink{
@@ -70,72 +174,464 @@ opacity:0;
 }
 
 }
+    /* =============================
+   MATRIX RAIN BACKGROUND
+============================= */
 
-/* Progress */
+#matrix{
 
-.progress{
+position:fixed;
 
-margin-top:30px;
+top:0;
+left:0;
 
-height:20px;
+width:100%;
+height:100%;
 
-background:#022;
+pointer-events:none;
 
-border:1px solid #00ff66;
+opacity:.08;
+
+overflow:hidden;
+
+z-index:0;
 
 }
 
-.bar{
+.matrix-column{
+
+position:absolute;
+
+top:-100%;
+
+font-size:18px;
+
+color:#00ff66;
+
+animation:rain linear infinite;
+
+}
+
+@keyframes rain{
+
+from{
+transform:translateY(-100%);
+}
+
+to{
+transform:translateY(200%);
+}
+
+}
+
+/* =============================
+   PROGRESS BAR
+============================= */
+
+#progressBox{
+
+position:absolute;
+
+left:25px;
+
+right:25px;
+
+bottom:25px;
+
+height:26px;
+
+border:2px solid #00ff66;
+
+background:#021202;
+
+overflow:hidden;
+
+}
+
+#progress{
+
+width:0%;
 
 height:100%;
 
-width:0;
+background:linear-gradient(
+90deg,
+#00ff66,
+#00ffaa,
+#00ffff
+);
 
-background:linear-gradient(90deg,#00ff66,#00ffaa);
+box-shadow:
+0 0 15px #00ff66,
+0 0 30px #00ffaa;
 
-transition:.5s;
-
-}
-
-/* Final Logo */
-
-#logo{
-
-display:none;
-
-text-align:center;
-
-margin-top:40px;
-
-animation:zoom 1s;
+transition:.4s;
 
 }
 
-#logo h1{
+/* =============================
+   STATUS PANEL
+============================= */
 
-font-size:65px;
+#status{
 
-letter-spacing:8px;
+position:absolute;
 
-color:#fff;
+top:25px;
 
-text-shadow:0 0 20px #00ff66;
+right:25px;
+
+width:240px;
+
+padding:15px;
+
+border:1px solid #00ff66;
+
+background:rgba(0,40,0,.45);
+
+font-size:14px;
+
+line-height:1.8;
+
+box-shadow:0 0 15px #00ff66;
 
 }
 
-#logo h2{
+#status h3{
 
-font-size:22px;
-
-margin-top:15px;
+margin-bottom:10px;
 
 color:#00ffaa;
 
 }
 
+/* =============================
+   RGB BORDER
+============================= */
+
+#terminal::before{
+
+content:"";
+
+position:absolute;
+
+inset:-3px;
+
+border-radius:4px;
+
+background:
+
+linear-gradient(
+90deg,
+#00ffff,
+#00ff66,
+#ffff00,
+#ff00ff,
+#00ffff
+);
+
+background-size:300%;
+
+filter:blur(8px);
+
+opacity:.6;
+
+z-index:-1;
+
+animation:borderGlow 8s linear infinite;
+
+}
+
+@keyframes borderGlow{
+
+0%{
+background-position:0%;
+}
+
+100%{
+background-position:300%;
+}
+
+}
+
+/* =============================
+   SYSTEM INFO
+============================= */
+
+.info{
+
+color:#7dffb2;
+
+}
+    </style>
+
+</head>
+
+<body>
+
+<!-- MATRIX BACKGROUND -->
+<div id="matrix"></div>
+
+<!-- TERMINAL -->
+<div id="terminal">
+
+    <div id="header">
+        LOZADA ENTERPRISE RESOURCE PLANNING
+    </div>
+
+    <!-- Boot Messages -->
+    <div id="output">
+
+System Boot Version 2.0
+
+Copyright (C) LOZADA Technologies
+
+----------------------------------------
+
+Initializing Boot Sequence...
+
+    </div>
+
+    <!-- STATUS PANEL -->
+    <div id="status">
+
+        <h3>SYSTEM STATUS</h3>
+
+        <div>CPU : <span class="ok">ONLINE</span></div>
+
+        <div>RAM : <span class="ok">CHECKING...</span></div>
+
+        <div>SSD : <span class="ok">READY</span></div>
+
+        <div>NETWORK : <span class="warn">CONNECTING</span></div>
+
+        <div>DATABASE : <span class="warn">WAITING</span></div>
+
+        <div>FIREBASE : <span class="warn">OFFLINE</span></div>
+
+        <div>SECURITY : <span class="ok">ACTIVE</span></div>
+
+        <div>VERSION : 2.0.0</div>
+
+    </div>
+
+    <!-- PROGRESS BAR -->
+    <div id="progressBox">
+
+        <div id="progress"></div>
+
+    </div>
+
+</div>
+
+<script>
+
+/* ===========================================
+   BOOT SEQUENCE
+=========================================== */
+
+const boot = [
+
+"[ OK ] Initializing Kernel...",
+"[ OK ] Loading Core Engine...",
+"[ OK ] Detecting CPU...",
+"[ OK ] Detecting Memory...",
+"[ OK ] Checking SSD...",
+"[ OK ] Starting Security Service...",
+"[ OK ] Loading Employee Module...",
+"[ OK ] Loading Payroll Module...",
+"[ OK ] Loading Attendance Module...",
+"[ OK ] Loading Inventory Module...",
+"[ OK ] Loading Accounting Module...",
+"[ OK ] Loading Reports...",
+"[ OK ] Loading Settings...",
+"[ OK ] Connecting Network...",
+"[ OK ] Connecting Firebase...",
+"[ OK ] Firebase Connected.",
+"[ OK ] Synchronizing Cloud Database...",
+"[ OK ] Loading User Profile...",
+"[ OK ] Authenticating User...",
+"[ OK ] Security Token Verified.",
+"[ OK ] Loading Dashboard Components...",
+"[ OK ] System Ready."
+
+];
+
+let i=0;
+
+function nextBoot(){
+
+    if(i<boot.length){
+
+        output.innerHTML += "<br>"+boot[i];
+
+        output.scrollTop=output.scrollHeight;
+
+        progress.style.width=((i+1)/boot.length*100)+"%";
+
+        i++;
+
+        setTimeout(nextBoot,450);
+
+    }else{
+
+        finishBoot();
+
+    }
+
+}
+
+nextBoot();
+
+/* ===========================================
+   FINISH
+=========================================== */
+
+function finishBoot(){
+
+setTimeout(()=>{
+
+output.innerHTML+=`
+
+<br><br>
+
+============================================
+
+ACCESS GRANTED
+
+============================================
+
+`;
+
+flash();
+
+},800);
+
+}
+
+/* ===========================================
+   FLASH EFFECT
+=========================================== */
+
+function flash(){
+
+document.body.animate([
+
+{filter:"brightness(1)"},
+
+{filter:"brightness(3)"},
+
+{filter:"brightness(1)"}
+
+],{
+
+duration:500
+
+});
+
+setTimeout(showLogo,600);
+
+}
+
+/* ===========================================
+   LOZADA LOGO
+=========================================== */
+
+function showLogo(){
+
+document.getElementById("terminal").innerHTML=`
+
+<div style="
+
+height:100%;
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+flex-direction:column;
+
+text-align:center;
+
+">
+
+<div style="
+
+font-size:80px;
+
+font-weight:bold;
+
+letter-spacing:10px;
+
+color:white;
+
+text-shadow:
+
+0 0 20px #00ff66,
+
+0 0 40px #00ffaa,
+
+0 0 60px #00ffff;
+
+animation:zoom 1s;
+
+">
+
+LOZADA
+
+</div>
+
+<div style="
+
+margin-top:25px;
+
+font-size:28px;
+
+color:#00ffaa;
+
+letter-spacing:8px;
+
+animation:fade 2s infinite;
+
+">
+
+ENTERPRISE RESOURCE PLANNING
+
+</div>
+
+<div style="
+
+margin-top:40px;
+
+font-size:22px;
+
+color:#00ff66;
+
+">
+
+SYSTEM READY ✔
+
+</div>
+
+</div>
+
+`;
+
+}
+
+/* ===========================================
+   EXTRA ANIMATIONS
+=========================================== */
+
+const style=document.createElement("style");
+
+style.innerHTML=`
+
 @keyframes zoom{
 
-from{
+0%{
 
 transform:scale(.3);
 
@@ -143,7 +639,7 @@ opacity:0;
 
 }
 
-to{
+100%{
 
 transform:scale(1);
 
@@ -153,123 +649,16 @@ opacity:1;
 
 }
 
-</style>
+@keyframes fade{
 
-</head>
+50%{
 
-<body>
-
-<div id="terminal">
-
-<div id="title">
-LOZADA ERP SECURITY TERMINAL
-</div>
-
-<div id="output"></div>
-
-<div class="progress">
-
-<div class="bar" id="bar"></div>
-
-</div>
-
-<div id="logo">
-
-<h1>LOZADA ERP</h1>
-
-<h2>SYSTEM READY ✔</h2>
-
-</div>
-
-</div>
-
-<script>
-
-const logs=[
-
-"> Booting System...",
-
-"> Initializing Kernel...",
-
-"> Loading Core Engine...",
-
-"> Loading Employee Module...",
-
-"> Loading Payroll Module...",
-
-"> Loading Attendance Module...",
-
-"> Loading Inventory Module...",
-
-"> Loading Accounting Module...",
-
-"> Loading Reports Module...",
-
-"> Loading Settings Module...",
-
-"> Connecting Firebase...",
-
-"> Connection Successful.",
-
-"> Synchronizing Database...",
-
-"> Checking User Permission...",
-
-"> Loading Security Keys...",
-
-"> Encrypting Session...",
-
-"> Verifying System License...",
-
-"> Security Check Passed.",
-
-"> Starting Dashboard Services...",
-
-"> System Ready."
-
-];
-
-let i=0;
-
-const output=document.getElementById("output");
-
-const bar=document.getElementById("bar");
-
-function typeLine(){
-
-if(i<logs.length){
-
-const div=document.createElement("div");
-
-div.innerHTML=logs[i]+" <span class='cursor'>█</span>";
-
-output.appendChild(div);
-
-output.scrollTop=output.scrollHeight;
-
-bar.style.width=((i+1)/logs.length*100)+"%";
-
-i++;
-
-setTimeout(typeLine,450);
-
-}else{
-
-setTimeout(showLogo,800);
+opacity:.3;
 
 }
 
 }
 
-function showLogo(){
+`;
 
-document.getElementById("logo").style.display="block";
-
-}
-
-typeLine();
-
-</script>
-
-</body>
-</html>
+document.head.appendChild(style);

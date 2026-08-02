@@ -1,204 +1,224 @@
-/* ==========================================
-   HAPPY BIRTHDAY WEBSITE V3
+/* ==================================================
+   HAPPY BIRTHDAY WEBSITE V4
+   SCRIPT.JS
    PART 1
-========================================== */
+================================================== */
 
-window.addEventListener("DOMContentLoaded",()=>{
+window.addEventListener("DOMContentLoaded", () => {
 
-/* ==========================================
-INTRO
-========================================== */
+    /* ==========================================
+       INTRO
+    ========================================== */
 
-const intro=document.getElementById("intro");
+    const intro = document.getElementById("intro");
 
-setTimeout(()=>{
+    if (intro) {
 
-intro.style.opacity="0";
+        setTimeout(() => {
 
-intro.style.visibility="hidden";
+            intro.style.opacity = "0";
+            intro.style.visibility = "hidden";
 
-},2500);
+        }, 2500);
 
-/* ==========================================
-CREATE STARS
-========================================== */
+    }
 
-const stars=document.getElementById("stars");
+    /* ==========================================
+       CREATE STARS
+    ========================================== */
 
-for(let i=0;i<180;i++){
+    const stars = document.getElementById("stars");
 
-const star=document.createElement("div");
+    if (stars) {
 
-star.className="star";
+        for (let i = 0; i < 180; i++) {
 
-star.style.position="absolute";
+            const star = document.createElement("div");
 
-star.style.width="3px";
+            star.className = "star";
 
-star.style.height="3px";
+            star.style.position = "absolute";
 
-star.style.borderRadius="50%";
+            star.style.left = Math.random() * 100 + "%";
 
-star.style.background="white";
+            star.style.top = Math.random() * 100 + "%";
 
-star.style.boxShadow="0 0 15px white";
+            star.style.width = "3px";
 
-star.style.left=Math.random()*100+"%";
+            star.style.height = "3px";
 
-star.style.top=Math.random()*100+"%";
+            star.style.borderRadius = "50%";
 
-star.style.opacity=Math.random();
+            star.style.background = "#ffffff";
 
-star.style.animation=
+            star.style.boxShadow = "0 0 10px white";
 
-`twinkle ${2+Math.random()*4}s infinite`;
+            star.style.opacity = Math.random();
 
-stars.appendChild(star);
+            star.style.animation =
+                `twinkle ${2 + Math.random() * 4}s infinite`;
 
-}
+            stars.appendChild(star);
 
-/* ==========================================
-PARTICLES
-========================================== */
+        }
 
-const particles=document.getElementById("particles");
+    }
 
-for(let i=0;i<60;i++){
+    /* ==========================================
+       GOLD PARTICLES
+    ========================================== */
 
-const p=document.createElement("div");
+    const particles = document.getElementById("particles");
 
-p.className="particle";
+    if (particles) {
 
-p.style.position="absolute";
+        for (let i = 0; i < 60; i++) {
 
-p.style.width="6px";
+            const dot = document.createElement("div");
 
-p.style.height="6px";
+            dot.style.position = "absolute";
 
-p.style.borderRadius="50%";
+            dot.style.width = "6px";
 
-p.style.background="#FFD54F";
+            dot.style.height = "6px";
 
-p.style.left=Math.random()*100+"%";
+            dot.style.borderRadius = "50%";
 
-p.style.top=Math.random()*100+"%";
+            dot.style.background = "#D4AF37";
 
-p.style.opacity=".4";
+            dot.style.opacity = ".35";
 
-p.style.animation=
+            dot.style.left = Math.random() * 100 + "%";
 
-`particleFloat ${8+Math.random()*8}s linear infinite`;
+            dot.style.top = Math.random() * 100 + "%";
 
-particles.appendChild(p);
+            dot.style.animation =
+                `particleFloat ${8 + Math.random() * 6}s linear infinite`;
 
-}
+            particles.appendChild(dot);
 
-/* ==========================================
-BALLOONS
-========================================== */
+        }
 
-const balloons=document.getElementById("balloons");
+    }
 
-const colors=[
+    /* ==========================================
+       FLOATING BALLOONS
+    ========================================== */
 
-"#ff6b6b",
+    const balloons = document.getElementById("balloons");
 
-"#74c0fc",
+    if (balloons) {
 
-"#FFD43B",
+        const colors = [
 
-"#69db7c",
+            "#C8102E",
 
-"#d0bfff"
+            "#D4AF37",
 
-];
+            "#FFFFFF",
 
-for(let i=0;i<12;i++){
+            "#B8860B",
 
-const b=document.createElement("div");
+            "#E63946"
 
-b.style.position="absolute";
+        ];
 
-b.style.bottom="-200px";
+        for (let i = 0; i < 12; i++) {
 
-b.style.left=Math.random()*100+"%";
+            const balloon = document.createElement("div");
 
-b.style.width="70px";
+            balloon.style.position = "absolute";
 
-b.style.height="90px";
+            balloon.style.width = "70px";
 
-b.style.borderRadius="50%";
+            balloon.style.height = "90px";
 
-b.style.background=
+            balloon.style.borderRadius = "50%";
 
-colors[Math.floor(Math.random()*colors.length)];
+            balloon.style.left =
+                Math.random() * 100 + "%";
 
-b.style.animation=
+            balloon.style.bottom = "-150px";
 
-`floatBalloon ${15+Math.random()*8}s linear infinite`;
+            balloon.style.background =
+                colors[Math.floor(Math.random() * colors.length)];
 
-b.style.animationDelay=
+            balloon.style.opacity = ".85";
 
-Math.random()*10+"s";
+            balloon.style.animation =
+                `float ${15 + Math.random() * 10}s linear infinite`;
 
-balloons.appendChild(b);
+            balloon.style.animationDelay =
+                Math.random() * 8 + "s";
 
-}
+            balloons.appendChild(balloon);
 
-/* ==========================================
-SCROLL REVEAL
-========================================== */
+        }
 
-const reveals=document.querySelectorAll(".reveal");
+    }
 
-function reveal(){
+    /* ==========================================
+       SCROLL REVEAL
+    ========================================== */
 
-reveals.forEach(el=>{
+    const reveals =
+        document.querySelectorAll(".reveal");
 
-const top=
+    function reveal() {
 
-el.getBoundingClientRect().top;
+        reveals.forEach(item => {
 
-if(top<window.innerHeight-100){
+            const top =
+                item.getBoundingClientRect().top;
 
-el.classList.add("active");
+            if (top < window.innerHeight - 120) {
 
-}
+                item.classList.add("active");
+
+            }
+
+        });
+
+    }
+
+    window.addEventListener("scroll", reveal);
+
+    reveal();
 
 });
-
-}
-
-window.addEventListener(
-
-"scroll",
-
-reveal
-
-);
-
-reveal();
-
-});
-/* ==========================================
+/* ==================================================
+   HAPPY BIRTHDAY WEBSITE V4
+   SCRIPT.JS
    PART 2
-   CELEBRATE MODAL
+================================================== */
+
+/* ==========================================
+   ELEMENTS
 ========================================== */
 
 const celebrateBtn = document.getElementById("celebrate");
-const modal = document.getElementById("celebrateModal");
+const birthdayModal = document.getElementById("birthdayModal");
 const closeModal = document.getElementById("closeModal");
-const message = document.getElementById("message");
+
+const birthdayMessage =
+document.getElementById("birthdayMessage");
+
+const playMusicBtn =
+document.getElementById("playMusic");
+
+const musicBtn =
+document.getElementById("musicBtn");
 
 const birthdayMusic =
 document.getElementById("birthdayMusic");
 
-const playMusic =
-document.getElementById("playMusic");
+/* ==========================================
+TYPEWRITER MESSAGE
+========================================== */
 
-const birthdayText =
+const message =
 
-"May this special day bring you endless happiness, good health, success and God's abundant blessings. Happy Birthday Ryan! We love you very much! ❤️";
+"Happy Birthday Ryan Cortez Manebog! Wishing you happiness, good health, success, peace, and God's abundant blessings. May all your dreams come true. Your family loves you very much. ❤️";
 
 /* ==========================================
 OPEN MODAL
@@ -208,13 +228,11 @@ if(celebrateBtn){
 
 celebrateBtn.addEventListener("click",()=>{
 
-modal.style.display="flex";
+birthdayModal.style.display="flex";
 
-launchConfetti();
+startTyping();
 
 startFireworks();
-
-typeMessage();
 
 });
 
@@ -228,7 +246,7 @@ if(closeModal){
 
 closeModal.addEventListener("click",()=>{
 
-modal.style.display="none";
+birthdayModal.style.display="none";
 
 stopFireworks();
 
@@ -240,19 +258,21 @@ stopFireworks();
 TYPEWRITER
 ========================================== */
 
-function typeMessage(){
+function startTyping(){
 
-message.innerHTML="";
+birthdayMessage.innerHTML="";
 
 let i=0;
 
 const timer=setInterval(()=>{
 
-message.innerHTML+=birthdayText.charAt(i);
+birthdayMessage.innerHTML+=
+
+message.charAt(i);
 
 i++;
 
-if(i>=birthdayText.length){
+if(i>=message.length){
 
 clearInterval(timer);
 
@@ -266,69 +286,65 @@ clearInterval(timer);
 MUSIC
 ========================================== */
 
-let playing=false;
+let musicPlaying=false;
 
-if(playMusic){
+function toggleMusic(){
 
-playMusic.addEventListener("click",()=>{
+if(!birthdayMusic)return;
 
-if(!playing){
+if(!musicPlaying){
 
 birthdayMusic.play();
 
-playMusic.innerHTML=
-
-"<i class='fa-solid fa-pause'></i> Pause";
-
-playing=true;
+musicPlaying=true;
 
 }else{
 
 birthdayMusic.pause();
 
-playMusic.innerHTML=
-
-"<i class='fa-solid fa-music'></i> Music";
-
-playing=false;
+musicPlaying=false;
 
 }
 
-});
+updateMusicButton();
 
 }
 
-/* ==========================================
-CONFETTI
-========================================== */
+function updateMusicButton(){
 
-function launchConfetti(){
+const html=musicPlaying
 
-for(let i=0;i<180;i++){
+? "<i class='fa-solid fa-pause'></i> Pause Music"
 
-const conf=document.createElement("div");
+: "<i class='fa-solid fa-music'></i> Play Music";
 
-conf.className="confetti";
+if(playMusicBtn) playMusicBtn.innerHTML=html;
 
-conf.style.left=Math.random()*100+"%";
-
-conf.style.background=
-
-`hsl(${Math.random()*360},100%,60%)`;
-
-conf.style.animationDuration=
-
-(3+Math.random()*3)+"s";
-
-document.body.appendChild(conf);
-
-setTimeout(()=>{
-
-conf.remove();
-
-},6000);
+if(musicBtn) musicBtn.innerHTML=html;
 
 }
+
+if(playMusicBtn){
+
+playMusicBtn.addEventListener(
+
+"click",
+
+toggleMusic
+
+);
+
+}
+
+if(musicBtn){
+
+musicBtn.addEventListener(
+
+"click",
+
+toggleMusic
+
+);
 
 }
 
@@ -336,27 +352,39 @@ conf.remove();
 FIREWORKS
 ========================================== */
 
-const canvas=document.getElementById("fireworksCanvas");
+const canvas=
 
-const ctx=canvas.getContext("2d");
+document.getElementById("fireworksCanvas");
+
+const ctx=
+
+canvas.getContext("2d");
+
+function resizeCanvas(){
 
 canvas.width=window.innerWidth;
 
 canvas.height=window.innerHeight;
 
-window.addEventListener("resize",()=>{
+}
 
-canvas.width=window.innerWidth;
+resizeCanvas();
 
-canvas.height=window.innerHeight;
+window.addEventListener(
 
-});
+"resize",
+
+resizeCanvas
+
+);
 
 let particles=[];
 
 let fireworkTimer;
 
-/* Particle */
+/* ==========================================
+PARTICLE
+========================================== */
 
 class Particle{
 
@@ -420,39 +448,55 @@ ctx.fill();
 
 }
 
-/* Explosion */
+/* ==========================================
+CREATE FIREWORK
+========================================== */
 
 function createFirework(){
 
 const colors=[
 
-"#FFD54F",
+"#C8102E",
 
-"#FF6B6B",
+"#D4AF37",
 
-"#4DABF7",
+"#FFD700",
 
-"#69DB7C",
+"#FFFFFF",
 
-"#D0BFFF",
-
-"#FFFFFF"
+"#FF5252"
 
 ];
 
 const color=
 
-colors[Math.floor(Math.random()*colors.length)];
+colors[Math.floor(
 
-const x=Math.random()*canvas.width;
+Math.random()*colors.length
 
-const y=Math.random()*canvas.height*.5;
+)];
+
+const x=
+
+Math.random()*canvas.width;
+
+const y=
+
+Math.random()*canvas.height*.45;
 
 for(let i=0;i<90;i++){
 
 particles.push(
 
-new Particle(x,y,color)
+new Particle(
+
+x,
+
+y,
+
+color
+
+)
 
 );
 
@@ -460,7 +504,9 @@ new Particle(x,y,color)
 
 }
 
-/* Animation */
+/* ==========================================
+ANIMATE
+========================================== */
 
 function animateFireworks(){
 
@@ -476,13 +522,25 @@ canvas.height
 
 );
 
-for(let i=particles.length-1;i>=0;i--){
+for(
+
+let i=particles.length-1;
+
+i>=0;
+
+i--
+
+){
 
 particles[i].update();
 
 particles[i].draw();
 
-if(particles[i].life<=0){
+if(
+
+particles[i].life<=0
+
+){
 
 particles.splice(i,1);
 
@@ -500,7 +558,9 @@ animateFireworks
 
 animateFireworks();
 
-/* START */
+/* ==========================================
+START
+========================================== */
 
 function startFireworks(){
 
@@ -508,14 +568,344 @@ clearInterval(fireworkTimer);
 
 fireworkTimer=
 
-setInterval(createFirework,450);
+setInterval(
+
+createFirework,
+
+500
+
+);
 
 }
 
-/* STOP */
+/* ==========================================
+STOP
+========================================== */
 
 function stopFireworks(){
 
-clearInterval(fireworkTimer);
+clearInterval(
+
+fireworkTimer
+
+);
 
 }
+/* ==================================================
+   HAPPY BIRTHDAY WEBSITE V4
+   SCRIPT.JS
+   PART 3 (FINAL)
+================================================== */
+
+/* ==========================================
+   GALLERY
+========================================== */
+
+const galleryBtn = document.getElementById("galleryBtn");
+const galleryModal = document.getElementById("galleryModal");
+const galleryImage = document.getElementById("galleryImage");
+
+const closeGallery = document.getElementById("closeGallery");
+
+const prevPhoto = document.getElementById("prevPhoto");
+const nextPhoto = document.getElementById("nextPhoto");
+
+/* ==========================================
+   IMAGES
+========================================== */
+
+const gallery = [
+
+"assets/images/gallery1.jpg",
+
+"assets/images/gallery2.jpg",
+
+"assets/images/gallery3.jpg",
+
+"assets/images/gallery4.jpg",
+
+"assets/images/gallery5.jpg",
+
+"assets/images/gallery6.jpg"
+
+];
+
+let current = 0;
+
+/* ==========================================
+OPEN
+========================================== */
+
+if(galleryBtn){
+
+galleryBtn.addEventListener("click",()=>{
+
+galleryModal.style.display="flex";
+
+galleryImage.src=gallery[current];
+
+});
+
+}
+
+/* ==========================================
+CLOSE
+========================================== */
+
+if(closeGallery){
+
+closeGallery.addEventListener("click",()=>{
+
+galleryModal.style.display="none";
+
+});
+
+}
+
+/* ==========================================
+NEXT
+========================================== */
+
+if(nextPhoto){
+
+nextPhoto.addEventListener("click",()=>{
+
+current++;
+
+if(current>=gallery.length){
+
+current=0;
+
+}
+
+galleryImage.src=
+
+gallery[current];
+
+});
+
+}
+
+/* ==========================================
+PREVIOUS
+========================================== */
+
+if(prevPhoto){
+
+prevPhoto.addEventListener("click",()=>{
+
+current--;
+
+if(current<0){
+
+current=
+
+gallery.length-1;
+
+}
+
+galleryImage.src=
+
+gallery[current];
+
+});
+
+}
+
+/* ==========================================
+KEYBOARD
+========================================== */
+
+document.addEventListener("keydown",(e)=>{
+
+if(galleryModal.style.display!="flex") return;
+
+if(e.key==="ArrowRight"){
+
+nextPhoto.click();
+
+}
+
+if(e.key==="ArrowLeft"){
+
+prevPhoto.click();
+
+}
+
+if(e.key==="Escape"){
+
+galleryModal.style.display="none";
+
+}
+
+});
+
+/* ==========================================
+CONFETTI
+========================================== */
+
+function launchConfetti(){
+
+for(let i=0;i<180;i++){
+
+const conf=document.createElement("div");
+
+conf.className="confetti";
+
+conf.style.position="fixed";
+
+conf.style.width="10px";
+
+conf.style.height="15px";
+
+conf.style.left=
+
+Math.random()*100+"%";
+
+conf.style.top="-20px";
+
+conf.style.background=
+
+`hsl(${Math.random()*360},100%,60%)`;
+
+conf.style.pointerEvents="none";
+
+conf.style.zIndex="99999";
+
+conf.style.transform=
+
+`rotate(${Math.random()*360}deg)`;
+
+conf.style.animation=
+
+`confettiFall ${3+Math.random()*3}s linear forwards`;
+
+document.body.appendChild(conf);
+
+setTimeout(()=>{
+
+conf.remove();
+
+},6000);
+
+}
+
+}
+
+/* ==========================================
+HEARTS
+========================================== */
+
+function createHeart(){
+
+const heart=document.createElement("div");
+
+heart.innerHTML="❤️";
+
+heart.style.position="fixed";
+
+heart.style.left=
+
+Math.random()*100+"%";
+
+heart.style.bottom="-40px";
+
+heart.style.fontSize=
+
+(20+Math.random()*25)+"px";
+
+heart.style.pointerEvents="none";
+
+heart.style.zIndex="9999";
+
+heart.style.animation=
+
+`heartUp ${5+Math.random()*3}s linear forwards`;
+
+document.body.appendChild(heart);
+
+setTimeout(()=>{
+
+heart.remove();
+
+},8000);
+
+}
+
+setInterval(createHeart,1800);
+
+/* ==========================================
+FLOWERS
+========================================== */
+
+const flowers=[
+
+"🌸",
+
+"🌺",
+
+"🌼"
+
+];
+
+function createFlower(){
+
+const flower=document.createElement("div");
+
+flower.innerHTML=
+
+flowers[Math.floor(Math.random()*flowers.length)];
+
+flower.style.position="fixed";
+
+flower.style.left=
+
+Math.random()*100+"%";
+
+flower.style.top="-40px";
+
+flower.style.fontSize=
+
+(18+Math.random()*18)+"px";
+
+flower.style.pointerEvents="none";
+
+flower.style.animation=
+
+`flowerFall ${6+Math.random()*4}s linear forwards`;
+
+document.body.appendChild(flower);
+
+setTimeout(()=>{
+
+flower.remove();
+
+},9000);
+
+}
+
+setInterval(createFlower,2500);
+
+/* ==========================================
+MODAL EFFECT
+========================================== */
+
+if(celebrateBtn){
+
+celebrateBtn.addEventListener("click",()=>{
+
+launchConfetti();
+
+});
+
+}
+
+/* ==========================================
+END
+========================================== */
+
+console.log(
+
+"🎂 Happy Birthday Website V4 Loaded Successfully"
+
+);

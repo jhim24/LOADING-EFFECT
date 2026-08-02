@@ -250,45 +250,7 @@ header.style.boxShadow="none";
 }
 
 });
-/* ==========================================
-RIPPLE EFFECT
-========================================== */
 
-button{
-
-position:relative;
-
-overflow:hidden;
-
-}
-
-.ripple{
-
-position:absolute;
-
-border-radius:50%;
-
-background:rgba(255,255,255,.5);
-
-transform:scale(0);
-
-animation:ripple .7s linear;
-
-pointer-events:none;
-
-}
-
-@keyframes ripple{
-
-to{
-
-transform:scale(4);
-
-opacity:0;
-
-}
-
-}
 /* ==========================================
 PART 3
 CELEBRATE MODAL

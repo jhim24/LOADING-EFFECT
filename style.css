@@ -479,9 +479,9 @@ transform:translateY(0);
 
 }
 
-.hero-image{
+.hero-poster{
 
-animation:balloonFloat 6s ease-in-out infinite;
+animation:posterFloat 6s ease-in-out infinite;
 
 }
 
@@ -1658,7 +1658,7 @@ background-position:center;
 
 background-repeat:no-repeat;
 
-background-attachment:fixed;
+background-attachment:scroll;
 
 }
 /* Dark Overlay */
@@ -1952,7 +1952,22 @@ font-size:14px;
 /* Border Animation */
 
 @keyframes borderGlow{
+@keyframes posterFloat{
 
+0%,100%{
+
+transform:translateY(0);
+
+}
+
+50%{
+
+transform:translateY(-12px);
+
+}
+
+}
+   
 0%{
 
 background-position:0%;
@@ -1995,8 +2010,13 @@ padding-top:100px;
 
 padding-bottom:60px;
 
-}
+background-attachment:scroll;
 
+background-position:center;
+
+background-size:cover;
+
+}
 .hero h1{
 
 font-size:46px;

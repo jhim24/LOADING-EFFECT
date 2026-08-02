@@ -1,11 +1,38 @@
 /* ==========================================
-   HAPPY BIRTHDAY V2
-   CREATED BY CHATGPT
+   HAPPY BIRTHDAY WEBSITE V3
+   PHASE 2A
+   RESET + VARIABLES + INTRO + HEADER
 ========================================== */
 
-/* GOOGLE FONT */
+/* ==========================================
+GOOGLE FONT
+========================================== */
 
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+/* ==========================================
+CSS VARIABLES
+========================================== */
+
+:root{
+
+--gold:#FFD54F;
+--gold-dark:#C89B00;
+
+--white:#ffffff;
+
+--cream:#FFFDF5;
+
+--champagne:#FFF5DA;
+
+--text:#3B3B3B;
+
+--glass:rgba(255,255,255,.55);
+
+--shadow:
+0 15px 40px rgba(255,193,7,.20);
+
+}
 
 /* ==========================================
 RESET
@@ -34,24 +61,54 @@ body{
 background:
 linear-gradient(
 180deg,
-#FFFDF6 0%,
-#FFF5D6 40%,
-#FFE8A3 100%
+#FFFDF8 0%,
+#FFF5D9 55%,
+#FFE8A8 100%
 );
 
-color:#333;
+color:var(--text);
 
 overflow-x:hidden;
+
+min-height:100vh;
+
+}
+
+img{
+
+display:block;
+
+max-width:100%;
+
+user-select:none;
+
+}
+
+button{
+
+font-family:'Poppins',sans-serif;
+
+cursor:pointer;
+
+transition:.35s;
+
+}
+
+a{
+
+text-decoration:none;
+
+color:inherit;
 
 }
 
 /* ==========================================
-BACKGROUND
+BACKGROUND LAYERS
 ========================================== */
 
 #stars,
-#balloons,
-#particles{
+#particles,
+#balloons{
 
 position:fixed;
 
@@ -94,8 +151,8 @@ align-items:center;
 background:
 linear-gradient(
 135deg,
-#FFF8E1,
-#FFE082
+#FFF8E8,
+#FFE39A
 );
 
 z-index:99999;
@@ -108,41 +165,47 @@ transition:1s;
 
 text-align:center;
 
+padding:30px;
+
 }
 
-.intro-small{
-
-letter-spacing:8px;
+.intro-content h3{
 
 font-size:18px;
 
-font-weight:600;
+letter-spacing:8px;
 
-color:#A66B00;
+color:var(--gold-dark);
+
+margin-bottom:20px;
+
+font-weight:600;
 
 }
 
 .intro-content h1{
 
-font-size:70px;
+font-size:72px;
 
-margin-top:20px;
+font-weight:800;
 
-color:#B8860B;
+color:var(--gold-dark);
 
 text-shadow:
 
-0 0 20px rgba(255,215,0,.4);
+0 0 25px rgba(255,215,0,.35);
 
 }
 
 .intro-content h2{
 
-margin-top:15px;
+margin-top:18px;
 
 font-size:34px;
 
-color:#7A5200;
+font-weight:500;
+
+color:#7A5A00;
 
 }
 
@@ -164,17 +227,17 @@ padding:18px 8%;
 
 display:flex;
 
-justify-content:center;
+justify-content:space-between;
 
 align-items:center;
 
-background:rgba(255,255,255,.55);
+background:var(--glass);
 
-backdrop-filter:blur(12px);
-
-z-index:999;
+backdrop-filter:blur(16px);
 
 border-bottom:1px solid rgba(255,215,0,.25);
+
+z-index:999;
 
 }
 
@@ -190,7 +253,7 @@ font-size:24px;
 
 font-weight:700;
 
-color:#A86B00;
+color:var(--gold-dark);
 
 }
 
@@ -198,436 +261,99 @@ color:#A86B00;
 
 font-size:28px;
 
-color:#FFD54F;
+color:var(--gold);
 
 }
 
-/* ==========================================
-HERO
-========================================== */
-
-.hero{
-
-width:100%;
-
-min-height:100vh;
+nav{
 
 display:flex;
 
-flex-direction:column;
+gap:35px;
 
-justify-content:center;
+}
 
-align-items:center;
+nav a{
 
-padding-top:90px;
+font-size:16px;
 
-padding-bottom:50px;
+font-weight:600;
 
 position:relative;
 
-z-index:5;
+transition:.3s;
 
 }
 
-.hero-image{
+nav a:hover{
 
-width:92%;
-
-max-width:900px;
-
-height:auto;
-
-display:block;
-
-border-radius:30px;
-
-box-shadow:
-
-0 20px 60px rgba(255,193,7,.35);
+color:var(--gold-dark);
 
 }
 
-/* ==========================================
-BUTTONS
-========================================== */
-
-.hero-buttons{
-
-margin-top:35px;
-
-display:flex;
-
-gap:20px;
-
-flex-wrap:wrap;
-
-justify-content:center;
-
-}
-
-.hero-buttons button{
-
-padding:18px 42px;
-
-border:none;
-
-border-radius:50px;
-
-font-size:18px;
-
-font-weight:700;
-
-cursor:pointer;
-
-transition:.35s;
-
-}
-
-#celebrate{
-
-background:#FFD54F;
-
-color:#5A3A00;
-
-}
-
-#gallery{
-
-background:white;
-
-color:#A86B00;
-
-border:2px solid #FFD54F;
-
-}
-
-.hero-buttons button:hover{
-
-transform:
-
-translateY(-6px)
-
-scale(1.05);
-
-box-shadow:
-
-0 15px 35px rgba(255,193,7,.35);
-
-}
-
-/* ==========================================
-SCROLL
-========================================== */
-
-.scroll-down{
-
-margin-top:40px;
-
-display:flex;
-
-flex-direction:column;
-
-align-items:center;
-
-color:#A86B00;
-
-animation:bounce 2s infinite;
-
-}
-
-.scroll-down i{
-
-font-size:30px;
-
-margin-bottom:8px;
-
-}
-
-@keyframes bounce{
-
-0%,100%{
-
-transform:translateY(0);
-
-}
-
-50%{
-
-transform:translateY(12px);
-
-}
-
-}
-/* ==========================================
-   PART 3
-   BACKGROUND EFFECTS
-========================================== */
-
-/* Floating Balloons */
-
-.balloon{
-
-position:absolute;
-
-bottom:-180px;
-
-width:70px;
-
-height:90px;
-
-border-radius:50%;
-
-animation:floatBalloon linear infinite;
-
-box-shadow:0 0 25px rgba(255,215,0,.35);
-
-}
-
-.balloon::after{
+nav a::after{
 
 content:"";
 
 position:absolute;
 
-left:50%;
+left:0;
 
-top:88px;
+bottom:-6px;
 
-width:2px;
-
-height:120px;
-
-background:#bbb;
-
-}
-
-.red{
-
-background:#ff6b6b;
-
-left:8%;
-
-animation-duration:18s;
-
-}
-
-.blue{
-
-background:#74c0fc;
-
-left:28%;
-
-animation-duration:20s;
-
-}
-
-.yellow{
-
-background:#FFD43B;
-
-left:48%;
-
-animation-duration:17s;
-
-}
-
-.green{
-
-background:#63e6be;
-
-left:68%;
-
-animation-duration:22s;
-
-}
-
-.purple{
-
-background:#d0bfff;
-
-left:88%;
-
-animation-duration:19s;
-
-}
-
-@keyframes floatBalloon{
-
-0%{
-
-transform:translateY(0);
-
-}
-
-100%{
-
-transform:translateY(-140vh);
-
-}
-
-}
-
-/* ==========================================
-STARS
-========================================== */
-
-.star{
-
-position:absolute;
-
-width:3px;
+width:0;
 
 height:3px;
 
-background:white;
+background:var(--gold);
 
-border-radius:50%;
+border-radius:10px;
 
-box-shadow:
-
-0 0 12px white,
-
-0 0 25px gold;
-
-animation:twinkle infinite;
+transition:.35s;
 
 }
 
-@keyframes twinkle{
+nav a:hover::after{
 
-0%,100%{
-
-opacity:.2;
-
-transform:scale(.5);
-
-}
-
-50%{
-
-opacity:1;
-
-transform:scale(1.8);
-
-}
+width:100%;
 
 }
 
 /* ==========================================
-GOLD PARTICLES
+SECTION DEFAULT
 ========================================== */
 
-.particle{
-
-position:absolute;
-
-width:6px;
-
-height:6px;
-
-border-radius:50%;
-
-background:#FFD54F;
-
-opacity:.45;
-
-animation:particleFloat linear infinite;
-
-}
-
-@keyframes particleFloat{
-
-0%{
-
-transform:translateY(0);
-
-opacity:0;
-
-}
-
-20%{
-
-opacity:1;
-
-}
-
-100%{
-
-transform:translateY(-120vh);
-
-opacity:0;
-
-}
-
-}
-
-/* ==========================================
-SECTION TITLE
-========================================== */
-
-.family-section,
-.gallery-section{
-
-padding:100px 8%;
+section{
 
 position:relative;
 
 z-index:5;
 
+padding:100px 8%;
+
 }
 
-.family-section h2,
-.gallery-section h2{
+section h2{
 
-font-size:42px;
+font-size:46px;
 
 text-align:center;
 
-color:#A86B00;
+color:var(--gold-dark);
 
 margin-bottom:15px;
 
 }
 
-.family-section p,
-.gallery-section p{
+section p{
 
 text-align:center;
 
-font-size:18px;
+font-size:20px;
 
-color:#777;
+color:#666;
 
-margin-bottom:50px;
-
-}
-
-/* ==========================================
-FOOTER
-========================================== */
-
-footer{
-
-padding:50px 20px;
-
-text-align:center;
-
-background:rgba(255,255,255,.6);
-
-backdrop-filter:blur(12px);
-
-margin-top:80px;
-
-border-top:1px solid rgba(255,215,0,.25);
-
-}
-
-footer p{
-
-margin:8px 0;
-
-color:#7A5200;
+line-height:1.8;
 
 }
 
@@ -639,7 +365,7 @@ MOBILE
 
 header{
 
-padding:15px 20px;
+padding:16px 20px;
 
 }
 
@@ -649,35 +375,15 @@ font-size:18px;
 
 }
 
-.hero{
+.logo i{
 
-padding-top:80px;
-
-}
-
-.hero-image{
-
-width:96%;
-
-border-radius:18px;
+font-size:22px;
 
 }
 
-.hero-buttons{
+nav{
 
-flex-direction:column;
-
-width:100%;
-
-align-items:center;
-
-}
-
-.hero-buttons button{
-
-width:90%;
-
-max-width:320px;
+display:none;
 
 }
 
@@ -693,38 +399,373 @@ font-size:22px;
 
 }
 
-.family-section h2{
+.intro-content h3{
 
-font-size:30px;
+font-size:14px;
+
+letter-spacing:4px;
 
 }
 
-.gallery-section h2{
+section{
 
-font-size:30px;
+padding:70px 20px;
+
+}
+
+section h2{
+
+font-size:32px;
+
+}
+
+section p{
+
+font-size:17px;
 
 }
 
 }
 /* ==========================================
-   FAMILY SECTION
+   PHASE 2B
+   HERO SECTION
 ========================================== */
 
-.family-intro{
+.hero{
 
-max-width:700px;
+min-height:100vh;
+
+display:flex;
+
+flex-direction:column;
+
+justify-content:center;
+
+align-items:center;
+
+padding:120px 20px 80px;
+
+position:relative;
+
+}
+
+/* ==========================================
+HERO IMAGE
+========================================== */
+
+.hero-image{
+
+width:100%;
+
+max-width:900px;
+
+height:auto;
+
+display:block;
+
+border-radius:30px;
+
+background:#fff;
+
+padding:10px;
+
+box-shadow:
+
+0 20px 50px rgba(255,193,7,.25);
+
+transition:.5s;
+
+animation:heroFloat 6s ease-in-out infinite;
+
+}
+
+.hero-image:hover{
+
+transform:
+
+scale(1.02);
+
+box-shadow:
+
+0 30px 70px rgba(255,193,7,.35);
+
+}
+
+/* ==========================================
+BUTTONS
+========================================== */
+
+.hero-actions{
+
+margin-top:40px;
+
+display:flex;
+
+justify-content:center;
+
+gap:20px;
+
+flex-wrap:wrap;
+
+}
+
+.hero-actions button{
+
+min-width:180px;
+
+padding:18px 30px;
+
+border:none;
+
+border-radius:50px;
+
+font-size:18px;
+
+font-weight:700;
+
+display:flex;
+
+align-items:center;
+
+justify-content:center;
+
+gap:10px;
+
+transition:.35s;
+
+box-shadow:
+
+0 12px 30px rgba(255,193,7,.20);
+
+}
+
+/* Celebrate */
+
+#celebrate{
+
+background:linear-gradient(
+135deg,
+#FFD54F,
+#FFB300
+);
+
+color:#5A3A00;
+
+}
+
+/* Gallery */
+
+#openGallery{
+
+background:#ffffff;
+
+color:#A66B00;
+
+border:2px solid var(--gold);
+
+}
+
+/* Music */
+
+#playMusic{
+
+background:linear-gradient(
+135deg,
+#FFF5DA,
+#FFE082
+);
+
+color:#8A5A00;
+
+}
+
+/* Hover */
+
+.hero-actions button:hover{
+
+transform:
+
+translateY(-6px)
+
+scale(1.05);
+
+box-shadow:
+
+0 18px 40px rgba(255,193,7,.35);
+
+}
+
+/* ==========================================
+SCROLL INDICATOR
+========================================== */
+
+.scroll-indicator{
+
+margin-top:45px;
+
+display:flex;
+
+flex-direction:column;
+
+align-items:center;
+
+color:var(--gold-dark);
+
+animation:bounce 2s infinite;
+
+}
+
+.scroll-indicator i{
+
+font-size:32px;
+
+margin-bottom:10px;
+
+color:var(--gold);
+
+}
+
+.scroll-indicator span{
+
+font-size:15px;
+
+letter-spacing:2px;
+
+font-weight:600;
+
+}
+
+/* ==========================================
+ANIMATIONS
+========================================== */
+
+@keyframes heroFloat{
+
+0%{
+
+transform:translateY(0);
+
+}
+
+50%{
+
+transform:translateY(-10px);
+
+}
+
+100%{
+
+transform:translateY(0);
+
+}
+
+}
+
+@keyframes bounce{
+
+0%,100%{
+
+transform:translateY(0);
+
+}
+
+50%{
+
+transform:translateY(10px);
+
+}
+
+}
+
+/* ==========================================
+RESPONSIVE
+========================================== */
+
+@media(max-width:768px){
+
+.hero{
+
+padding-top:100px;
+
+padding-bottom:60px;
+
+}
+
+.hero-image{
+
+width:100%;
+
+padding:6px;
+
+border-radius:20px;
+
+}
+
+.hero-actions{
+
+flex-direction:column;
+
+width:100%;
+
+}
+
+.hero-actions button{
+
+width:100%;
+
+max-width:320px;
 
 margin:auto;
 
-margin-bottom:60px;
+font-size:17px;
 
-text-align:center;
+padding:16px;
+
+}
+
+.scroll-indicator{
+
+margin-top:30px;
+
+}
+
+}
+/* ==========================================
+   PHASE 2C
+   FAMILY SECTION
+========================================== */
+
+.family{
+
+background:transparent;
+
+}
+
+/* Title */
+
+.family h2{
+
+font-size:48px;
+
+margin-bottom:15px;
+
+}
+
+.family>p{
+
+max-width:700px;
+
+margin:0 auto 70px;
 
 font-size:20px;
 
-color:#7A5200;
+color:#777;
 
 }
+
+/* ==========================================
+CARD
+========================================== */
 
 .family-card{
 
@@ -732,35 +773,33 @@ display:flex;
 
 align-items:center;
 
-gap:40px;
+gap:45px;
 
-margin-bottom:35px;
+margin-bottom:45px;
 
-padding:30px;
+padding:35px;
 
 background:rgba(255,255,255,.65);
 
-backdrop-filter:blur(12px);
+backdrop-filter:blur(18px);
+
+border:1px solid rgba(255,255,255,.7);
 
 border-radius:30px;
 
 box-shadow:
 
-0 10px 30px rgba(255,193,7,.18);
+0 20px 45px rgba(255,193,7,.15);
 
-transition:.35s;
+transition:.45s;
 
-}
+overflow:hidden;
 
-.family-card:hover{
-
-transform:translateY(-8px);
-
-box-shadow:
-
-0 20px 40px rgba(255,193,7,.35);
+position:relative;
 
 }
+
+/* Alternate Layout */
 
 .family-card.reverse{
 
@@ -768,27 +807,103 @@ flex-direction:row-reverse;
 
 }
 
+/* Hover */
+
+.family-card:hover{
+
+transform:
+
+translateY(-8px);
+
+box-shadow:
+
+0 30px 60px rgba(255,193,7,.28);
+
+}
+
+/* Gold Shine */
+
+.family-card::before{
+
+content:"";
+
+position:absolute;
+
+top:0;
+
+left:-120%;
+
+width:70%;
+
+height:100%;
+
+background:
+
+linear-gradient(
+
+90deg,
+
+transparent,
+
+rgba(255,255,255,.45),
+
+transparent
+
+);
+
+transition:1s;
+
+}
+
+.family-card:hover::before{
+
+left:140%;
+
+}
+
+/* ==========================================
+PHOTO
+========================================== */
+
 .family-photo{
 
-flex:0 0 240px;
+flex:0 0 260px;
 
 }
 
 .family-photo img{
 
-width:240px;
+width:260px;
 
-height:240px;
+height:260px;
 
 object-fit:cover;
 
 border-radius:24px;
 
-border:6px solid #FFD54F;
+border:6px solid var(--gold);
 
-display:block;
+box-shadow:
+
+0 15px 35px rgba(255,193,7,.25);
+
+transition:.45s;
 
 }
+
+.family-card:hover .family-photo img{
+
+transform:
+
+scale(1.05)
+
+rotate(-1deg);
+
+}
+
+/* ==========================================
+TEXT
+========================================== */
 
 .family-info{
 
@@ -800,37 +915,47 @@ flex:1;
 
 display:inline-block;
 
-color:#B8860B;
+padding:8px 18px;
+
+border-radius:50px;
+
+background:#FFF6D8;
+
+color:var(--gold-dark);
 
 font-weight:700;
 
-margin-bottom:10px;
+margin-bottom:18px;
 
 }
 
 .family-info h3{
 
-font-size:34px;
+font-size:36px;
 
-color:#8A5A00;
+color:var(--gold-dark);
 
-margin-bottom:15px;
+margin-bottom:18px;
 
 }
 
 .family-info p{
 
-font-size:19px;
+font-size:18px;
 
-line-height:1.8;
+line-height:1.9;
+
+text-align:left;
 
 color:#555;
 
 }
 
-/* MOBILE */
+/* ==========================================
+RESPONSIVE
+========================================== */
 
-@media(max-width:768px){
+@media(max-width:900px){
 
 .family-card,
 
@@ -850,9 +975,15 @@ flex:none;
 
 .family-photo img{
 
-width:180px;
+width:210px;
 
-height:180px;
+height:210px;
+
+}
+
+.family-info{
+
+width:100%;
 
 }
 
@@ -864,114 +995,136 @@ font-size:28px;
 
 .family-info p{
 
+text-align:center;
+
 font-size:17px;
 
 }
 
 }
-/* ==========================================
-SCROLL REVEAL
-========================================== */
 
-.reveal{
+@media(max-width:480px){
 
-opacity:0;
+.family h2{
 
-transform:
-
-translateY(100px);
-
-transition:
-
-1s ease;
+font-size:32px;
 
 }
 
-.reveal.active{
+.family>p{
 
-opacity:1;
+font-size:16px;
 
-transform:
-
-translateY(0);
+margin-bottom:40px;
 
 }
 
-/* ==========================================
-PHOTO EFFECT
-========================================== */
+.family-card{
 
-.family-photo{
+padding:20px;
 
-overflow:hidden;
-
-border-radius:25px;
+border-radius:22px;
 
 }
 
 .family-photo img{
 
+width:170px;
+
+height:170px;
+
+}
+
+.family-info span{
+
+font-size:14px;
+
+}
+
+.family-info h3{
+
+font-size:24px;
+
+}
+
+.family-info p{
+
+font-size:16px;
+
+line-height:1.8;
+
+}
+
+}
+/* ==========================================
+   PHASE 2D
+   GALLERY
+========================================== */
+
+.gallery{
+
+padding:120px 8%;
+
+}
+
+.gallery-grid{
+
+display:grid;
+
+grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+
+gap:25px;
+
+margin-top:50px;
+
+}
+
+.gallery-item{
+
+position:relative;
+
+overflow:hidden;
+
+border-radius:25px;
+
+background:#fff;
+
+box-shadow:0 15px 35px rgba(255,193,7,.18);
+
+cursor:pointer;
+
+transition:.4s;
+
+}
+
+.gallery-item:hover{
+
+transform:translateY(-8px);
+
+box-shadow:0 25px 45px rgba(255,193,7,.28);
+
+}
+
+.gallery-item img{
+
+width:100%;
+
+height:320px;
+
+object-fit:cover;
+
 transition:.6s;
 
 }
 
-.family-card:hover img{
+.gallery-item:hover img{
 
 transform:scale(1.08);
 
 }
 
 /* ==========================================
-CARD SHIMMER
-========================================== */
-
-.family-card{
-
-position:relative;
-
-overflow:hidden;
-
-}
-
-.family-card::before{
-
-content:"";
-
-position:absolute;
-
-top:0;
-
-left:-100%;
-
-width:50%;
-
-height:100%;
-
-background:
-
-linear-gradient(
-
-90deg,
-
-transparent,
-
-rgba(255,255,255,.5),
-
-transparent
-
-);
-
-transition:1s;
-
-}
-
-.family-card:hover::before{
-
-left:150%;
-
-}
-/* ==========================================
-CELEBRATE MODAL
+MODAL
 ========================================== */
 
 #celebrateModal{
@@ -986,79 +1139,79 @@ justify-content:center;
 
 align-items:center;
 
-background:rgba(255,255,255,.35);
+background:rgba(255,255,255,.45);
 
-backdrop-filter:blur(18px);
+backdrop-filter:blur(15px);
 
-z-index:99999;
+z-index:9999;
+
+padding:20px;
 
 }
 
-.celebrate-card{
+.modal-box{
 
-width:90%;
+width:100%;
 
 max-width:700px;
 
-padding:45px;
-
 background:white;
+
+padding:45px;
 
 border-radius:30px;
 
 text-align:center;
 
-box-shadow:
+box-shadow:0 20px 60px rgba(255,193,7,.35);
 
-0 20px 60px rgba(255,193,7,.35);
-
-animation:popup .6s;
+animation:popup .5s ease;
 
 }
 
-.celebrate-icon{
+.modal-box h1{
+
+font-size:52px;
+
+color:var(--gold-dark);
+
+margin-bottom:15px;
+
+}
+
+.modal-box h2{
+
+font-size:30px;
+
+margin-bottom:25px;
+
+color:#555;
+
+}
+
+.modal-box p{
+
+font-size:20px;
+
+line-height:1.8;
+
+color:#666;
+
+min-height:120px;
+
+}
+
+.cake{
 
 font-size:80px;
 
 margin-bottom:20px;
 
-animation:bounceCake 2s infinite;
+animation:cakeBounce 2s infinite;
 
 }
 
-.celebrate-card h1{
-
-font-size:55px;
-
-color:#C58A00;
-
-margin-bottom:10px;
-
-}
-
-.celebrate-card h2{
-
-font-size:32px;
-
-margin-bottom:30px;
-
-color:#444;
-
-}
-
-#typingText{
-
-font-size:20px;
-
-line-height:1.9;
-
-min-height:130px;
-
-color:#666;
-
-}
-
-.celebrate-buttons{
+.modal-buttons{
 
 margin-top:35px;
 
@@ -1072,31 +1225,21 @@ flex-wrap:wrap;
 
 }
 
-.celebrate-buttons button{
+.modal-buttons button{
 
-padding:16px 38px;
+padding:16px 35px;
 
 border:none;
 
 border-radius:50px;
 
-cursor:pointer;
+background:var(--gold);
+
+color:#5A3A00;
 
 font-size:18px;
 
-font-weight:bold;
-
-}
-
-#startMusic{
-
-background:#FFD54F;
-
-}
-
-#closeModal{
-
-background:#EDEDED;
+font-weight:700;
 
 }
 
@@ -1104,23 +1247,23 @@ background:#EDEDED;
 
 from{
 
-transform:scale(.6);
-
 opacity:0;
+
+transform:scale(.7);
 
 }
 
 to{
 
-transform:scale(1);
-
 opacity:1;
 
-}
+transform:scale(1);
 
 }
 
-@keyframes bounceCake{
+}
+
+@keyframes cakeBounce{
 
 0%,100%{
 
@@ -1135,6 +1278,7 @@ transform:translateY(-10px);
 }
 
 }
+
 /* ==========================================
 FIREWORKS
 ========================================== */
@@ -1158,101 +1302,144 @@ z-index:9998;
 }
 
 /* ==========================================
-CONFETTI
+FOOTER
 ========================================== */
 
-#confetti{
+footer{
 
-position:fixed;
+margin-top:100px;
 
-top:0;
+padding:60px 20px;
 
-left:0;
+text-align:center;
 
-width:100%;
+background:rgba(255,255,255,.65);
 
-height:100%;
+backdrop-filter:blur(12px);
 
-pointer-events:none;
-
-overflow:hidden;
-
-z-index:9997;
+border-top:1px solid rgba(255,215,0,.25);
 
 }
 
-.confetti-piece{
+footer h2{
 
-position:absolute;
+font-size:38px;
 
-width:10px;
+color:var(--gold-dark);
 
-height:16px;
-
-border-radius:2px;
-
-animation:fall linear forwards;
+margin-bottom:15px;
 
 }
 
-@keyframes fall{
+footer p{
 
-0%{
+font-size:18px;
 
-transform:
-translateY(-20px)
-rotate(0deg);
+color:#666;
+
+margin:10px 0;
+
+}
+
+/* ==========================================
+REVEAL ANIMATION
+========================================== */
+
+.reveal{
+
+opacity:0;
+
+transform:translateY(70px);
+
+transition:1s;
+
+}
+
+.reveal.active{
 
 opacity:1;
 
-}
-
-100%{
-
-transform:
-translateY(110vh)
-rotate(720deg);
-
-opacity:0;
+transform:translateY(0);
 
 }
 
-}
 /* ==========================================
-RIPPLE EFFECT
+SCROLLBAR
 ========================================== */
 
-button{
+::-webkit-scrollbar{
 
-position:relative;
-
-overflow:hidden;
+width:10px;
 
 }
 
-.ripple{
+::-webkit-scrollbar-track{
 
-position:absolute;
-
-border-radius:50%;
-
-background:rgba(255,255,255,.5);
-
-transform:scale(0);
-
-animation:ripple .7s linear;
-
-pointer-events:none;
+background:#FFF7DD;
 
 }
 
-@keyframes ripple{
+::-webkit-scrollbar-thumb{
 
-to{
+background:linear-gradient(
 
-transform:scale(4);
+180deg,
 
-opacity:0;
+#FFD54F,
+
+#FFB300
+
+);
+
+border-radius:20px;
+
+}
+
+/* ==========================================
+FINAL RESPONSIVE
+========================================== */
+
+@media(max-width:768px){
+
+.modal-box{
+
+padding:30px 20px;
+
+}
+
+.modal-box h1{
+
+font-size:38px;
+
+}
+
+.modal-box h2{
+
+font-size:24px;
+
+}
+
+.modal-box p{
+
+font-size:17px;
+
+}
+
+.gallery-item img{
+
+height:240px;
+
+}
+
+footer h2{
+
+font-size:28px;
+
+}
+
+footer p{
+
+font-size:16px;
 
 }
 

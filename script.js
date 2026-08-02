@@ -41,6 +41,10 @@ btn.addEventListener("click",()=>{
 
     btn.style.color="white";
 
+    popup.style.display="flex";
+
+    fireworkInterval=setInterval(createFirework,700);
+
 });
 /* ==========================================
    POPUP
@@ -50,6 +54,8 @@ const popup = document.getElementById("birthdayPopup");
 
 const closePopup = document.getElementById("closePopup");
 
+let fireworkInterval;
+
 btn.addEventListener("click",()=>{
 
     popup.style.display="flex";
@@ -57,7 +63,6 @@ btn.addEventListener("click",()=>{
     fireworkInterval=setInterval(createFirework,700);
 
 });
-let fireworkInterval;
 
 closePopup.addEventListener("click",()=>{
 
@@ -198,3 +203,29 @@ function animateFireworks(){
 }
 
 animateFireworks();
+/* ==========================================
+   MUSIC
+========================================== */
+
+const music = document.getElementById("birthdaySong");
+const playBtn = document.getElementById("playMusic");
+
+playBtn.addEventListener("click",()=>{
+
+    if(music.paused){
+
+        music.play();
+
+        playBtn.innerHTML=
+        "<i class='fa-solid fa-pause'></i> Pause Music";
+
+    }else{
+
+        music.pause();
+
+        playBtn.innerHTML=
+        "<i class='fa-solid fa-music'></i> Play Music";
+
+    }
+
+});

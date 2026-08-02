@@ -865,3 +865,26 @@ box-shadow:
 0 0 35px orange;
 
 }
+/* ==========================================
+SMOOTH FADE
+========================================== */
+
+html{
+
+scroll-behavior:smooth;
+
+}
+
+button{
+
+transition:.35s;
+
+}
+
+img{
+
+user-select:none;
+
+pointer-events:none;
+
+}

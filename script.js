@@ -60,10 +60,6 @@ closePopup.addEventListener(() => {
    POPUP
 ========================================== */
 
-const popup = document.getElementById("birthdayPopup");
-
-const closePopup = document.getElementById("closePopup");
-
 let fireworkInterval;
 
 closePopup.addEventListener("click",()=>{

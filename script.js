@@ -37,7 +37,7 @@ const closePopup = document.getElementById("closePopup");
 
 let fireworkInterval;
 
-btn.addEventListener(() => {
+btn.addEventListener("click", () => {
 
     btn.innerHTML = "<i class='fa-solid fa-heart'></i> Happy Birthday Ryan!";
     btn.style.background = "#ff4081";
@@ -49,26 +49,14 @@ btn.addEventListener(() => {
 
 });
 
-closePopup.addEventListener(() => {
+closePopup.addEventListener("click", () => {
 
     popup.style.display = "none";
 
     clearInterval(fireworkInterval);
 
 });
-/* ==========================================
-   POPUP
-========================================== */
 
-let fireworkInterval;
-
-closePopup.addEventListener("click",()=>{
-
-    popup.style.display="none";
-
-    clearInterval(fireworkInterval);
-
-});
 /* ==========================================
    FIREWORKS ENGINE
 ========================================== */

@@ -190,20 +190,76 @@ function animateFireworks(){
 
 animateFireworks();
 /* ==========================================
-   GALLERY BUTTON
+GALLERY
 ========================================== */
 
-const galleryBtn = document.getElementById("viewGallery");
+const galleryBtn=document.getElementById("viewGallery");
 
-if (galleryBtn) {
+const gallery=document.getElementById("galleryModal");
 
-    galleryBtn.addEventListener("click", () => {
+const galleryImage=document.getElementById("galleryImage");
 
-        alert("Gallery coming soon!");
+const closeGallery=document.getElementById("closeGallery");
 
-    });
+const next=document.getElementById("nextPhoto");
+
+const prev=document.getElementById("prevPhoto");
+
+const photos=[
+
+"assets/images/gallery1.jpg",
+
+"assets/images/gallery2.jpg",
+
+"assets/images/gallery3.jpg",
+
+"assets/images/gallery4.jpg"
+
+];
+
+let currentPhoto=0;
+
+galleryBtn.addEventListener("click",()=>{
+
+gallery.style.display="flex";
+
+galleryImage.src=photos[currentPhoto];
+
+});
+
+closeGallery.addEventListener("click",()=>{
+
+gallery.style.display="none";
+
+});
+
+next.addEventListener("click",()=>{
+
+currentPhoto++;
+
+if(currentPhoto>=photos.length){
+
+currentPhoto=0;
 
 }
+
+galleryImage.src=photos[currentPhoto];
+
+});
+
+prev.addEventListener("click",()=>{
+
+currentPhoto--;
+
+if(currentPhoto<0){
+
+currentPhoto=photos.length-1;
+
+}
+
+galleryImage.src=photos[currentPhoto];
+
+});
 /* ==========================================
    MUSIC
 ========================================== */

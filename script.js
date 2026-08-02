@@ -366,3 +366,60 @@ modal.style.display="none";
 });
 
 }
+/* ==========================================
+PART 4
+CONFETTI
+========================================== */
+
+const confettiContainer =
+document.getElementById("confetti");
+
+function launchConfetti(){
+
+const colors=[
+
+"#FFD54F",
+
+"#FF6B6B",
+
+"#4DABF7",
+
+"#69DB7C",
+
+"#D0BFFF",
+
+"#FFFFFF"
+
+];
+
+for(let i=0;i<180;i++){
+
+const piece=document.createElement("div");
+
+piece.className="confetti-piece";
+
+piece.style.left=Math.random()*100+"%";
+
+piece.style.background=
+
+colors[Math.floor(Math.random()*colors.length)];
+
+piece.style.animationDuration=
+
+(3+Math.random()*3)+"s";
+
+piece.style.animationDelay=
+
+Math.random()+"s";
+
+confettiContainer.appendChild(piece);
+
+setTimeout(()=>{
+
+piece.remove();
+
+},6000);
+
+}
+
+}

@@ -481,7 +481,7 @@ transform:translateY(0);
 
 .hero-image{
 
-animation:float 6s ease-in-out infinite;
+animation:balloonFloat 6s ease-in-out infinite;
 
 }
 
@@ -1323,7 +1323,7 @@ transform:translateX(-50%);
 
 }
 
-@keyframes float{
+@keyframes balloonFloat{
 
 0%{
 
@@ -1338,7 +1338,6 @@ transform:translateY(-140vh);
 }
 
 }
-
 /* =========================
 CONFETTI
 ========================= */

@@ -204,6 +204,17 @@ function animateFireworks(){
 
 animateFireworks();
 /* ==========================================
+   GALLERY BUTTON
+========================================== */
+
+const galleryBtn = document.getElementById("viewGallery");
+
+galleryBtn.addEventListener("click",()=>{
+
+    alert("Gallery coming soon!");
+
+});
+/* ==========================================
    MUSIC
 ========================================== */
 

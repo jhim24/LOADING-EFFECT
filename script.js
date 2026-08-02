@@ -319,7 +319,7 @@ if (celebrateBtn && modal) {
 
        modal.style.display="flex";
 
-launchConfetti();
+setInterval(createFireworks,300);
 
         typeMessage();
 
@@ -425,3 +425,130 @@ piece.remove();
 }
 
 }
+/* ==========================================
+FIREWORKS
+========================================== */
+
+const canvas =
+document.getElementById("fireworksCanvas");
+
+const ctx =
+canvas.getContext("2d");
+
+canvas.width=window.innerWidth;
+
+canvas.height=window.innerHeight;
+
+window.addEventListener("resize",()=>{
+
+canvas.width=window.innerWidth;
+
+canvas.height=window.innerHeight;
+
+});
+
+let fireworks=[];
+
+class Firework{
+
+constructor(){
+
+this.x=Math.random()*canvas.width;
+
+this.y=Math.random()*canvas.height*0.5;
+
+this.radius=2;
+
+this.life=100;
+
+this.color=
+
+`hsl(${Math.random()*360},100%,60%)`;
+
+}
+
+draw(){
+
+ctx.beginPath();
+
+ctx.arc(
+
+this.x,
+
+this.y,
+
+this.radius,
+
+0,
+
+Math.PI*2
+
+);
+
+ctx.fillStyle=this.color;
+
+ctx.shadowBlur=20;
+
+ctx.shadowColor=this.color;
+
+ctx.fill();
+
+}
+
+update(){
+
+this.radius+=0.8;
+
+this.life--;
+
+}
+
+}
+
+function createFireworks(){
+
+fireworks.push(
+
+new Firework()
+
+);
+
+}
+
+function animateFireworks(){
+
+ctx.clearRect(
+
+0,
+
+0,
+
+canvas.width,
+
+canvas.height
+
+);
+
+fireworks.forEach((f,index)=>{
+
+f.update();
+
+f.draw();
+
+if(f.life<=0){
+
+fireworks.splice(index,1);
+
+}
+
+});
+
+requestAnimationFrame(
+
+animateFireworks
+
+);
+
+}
+
+animateFireworks();

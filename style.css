@@ -1673,3 +1673,436 @@ height:220px;
 }
 
 }
+/* ==================================================
+   HERO V4 PREMIUM
+================================================== */
+
+.hero{
+
+position:relative;
+
+min-height:100vh;
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+padding:120px 20px 80px;
+
+overflow:hidden;
+
+background:
+
+linear-gradient(
+
+135deg,
+
+#5A0000 0%,
+
+#8B0000 35%,
+
+#C8102E 60%,
+
+#D4AF37 100%
+
+);
+
+}
+
+/* Dark Overlay */
+
+.hero-overlay{
+
+position:absolute;
+
+inset:0;
+
+background:
+
+linear-gradient(
+
+rgba(0,0,0,.25),
+
+rgba(0,0,0,.35)
+
+);
+
+z-index:1;
+
+}
+
+/* Content */
+
+.hero-content{
+
+position:relative;
+
+z-index:2;
+
+width:100%;
+
+max-width:1200px;
+
+text-align:center;
+
+}
+
+/* Badge */
+
+.hero-badge{
+
+display:inline-flex;
+
+align-items:center;
+
+gap:10px;
+
+padding:12px 26px;
+
+border-radius:50px;
+
+background:rgba(255,255,255,.15);
+
+backdrop-filter:blur(10px);
+
+color:#FFD700;
+
+font-weight:600;
+
+letter-spacing:2px;
+
+margin-bottom:25px;
+
+}
+
+/* Title */
+
+.hero h1{
+
+font-family:'Playfair Display',serif;
+
+font-size:72px;
+
+color:white;
+
+margin-bottom:10px;
+
+text-shadow:
+
+0 0 20px rgba(212,175,55,.5);
+
+}
+
+.hero h2{
+
+font-size:34px;
+
+color:#FFD700;
+
+margin-bottom:40px;
+
+font-weight:600;
+
+}
+
+/* Poster */
+
+.hero-poster{
+
+width:100%;
+
+max-width:850px;
+
+margin:auto;
+
+padding:10px;
+
+border-radius:30px;
+
+background:
+
+linear-gradient(
+
+45deg,
+
+#FFD700,
+
+#D4AF37,
+
+#FFF4B0,
+
+#D4AF37
+
+);
+
+background-size:300%;
+
+animation:borderGlow 8s linear infinite;
+
+box-shadow:
+
+0 25px 60px rgba(0,0,0,.35);
+
+}
+
+.hero-poster img{
+
+width:100%;
+
+display:block;
+
+border-radius:24px;
+
+object-fit:cover;
+
+}
+
+/* Message */
+
+.hero p{
+
+max-width:900px;
+
+margin:40px auto;
+
+font-size:22px;
+
+line-height:1.9;
+
+color:white;
+
+}
+
+/* Buttons */
+
+.hero-buttons{
+
+display:flex;
+
+justify-content:center;
+
+gap:20px;
+
+flex-wrap:wrap;
+
+margin-top:20px;
+
+}
+
+.hero-buttons button{
+
+min-width:190px;
+
+height:60px;
+
+border-radius:50px;
+
+font-size:18px;
+
+font-weight:700;
+
+display:flex;
+
+align-items:center;
+
+justify-content:center;
+
+gap:10px;
+
+transition:.35s;
+
+}
+
+#celebrate{
+
+background:#C8102E;
+
+color:white;
+
+}
+
+#celebrate:hover{
+
+background:#FFD700;
+
+color:#111;
+
+transform:translateY(-6px);
+
+}
+
+#galleryBtn{
+
+background:white;
+
+color:#C8102E;
+
+}
+
+#galleryBtn:hover{
+
+background:#FFD700;
+
+}
+
+#musicBtn{
+
+background:#1E1E1E;
+
+color:white;
+
+}
+
+#musicBtn:hover{
+
+background:#FFD700;
+
+color:#111;
+
+}
+
+/* Scroll */
+
+.scroll-down{
+
+margin-top:60px;
+
+display:flex;
+
+flex-direction:column;
+
+align-items:center;
+
+color:white;
+
+animation:bounce 2s infinite;
+
+}
+
+.scroll-down i{
+
+font-size:34px;
+
+color:#FFD700;
+
+margin-bottom:10px;
+
+}
+
+.scroll-down span{
+
+letter-spacing:2px;
+
+font-size:14px;
+
+}
+
+/* Border Animation */
+
+@keyframes borderGlow{
+
+0%{
+
+background-position:0%;
+
+}
+
+100%{
+
+background-position:300%;
+
+}
+
+}
+
+@keyframes bounce{
+
+0%,100%{
+
+transform:translateY(0);
+
+}
+
+50%{
+
+transform:translateY(10px);
+
+}
+
+}
+
+/* =========================
+RESPONSIVE
+========================= */
+
+@media(max-width:768px){
+
+.hero{
+
+padding-top:100px;
+
+padding-bottom:60px;
+
+}
+
+.hero h1{
+
+font-size:46px;
+
+}
+
+.hero h2{
+
+font-size:24px;
+
+}
+
+.hero p{
+
+font-size:17px;
+
+padding:0 10px;
+
+}
+
+.hero-poster{
+
+padding:6px;
+
+border-radius:20px;
+
+}
+
+.hero-poster img{
+
+border-radius:16px;
+
+}
+
+.hero-buttons{
+
+flex-direction:column;
+
+align-items:center;
+
+}
+
+.hero-buttons button{
+
+width:100%;
+
+max-width:320px;
+
+}
+
+.hero-badge{
+
+font-size:13px;
+
+letter-spacing:1px;
+
+}
+
+}

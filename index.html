@@ -44,21 +44,7 @@ BACKGROUND
     <div class="balloon purple"></div>
 
 </div>
-<!-- Floating Balloons -->
 
-<div id="balloons">
-
-    <div class="balloon red"></div>
-
-    <div class="balloon blue"></div>
-
-    <div class="balloon yellow"></div>
-
-    <div class="balloon green"></div>
-
-    <div class="balloon purple"></div>
-
-</div>
 <!-- =========================
 MAIN CONTAINER
 ========================= -->
@@ -81,31 +67,35 @@ MAIN CONTAINER
 
     <!-- Hero -->
 
-    <section class="hero">
+ <section class="hero">
 
-        <h3>A Special Celebration</h3>
+    <span class="tag">
+        <i class="fa-solid fa-star"></i>
+        CELEBRATING A SPECIAL DAY
+    </span>
 
-        <h1>
+    <h1>
+        HAPPY
+        <br>
+        BIRTHDAY
+    </h1>
 
-            RYAN
+    <h2>
 
-            <br>
+        RYAN CORTEZ MANEBOG
 
-            CORTEZ MANEBOG
+    </h2>
 
-        </h1>
+    <p>
 
-        <p>
+        May your birthday bring you endless joy,
+        abundant blessings,
+        wonderful memories,
+        and success in everything you do.
 
-            Wishing you happiness,
+    </p>
 
-            good health,
-
-            success,
-
-            and God's abundant blessings.
-
-        </p>
+    <div class="hero-buttons">
 
         <button id="celebrate">
 
@@ -115,46 +105,17 @@ MAIN CONTAINER
 
         </button>
 
-    </section>
+        <button id="viewGallery">
 
-    <!-- Icons -->
+            <i class="fa-solid fa-images"></i>
 
-    <section class="icons">
+            Gallery
 
-        <div>
+        </button>
 
-            <i class="fa-solid fa-cake-candles"></i>
+    </div>
 
-            Cake
-
-        </div>
-
-        <div>
-
-            <i class="fa-solid fa-gift"></i>
-
-            Gift
-
-        </div>
-
-        <div>
-
-            <i class="fa-solid fa-heart"></i>
-
-            Love
-
-        </div>
-
-        <div>
-
-            <i class="fa-solid fa-star"></i>
-
-            Wishes
-
-        </div>
-
-    </section>
-
+</section>
 </div>
 <!-- =====================================
 BIRTHDAY POPUP
@@ -182,6 +143,30 @@ BIRTHDAY POPUP
 
         </p>
 
+<div class="cake-container">
+
+    <img
+        src="assets/images/cake.png"
+        class="birthday-cake"
+        alt="Birthday Cake">
+
+</div>
+
+<button id="playMusic">
+
+    <i class="fa-solid fa-music"></i>
+
+    Play Music
+
+</button>
+
+<audio id="birthdaySong">
+
+    <source
+        src="assets/audio/happy-birthday.mp3"
+        type="audio/mpeg">
+
+</audio>
         <button id="closePopup">
 
             Close

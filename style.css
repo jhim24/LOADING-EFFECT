@@ -1761,3 +1761,284 @@ user-select:none;
 -webkit-user-drag:none;
 
 }
+/* ==========================================================
+   FAMILY SECTION V5 PREMIUM
+========================================================== */
+
+.family{
+
+padding:120px 8%;
+
+background:linear-gradient(
+
+180deg,
+
+#FFF8F2,
+
+#FFFDFB
+
+);
+
+}
+
+.family-grid{
+
+display:flex;
+
+flex-direction:column;
+
+gap:40px;
+
+max-width:1200px;
+
+margin:auto;
+
+}
+
+.family-card{
+
+display:flex;
+
+align-items:center;
+
+gap:35px;
+
+padding:30px;
+
+background:rgba(255,255,255,.88);
+
+backdrop-filter:blur(18px);
+
+border-radius:30px;
+
+border:2px solid rgba(212,175,55,.25);
+
+box-shadow:
+
+0 20px 40px rgba(0,0,0,.08);
+
+transition:.45s;
+
+position:relative;
+
+overflow:hidden;
+
+}
+
+/* Glass Light */
+
+.family-card::before{
+
+content:"";
+
+position:absolute;
+
+top:0;
+
+left:-150%;
+
+width:60%;
+
+height:100%;
+
+background:
+
+linear-gradient(
+
+90deg,
+
+transparent,
+
+rgba(255,255,255,.55),
+
+transparent
+
+);
+
+transform:skewX(-25deg);
+
+transition:1s;
+
+}
+
+.family-card:hover::before{
+
+left:180%;
+
+}
+
+.family-card:hover{
+
+transform:
+
+translateY(-10px)
+
+scale(1.01);
+
+box-shadow:
+
+0 25px 55px rgba(200,16,46,.18);
+
+}
+
+/* Alternate Layout */
+
+.family-card:nth-child(even){
+
+flex-direction:row-reverse;
+
+}
+
+/* Image */
+
+.family-card img{
+
+width:260px;
+
+height:260px;
+
+object-fit:cover;
+
+border-radius:25px;
+
+border:6px solid #FFD700;
+
+box-shadow:
+
+0 0 25px rgba(212,175,55,.45);
+
+transition:.4s;
+
+}
+
+.family-card:hover img{
+
+transform:scale(1.05);
+
+}
+
+/* Text */
+
+.family-info{
+
+flex:1;
+
+}
+
+.family-info h3{
+
+font-size:34px;
+
+color:#C8102E;
+
+margin-bottom:10px;
+
+font-family:'Playfair Display',serif;
+
+}
+
+.family-info span{
+
+display:inline-block;
+
+padding:8px 18px;
+
+background:#FFD700;
+
+border-radius:30px;
+
+font-weight:700;
+
+margin-bottom:18px;
+
+color:#111;
+
+}
+
+.family-info p{
+
+font-size:18px;
+
+line-height:1.9;
+
+color:#555;
+
+}
+
+/* Section Title */
+
+.family .section-title{
+
+margin-bottom:60px;
+
+text-align:center;
+
+}
+
+.family .section-title h2{
+
+font-family:'Playfair Display',serif;
+
+font-size:52px;
+
+color:#C8102E;
+
+margin-bottom:15px;
+
+}
+
+.family .section-title p{
+
+font-size:20px;
+
+color:#666;
+
+}
+
+/* Responsive */
+
+@media(max-width:900px){
+
+.family-card,
+
+.family-card:nth-child(even){
+
+flex-direction:column;
+
+text-align:center;
+
+}
+
+.family-card img{
+
+width:220px;
+
+height:220px;
+
+}
+
+.family-info h3{
+
+font-size:28px;
+
+}
+
+.family-info p{
+
+font-size:17px;
+
+}
+
+.family .section-title h2{
+
+font-size:36px;
+
+}
+
+.family{
+
+padding:80px 20px;
+
+}
+
+}

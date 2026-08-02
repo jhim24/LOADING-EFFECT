@@ -7,7 +7,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>LOZADA OS Boot</title>
+<title>Happy Birthday Ryan</title>
 
 <style>
 
@@ -15,535 +15,16 @@
 margin:0;
 padding:0;
 box-sizing:border-box;
+font-family:Arial,Helvetica,sans-serif;
 }
 
 body{
 
-background:#000;
-
-color:#00ff66;
-
-font-family:Consolas,monospace;
+background:#050816;
 
 overflow:hidden;
 
-}
-
-/* =============================
-
-BACKGROUND GRID
-
-============================= */
-
-body::before{
-
-content:"";
-
-position:fixed;
-
-inset:0;
-
-background:
-
-linear-gradient(rgba(0,255,80,.05) 1px,transparent 1px),
-
-linear-gradient(90deg,rgba(0,255,80,.05) 1px,transparent 1px);
-
-background-size:35px 35px;
-
-pointer-events:none;
-
-}
-
-/* =============================
-
-CRT EFFECT
-
-============================= */
-
-body::after{
-
-content:"";
-
-position:fixed;
-
-inset:0;
-
-background:
-
-linear-gradient(
-
-transparent 50%,
-
-rgba(0,0,0,.18) 50%
-
-);
-
-background-size:100% 4px;
-
-opacity:.25;
-
-animation:flicker .15s infinite;
-
-pointer-events:none;
-
-}
-
-@keyframes flicker{
-
-0%{opacity:.18;}
-
-50%{opacity:.28;}
-
-100%{opacity:.18;}
-
-}
-
-/* =============================
-
-TERMINAL
-
-============================= */
-
-#terminal{
-
-width:92%;
-
-height:92vh;
-
-margin:20px auto;
-
-border:2px solid #00ff66;
-
-background:#031003;
-
-box-shadow:
-
-0 0 20px #00ff66,
-
-0 0 60px rgba(0,255,100,.25);
-
-padding:25px;
-
-overflow:hidden;
-
-position:relative;
-
-}
-
-#header{
-
-font-size:28px;
-
-font-weight:bold;
-
-color:#00ffaa;
-
-margin-bottom:20px;
-
-text-shadow:0 0 15px #00ffaa;
-
-}
-
-#output{
-
-font-size:18px;
-
-line-height:1.8;
-
-height:75vh;
-
-overflow:hidden;
-
-white-space:pre-wrap;
-
-}
-
-.cursor{
-
-animation:blink .8s infinite;
-
-}
-
-@keyframes blink{
-
-50%{
-
-opacity:0;
-
-}
-
-}
-    /* =============================
-   MATRIX RAIN BACKGROUND
-============================= */
-
-#matrix{
-
-position:fixed;
-
-top:0;
-left:0;
-
-width:100%;
-height:100%;
-
-pointer-events:none;
-
-opacity:.08;
-
-overflow:hidden;
-
-z-index:0;
-
-}
-
-.matrix-column{
-
-position:absolute;
-
-top:-100%;
-
-font-size:18px;
-
-color:#00ff66;
-
-animation:rain linear infinite;
-
-}
-
-@keyframes rain{
-
-from{
-transform:translateY(-100%);
-}
-
-to{
-transform:translateY(200%);
-}
-
-}
-
-/* =============================
-   PROGRESS BAR
-============================= */
-
-#progressBox{
-
-position:absolute;
-
-left:25px;
-
-right:25px;
-
-bottom:25px;
-
-height:26px;
-
-border:2px solid #00ff66;
-
-background:#021202;
-
-overflow:hidden;
-
-}
-
-#progress{
-
-width:0%;
-
-height:100%;
-
-background:linear-gradient(
-90deg,
-#00ff66,
-#00ffaa,
-#00ffff
-);
-
-box-shadow:
-0 0 15px #00ff66,
-0 0 30px #00ffaa;
-
-transition:.4s;
-
-}
-
-/* =============================
-   STATUS PANEL
-============================= */
-
-#status{
-
-position:absolute;
-
-top:25px;
-
-right:25px;
-
-width:240px;
-
-padding:15px;
-
-border:1px solid #00ff66;
-
-background:rgba(0,40,0,.45);
-
-font-size:14px;
-
-line-height:1.8;
-
-box-shadow:0 0 15px #00ff66;
-
-}
-
-#status h3{
-
-margin-bottom:10px;
-
-color:#00ffaa;
-
-}
-
-/* =============================
-   RGB BORDER
-============================= */
-
-#terminal::before{
-
-content:"";
-
-position:absolute;
-
-inset:-3px;
-
-border-radius:4px;
-
-background:
-
-linear-gradient(
-90deg,
-#00ffff,
-#00ff66,
-#ffff00,
-#ff00ff,
-#00ffff
-);
-
-background-size:300%;
-
-filter:blur(8px);
-
-opacity:.6;
-
-z-index:-1;
-
-animation:borderGlow 8s linear infinite;
-
-}
-
-@keyframes borderGlow{
-
-0%{
-background-position:0%;
-}
-
-100%{
-background-position:300%;
-}
-
-}
-
-/* =============================
-   SYSTEM INFO
-============================= */
-
-.info{
-
-color:#7dffb2;
-
-}
-    </style>
-
-</head>
-
-<body>
-
-<!-- MATRIX BACKGROUND -->
-<div id="matrix"></div>
-
-<!-- TERMINAL -->
-<div id="terminal">
-
-    <div id="header">
-        LOZADA ENTERPRISE RESOURCE PLANNING
-    </div>
-
-    <!-- Boot Messages -->
-    <div id="output">
-
-System Boot Version 2.0
-
-Copyright (C) LOZADA Technologies
-
-----------------------------------------
-
-Initializing Boot Sequence...
-
-    </div>
-
-    <!-- STATUS PANEL -->
-    <div id="status">
-
-        <h3>SYSTEM STATUS</h3>
-
-        <div>CPU : <span class="ok">ONLINE</span></div>
-
-        <div>RAM : <span class="ok">CHECKING...</span></div>
-
-        <div>SSD : <span class="ok">READY</span></div>
-
-        <div>NETWORK : <span class="warn">CONNECTING</span></div>
-
-        <div>DATABASE : <span class="warn">WAITING</span></div>
-
-        <div>FIREBASE : <span class="warn">OFFLINE</span></div>
-
-        <div>SECURITY : <span class="ok">ACTIVE</span></div>
-
-        <div>VERSION : 2.0.0</div>
-
-    </div>
-
-    <!-- PROGRESS BAR -->
-    <div id="progressBox">
-
-        <div id="progress"></div>
-
-    </div>
-
-</div>
-
-<script>
-
-/* ===========================================
-   BOOT SEQUENCE
-=========================================== */
-
-const boot = [
-
-"[ OK ] Initializing Kernel...",
-"[ OK ] Loading Core Engine...",
-"[ OK ] Detecting CPU...",
-"[ OK ] Detecting Memory...",
-"[ OK ] Checking SSD...",
-"[ OK ] Starting Security Service...",
-"[ OK ] Loading Employee Module...",
-"[ OK ] Loading Payroll Module...",
-"[ OK ] Loading Attendance Module...",
-"[ OK ] Loading Inventory Module...",
-"[ OK ] Loading Accounting Module...",
-"[ OK ] Loading Reports...",
-"[ OK ] Loading Settings...",
-"[ OK ] Connecting Network...",
-"[ OK ] Connecting Firebase...",
-"[ OK ] Firebase Connected.",
-"[ OK ] Synchronizing Cloud Database...",
-"[ OK ] Loading User Profile...",
-"[ OK ] Authenticating User...",
-"[ OK ] Security Token Verified.",
-"[ OK ] Loading Dashboard Components...",
-"[ OK ] System Ready."
-
-];
-
-let i=0;
-
-function nextBoot(){
-
-    if(i<boot.length){
-
-        output.innerHTML += "<br>"+boot[i];
-
-        output.scrollTop=output.scrollHeight;
-
-        progress.style.width=((i+1)/boot.length*100)+"%";
-
-        i++;
-
-        setTimeout(nextBoot,450);
-
-    }else{
-
-        finishBoot();
-
-    }
-
-}
-
-nextBoot();
-
-/* ===========================================
-   FINISH
-=========================================== */
-
-function finishBoot(){
-
-setTimeout(()=>{
-
-output.innerHTML+=`
-
-<br><br>
-
-============================================
-
-ACCESS GRANTED
-
-============================================
-
-`;
-
-flash();
-
-},800);
-
-}
-
-/* ===========================================
-   FLASH EFFECT
-=========================================== */
-
-function flash(){
-
-document.body.animate([
-
-{filter:"brightness(1)"},
-
-{filter:"brightness(3)"},
-
-{filter:"brightness(1)"}
-
-],{
-
-duration:500
-
-});
-
-setTimeout(showLogo,600);
-
-}
-
-/* ===========================================
-   LOZADA LOGO
-=========================================== */
-
-function showLogo(){
-
-document.getElementById("terminal").innerHTML=`
-
-<div style="
-
-height:100%;
+height:100vh;
 
 display:flex;
 
@@ -551,87 +32,167 @@ justify-content:center;
 
 align-items:center;
 
-flex-direction:column;
+}
+
+/* =========================
+BACKGROUND STARS
+========================= */
+
+.stars{
+
+position:absolute;
+
+width:100%;
+
+height:100%;
+
+overflow:hidden;
+
+}
+
+.star{
+
+position:absolute;
+
+width:3px;
+
+height:3px;
+
+background:white;
+
+border-radius:50%;
+
+animation:twinkle 2s infinite;
+
+}
+
+@keyframes twinkle{
+
+0%,100%{
+
+opacity:.2;
+
+transform:scale(1);
+
+}
+
+50%{
+
+opacity:1;
+
+transform:scale(2);
+
+}
+
+}
+
+/* =========================
+MAIN CARD
+========================= */
+
+.card{
+
+position:relative;
+
+z-index:10;
+
+width:90%;
+
+max-width:700px;
+
+padding:40px;
+
+border-radius:25px;
+
+background:rgba(255,255,255,.08);
+
+backdrop-filter:blur(15px);
+
+border:1px solid rgba(255,255,255,.2);
 
 text-align:center;
 
-">
+box-shadow:
 
-<div style="
+0 0 25px rgba(255,215,0,.25);
 
-font-size:80px;
+}
+
+/* =========================
+TEXT
+========================= */
+
+.small{
+
+color:#FFD54F;
+
+font-size:24px;
+
+letter-spacing:8px;
+
+animation:fadeUp 1s;
+
+}
+
+.big{
+
+margin-top:20px;
+
+font-size:65px;
 
 font-weight:bold;
-
-letter-spacing:10px;
 
 color:white;
 
 text-shadow:
 
-0 0 20px #00ff66,
+0 0 15px gold,
 
-0 0 40px #00ffaa,
+0 0 40px orange;
 
-0 0 60px #00ffff;
-
-animation:zoom 1s;
-
-">
-
-LOZADA
-
-</div>
-
-<div style="
-
-margin-top:25px;
-
-font-size:28px;
-
-color:#00ffaa;
-
-letter-spacing:8px;
-
-animation:fade 2s infinite;
-
-">
-
-ENTERPRISE RESOURCE PLANNING
-
-</div>
-
-<div style="
-
-margin-top:40px;
-
-font-size:22px;
-
-color:#00ff66;
-
-">
-
-SYSTEM READY ✔
-
-</div>
-
-</div>
-
-`;
+animation:zoom 1.2s;
 
 }
 
-/* ===========================================
-   EXTRA ANIMATIONS
-=========================================== */
+.name{
 
-const style=document.createElement("style");
+margin-top:25px;
 
-style.innerHTML=`
+font-size:42px;
+
+font-weight:bold;
+
+color:#00E5FF;
+
+text-shadow:
+
+0 0 20px cyan;
+
+animation:fadeUp 2s;
+
+}
+
+.msg{
+
+margin-top:35px;
+
+font-size:22px;
+
+line-height:1.8;
+
+color:white;
+
+animation:fadeUp 3s;
+
+}
+
+/* =========================
+ANIMATION
+========================= */
 
 @keyframes zoom{
 
-0%{
+from{
 
 transform:scale(.3);
 
@@ -639,432 +200,7 @@ opacity:0;
 
 }
 
-100%{
-
-transform:scale(1);
-
-opacity:1;
-
-}
-
-}
-
-@keyframes fade{
-
-50%{
-
-opacity:.3;
-
-}
-
-}
-
-`;
-
-document.head.appendChild(style);
-/* ===========================================
-   SYSTEM STATUS PANEL (LIVE)
-=========================================== */
-
-const status = document.getElementById("status");
-
-function updateStatus(){
-
-    const cpu = Math.floor(Math.random()*25)+20;
-    const ram = Math.floor(Math.random()*30)+40;
-    const net = (Math.random()*150+50).toFixed(1);
-    const temp = Math.floor(Math.random()*15)+35;
-
-    status.innerHTML = `
-
-<h3>SYSTEM STATUS</h3>
-
-<div>CPU Usage : <span class="ok">${cpu}%</span></div>
-
-<div>RAM Usage : <span class="ok">${ram}%</span></div>
-
-<div>Temperature : <span class="ok">${temp}°C</span></div>
-
-<div>Network : <span class="ok">${net} Mbps</span></div>
-
-<div>Firewall : <span class="ok">ACTIVE</span></div>
-
-<div>Database : <span class="ok">CONNECTED</span></div>
-
-<div>Cloud : <span class="ok">ONLINE</span></div>
-
-<div>Version : 2.0.1</div>
-
-`;
-
-}
-
-setInterval(updateStatus,1000);
-
-updateStatus();
-
-
-/* ===========================================
-   LIVE CLOCK
-=========================================== */
-
-const clock=document.createElement("div");
-
-clock.style.position="absolute";
-clock.style.top="20px";
-clock.style.left="25px";
-clock.style.fontSize="16px";
-clock.style.color="#00ffaa";
-
-document.getElementById("terminal").appendChild(clock);
-
-function updateClock(){
-
-const d=new Date();
-
-clock.innerHTML=d.toLocaleTimeString();
-
-}
-
-setInterval(updateClock,1000);
-
-updateClock();
-
-
-/* ===========================================
-   RANDOM SYSTEM LOGS
-=========================================== */
-
-const randomLogs=[
-
-"[INFO] Network Stable",
-
-"[INFO] Security Monitoring Active",
-
-"[INFO] Database Synced",
-
-"[INFO] Cache Optimized",
-
-"[INFO] Memory Cleanup Complete",
-
-"[INFO] Firebase Heartbeat OK",
-
-"[INFO] System Scan Completed",
-
-"[INFO] Background Services Running"
-
-];
-
-setInterval(()=>{
-
-const msg=randomLogs[Math.floor(Math.random()*randomLogs.length)];
-
-output.innerHTML+="<br>"+msg;
-
-output.scrollTop=output.scrollHeight;
-
-},5000);
-
-
-/* ===========================================
-   GLITCH EFFECT
-=========================================== */
-
-function glitch(){
-
-const t=document.getElementById("terminal");
-
-t.style.transform="translateX(4px)";
-
-setTimeout(()=>{
-
-t.style.transform="translateX(-4px)";
-
-},40);
-
-setTimeout(()=>{
-
-t.style.transform="translateX(0px)";
-
-},80);
-
-}
-
-setInterval(glitch,7000);
-
-
-/* ===========================================
-   SCAN LINE
-=========================================== */
-
-const scan=document.createElement("div");
-
-scan.style.position="fixed";
-scan.style.left="0";
-scan.style.top="-5px";
-scan.style.width="100%";
-scan.style.height="5px";
-scan.style.background="rgba(0,255,150,.3)";
-scan.style.boxShadow="0 0 20px #00ff99";
-scan.style.pointerEvents="none";
-scan.style.animation="scan 5s linear infinite";
-
-document.body.appendChild(scan);
-
-const css=document.createElement("style");
-
-css.innerHTML=`
-
-@keyframes scan{
-
-0%{
-
-top:-5px;
-
-}
-
-100%{
-
-top:100%;
-
-}
-
-}
-
-`;
-
-document.head.appendChild(css);
-    /* ==========================================
-   CINEMATIC LOZADA INTRO
-========================================== */
-
-function showWelcome(){
-
-document.body.style.background="#000";
-
-document.body.innerHTML=`
-
-<div id="welcome">
-
-<div id="glow"></div>
-
-<div id="logo">
-
-<div class="small">WELCOME TO</div>
-
-<div class="big">LOZADA</div>
-
-<div class="erp">ENTERPRISE RESOURCE PLANNING</div>
-
-<div class="line"></div>
-
-<div class="ready">
-
-ACCESS GRANTED
-
-</div>
-
-<div class="loading">
-
-Loading Dashboard...
-
-</div>
-
-</div>
-
-</div>
-
-`;
-
-const css=document.createElement("style");
-
-css.innerHTML=`
-
-#welcome{
-
-position:fixed;
-
-inset:0;
-
-display:flex;
-
-justify-content:center;
-
-align-items:center;
-
-background:#000;
-
-overflow:hidden;
-
-font-family:Consolas,monospace;
-
-}
-
-#glow{
-
-position:absolute;
-
-width:500px;
-
-height:500px;
-
-border-radius:50%;
-
-background:
-
-radial-gradient(circle,
-
-rgba(0,255,255,.35),
-
-transparent 70%);
-
-animation:pulse 2s infinite;
-
-}
-
-#logo{
-
-position:relative;
-
-text-align:center;
-
-z-index:5;
-
-}
-
-.small{
-
-font-size:24px;
-
-color:#00ffaa;
-
-letter-spacing:10px;
-
-opacity:0;
-
-animation:fadeUp 1s forwards;
-
-}
-
-.big{
-
-margin-top:10px;
-
-font-size:90px;
-
-font-weight:bold;
-
-color:#fff;
-
-letter-spacing:18px;
-
-text-shadow:
-
-0 0 20px cyan,
-
-0 0 40px #00ff99,
-
-0 0 70px #00ffff;
-
-opacity:0;
-
-animation:zoom 1.2s forwards;
-
-animation-delay:.8s;
-
-}
-
-.erp{
-
-margin-top:20px;
-
-font-size:24px;
-
-color:#00ffaa;
-
-letter-spacing:8px;
-
-opacity:0;
-
-animation:fadeUp 1s forwards;
-
-animation-delay:1.8s;
-
-}
-
-.line{
-
-margin:35px auto;
-
-width:0;
-
-height:4px;
-
-background:#00ff99;
-
-box-shadow:0 0 20px #00ff99;
-
-animation:lineGrow 1s forwards;
-
-animation-delay:2.5s;
-
-}
-
-.ready{
-
-margin-top:25px;
-
-font-size:34px;
-
-color:#00ff66;
-
-letter-spacing:8px;
-
-opacity:0;
-
-animation:flashText .8s infinite;
-
-animation-delay:3s;
-
-animation-fill-mode:forwards;
-
-}
-
-.loading{
-
-margin-top:25px;
-
-font-size:18px;
-
-color:#fff;
-
-opacity:.8;
-
-}
-
-@keyframes pulse{
-
-50%{
-
-transform:scale(1.3);
-
-opacity:.3;
-
-}
-
-}
-
-@keyframes zoom{
-
-0%{
-
-transform:scale(.2);
-
-opacity:0;
-
-}
-
-100%{
+to{
 
 transform:scale(1);
 
@@ -1093,55 +229,579 @@ opacity:1;
 }
 
 }
+/* ===================================
+   FLOATING BALLOONS
+=================================== */
 
-@keyframes lineGrow{
+.balloon{
 
-to{
+position:absolute;
 
-width:450px;
+bottom:-200px;
+
+width:70px;
+
+height:90px;
+
+border-radius:50%;
+
+animation:floatUp linear infinite;
+
+box-shadow:0 0 20px rgba(255,255,255,.4);
 
 }
 
+.balloon::before{
+
+content:"";
+
+position:absolute;
+
+width:2px;
+
+height:120px;
+
+background:#ddd;
+
+left:50%;
+
+top:90px;
+
 }
 
-@keyframes flashText{
+.red{
+background:#ff4b5c;
+left:10%;
+animation-duration:14s;
+}
+
+.blue{
+background:#4dc3ff;
+left:30%;
+animation-duration:16s;
+}
+
+.green{
+background:#00d084;
+left:50%;
+animation-duration:15s;
+}
+
+.yellow{
+background:#ffd93d;
+left:70%;
+animation-duration:18s;
+}
+
+.purple{
+background:#b84cff;
+left:90%;
+animation-duration:17s;
+}
+
+@keyframes floatUp{
 
 0%{
 
-opacity:1;
-
-}
-
-50%{
-
-opacity:.2;
+transform:translateY(0);
 
 }
 
 100%{
 
+transform:translateY(-130vh);
+
+}
+
+}
+
+/* ===================================
+   FLOATING HEARTS
+=================================== */
+
+.heart{
+
+position:absolute;
+
+color:#ff4d88;
+
+font-size:25px;
+
+bottom:-40px;
+
+animation:heartFloat linear infinite;
+
+opacity:.8;
+
+}
+
+@keyframes heartFloat{
+
+0%{
+
+transform:translateY(0) rotate(0deg);
+
+opacity:0;
+
+}
+
+20%{
+
+opacity:1;
+
+}
+
+100%{
+
+transform:translateY(-120vh) rotate(360deg);
+
+opacity:0;
+
+}
+
+}
+
+/* ===================================
+   GOLDEN PARTICLES
+=================================== */
+
+.spark{
+
+position:absolute;
+
+width:4px;
+
+height:4px;
+
+background:gold;
+
+border-radius:50%;
+
+animation:sparkle 3s infinite;
+
+}
+
+@keyframes sparkle{
+
+0%,100%{
+
+opacity:.2;
+
+transform:scale(1);
+
+}
+
+50%{
+
+opacity:1;
+
+transform:scale(2.5);
+
+box-shadow:0 0 15px gold;
+
+}
+
+}
+    /* ===================================
+   FIREWORKS
+=================================== */
+
+.firework{
+
+position:absolute;
+
+width:8px;
+
+height:8px;
+
+border-radius:50%;
+
+background:white;
+
+box-shadow:
+0 0 20px gold,
+0 0 40px orange;
+
+animation:explode 2.5s infinite;
+
+}
+
+@keyframes explode{
+
+0%{
+
+transform:scale(.1);
+
+opacity:1;
+
+}
+
+60%{
+
+transform:scale(14);
+
+opacity:.9;
+
+}
+
+100%{
+
+transform:scale(22);
+
+opacity:0;
+
+}
+
+}
+
+/* ===================================
+   CONFETTI
+=================================== */
+
+.confetti{
+
+position:absolute;
+
+top:-20px;
+
+width:10px;
+
+height:16px;
+
+animation:fall linear infinite;
+
+}
+
+@keyframes fall{
+
+0%{
+
+transform:translateY(-30px) rotate(0deg);
+
+}
+
+100%{
+
+transform:translateY(120vh) rotate(720deg);
+
+}
+
+}
+    /* ===================================
+   BIRTHDAY CAKE
+=================================== */
+
+.cake{
+
+position:absolute;
+
+bottom:30px;
+
+left:50%;
+
+transform:translateX(-50%);
+
+width:180px;
+
+height:120px;
+
+animation:cakeUp 2s;
+
+}
+
+.layer{
+
+position:absolute;
+
+width:180px;
+
+height:40px;
+
+border-radius:12px;
+
+left:0;
+
+}
+
+.l1{
+
+bottom:0;
+
+background:#ff9ecb;
+
+}
+
+.l2{
+
+bottom:35px;
+
+width:150px;
+
+left:15px;
+
+background:#ffe082;
+
+}
+
+.l3{
+
+bottom:70px;
+
+width:120px;
+
+left:30px;
+
+background:#90caf9;
+
+}
+
+.candle{
+
+position:absolute;
+
+width:10px;
+
+height:40px;
+
+background:white;
+
+left:85px;
+
+bottom:105px;
+
+}
+
+.flame{
+
+position:absolute;
+
+width:16px;
+
+height:22px;
+
+background:gold;
+
+border-radius:50%;
+
+left:-3px;
+
+top:-18px;
+
+box-shadow:
+
+0 0 20px orange,
+
+0 0 35px yellow;
+
+animation:flame .5s infinite alternate;
+
+}
+
+@keyframes flame{
+
+from{
+
+transform:scale(.8);
+
+}
+
+to{
+
+transform:scale(1.2);
+
+}
+
+}
+
+@keyframes cakeUp{
+
+from{
+
+transform:translate(-50%,300px);
+
+opacity:0;
+
+}
+
+to{
+
+transform:translate(-50%,0);
+
 opacity:1;
 
 }
 
 }
+</style>
 
-`;
+</head>
 
-document.head.appendChild(css);
+<body>
 
-/* Redirect */
+<div class="stars" id="stars"></div>
+
+<div class="card">
+
+<div class="small">
+
+🎉 CELEBRATING 🎉
+
+</div>
+
+<div class="big" id="typing">
+
+</div>
+
+<div class="name">
+
+RYAN CORTEZ MANEBOG
+
+</div>
+
+<div class="msg">
+
+Wishing you happiness,<br>
+
+good health,<br>
+
+success,<br>
+
+and God's abundant blessings.<br><br>
+
+🎂 Enjoy Your Special Day! 🎂
+
+</div>
+<div class="cake">
+
+<div class="layer l1"></div>
+
+<div class="layer l2"></div>
+
+<div class="layer l3"></div>
+
+<div class="candle">
+
+<div class="flame"></div>
+
+</div>
+
+</div>
+</div>
+
+<script>
+
+/* CREATE STARS */
+
+const stars=document.getElementById("stars");
+
+for(let i=0;i<150;i++){
+
+let s=document.createElement("div");
+
+s.className="star";
+
+s.style.left=Math.random()*100+"%";
+
+s.style.top=Math.random()*100+"%";
+
+s.style.animationDelay=Math.random()*3+"s";
+
+stars.appendChild(s);
+
+}
+/* ==========================
+   FIREWORKS
+========================== */
+
+const fireworks=document.getElementById("fireworks");
+
+setInterval(()=>{
+
+let f=document.createElement("div");
+
+f.className="firework";
+
+f.style.left=Math.random()*100+"%";
+
+f.style.top=Math.random()*70+"%";
+
+f.style.background=
+
+["red","cyan","yellow","orange","lime","violet"][
+
+Math.floor(Math.random()*6)
+
+];
+
+fireworks.appendChild(f);
 
 setTimeout(()=>{
 
-window.location.href="dashboard.html";
+f.remove();
 
-},6000);
+},2500);
+
+},700);
+
+/* ==========================
+   CONFETTI
+========================== */
+
+const confetti=document.getElementById("confetti");
+
+setInterval(()=>{
+
+let c=document.createElement("div");
+
+c.className="confetti";
+
+c.style.left=Math.random()*100+"%";
+
+c.style.background=
+
+["red","yellow","blue","lime","orange","pink"][
+
+Math.floor(Math.random()*6)
+
+];
+
+c.style.animationDuration=(4+Math.random()*4)+"s";
+
+confetti.appendChild(c);
+
+setTimeout(()=>{
+
+c.remove();
+
+},8000);
+
+},120);
+</script>
+/* ==========================
+   TYPING EFFECT
+========================== */
+
+const txt="HAPPY BIRTHDAY";
+
+let n=0;
+
+const typing=document.getElementById("typing");
+
+function type(){
+
+if(n<txt.length){
+
+typing.innerHTML+=txt.charAt(n);
+
+n++;
+
+setTimeout(type,120);
 
 }
 
-/* ==========================================
-   SHOW INTRO AFTER BOOT
-========================================== */
+}
 
-setTimeout(showWelcome,12000);
+type();
+</body>
+
+</html>

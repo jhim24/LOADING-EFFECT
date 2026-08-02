@@ -25,7 +25,7 @@ body{
 
     color:white;
 
-    overflow-x:hidden;
+    overflow:hidden;
 
     min-height:100vh;
 
@@ -109,7 +109,11 @@ HERO
 
     text-align:center;
 
-    margin-top:80px;
+    margin-top:50px;
+
+    position:relative;
+
+    z-index:10;
 
 }
 
@@ -181,12 +185,19 @@ BUTTON
 
 #celebrate:hover{
 
-    transform:scale(1.08);
+transform:
 
-    box-shadow:0 0 25px gold;
+translateY(-5px)
+
+scale(1.05);
+
+box-shadow:
+
+0 0 15px gold,
+
+0 0 35px orange;
 
 }
-
 /* ==========================
 ICONS
 ========================== */
@@ -250,7 +261,25 @@ RESPONSIVE
 font-size:42px;
 
 }
+.hero h2{
 
+margin-top:20px;
+
+font-size:42px;
+
+font-weight:700;
+
+color:#00E5FF;
+
+text-shadow:
+
+0 0 15px cyan,
+
+0 0 35px cyan;
+
+letter-spacing:3px;
+
+}
 .hero p{
 
 font-size:18px;
@@ -464,11 +493,41 @@ z-index:999;
 
 .popup-card{
 
+width:90%;
+
 max-width:850px;
 
 min-height:550px;
 
 padding:45px;
+
+background:
+
+linear-gradient(
+
+145deg,
+
+rgba(255,255,255,.12),
+
+rgba(255,255,255,.05)
+
+);
+
+backdrop-filter:blur(25px);
+
+border:1px solid rgba(255,255,255,.2);
+
+border-radius:25px;
+
+box-shadow:
+
+0 0 20px gold,
+
+0 0 60px rgba(255,215,0,.35);
+
+animation:popupZoom .6s;
+
+}
 
 text-align:center;
 
@@ -637,8 +696,11 @@ animation:borderRotate 6s linear infinite;
 
 box-shadow:
 
-0 0 40px gold;
+0 0 20px gold,
 
+0 0 40px orange,
+
+0 0 80px gold;
 }
 
 .photo-border img{
@@ -748,7 +810,15 @@ gap:20px;
 flex-wrap:wrap;
 
 }
+.hero-buttons button{
 
+min-width:220px;
+
+height:60px;
+
+font-size:20px;
+
+}
 .hero-buttons button{
 
 min-width:200px;
@@ -782,6 +852,16 @@ background:#FFD700;
 
 color:#111;
 
-box-shadow:0 0 25px gold;
+transform:
+
+translateY(-5px)
+
+scale(1.05);
+
+box-shadow:
+
+0 0 15px gold,
+
+0 0 35px orange;
 
 }

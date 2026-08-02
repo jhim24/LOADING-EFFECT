@@ -289,3 +289,80 @@ opacity:0;
 }
 
 }
+/* ==========================================
+PART 3
+CELEBRATE MODAL
+========================================== */
+
+const modal =
+document.getElementById("celebrateModal");
+
+const closeModal =
+document.getElementById("closeModal");
+
+const typing =
+document.getElementById("typingText");
+
+const music =
+document.getElementById("birthdayMusic");
+
+const playMusic =
+document.getElementById("startMusic");
+
+const message =
+
+"May this special day bring you happiness, good health, success, and countless blessings. Happy Birthday Ryan! We love you very much. ❤️";
+
+if (celebrateBtn && modal) {
+
+    celebrateBtn.addEventListener("click",()=>{
+
+        modal.style.display="flex";
+
+        typeMessage();
+
+    });
+
+}
+
+function typeMessage(){
+
+typing.innerHTML="";
+
+let i=0;
+
+const timer=setInterval(()=>{
+
+typing.innerHTML+=message.charAt(i);
+
+i++;
+
+if(i>=message.length){
+
+clearInterval(timer);
+
+}
+
+},35);
+
+}
+
+if(playMusic){
+
+playMusic.addEventListener("click",()=>{
+
+music.play();
+
+});
+
+}
+
+if(closeModal){
+
+closeModal.addEventListener("click",()=>{
+
+modal.style.display="none";
+
+});
+
+}

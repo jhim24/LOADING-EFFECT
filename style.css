@@ -22,9 +22,11 @@ body{
 
     background:#050816;
 
-    color:#fff;
+    color:white;
 
-    overflow:hidden;
+    overflow-x:hidden;
+
+    overflow-y:auto;
 
     min-height:100vh;
 

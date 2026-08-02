@@ -101,16 +101,78 @@ header{
 
 .hero{
 
-    text-align:center;
-
-    margin-top:20px;
-
     position:relative;
 
-    z-index:5;
+    min-height:100vh;
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:center;
+
+    align-items:center;
+
+    text-align:center;
+
+    padding:40px;
+
+    background-image:
+    linear-gradient(rgba(0,0,0,.55),rgba(0,0,0,.55)),
+    url("assets/images/background.jpg");
+
+    background-size:cover;
+
+    background-position:center;
+
+    background-repeat:no-repeat;
+
+    border-radius:30px;
+
+    overflow:hidden;
+
+}
+.hero::before{
+
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    background:
+
+    radial-gradient(circle,
+    rgba(255,215,0,.12),
+    transparent 70%);
+
+    animation:bgGlow 6s ease-in-out infinite;
 
 }
 
+.hero>*{
+
+    position:relative;
+
+    z-index:2;
+
+}
+
+@keyframes bgGlow{
+
+0%,100%{
+
+opacity:.4;
+
+}
+
+50%{
+
+opacity:1;
+
+}
+
+}
 /* Tag */
 
 .tag{

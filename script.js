@@ -317,7 +317,9 @@ if (celebrateBtn && modal) {
 
     celebrateBtn.addEventListener("click",()=>{
 
-        modal.style.display="flex";
+       modal.style.display="flex";
+
+launchConfetti();
 
         typeMessage();
 

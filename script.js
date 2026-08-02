@@ -31,19 +31,29 @@ for(let i=0;i<180;i++){
    CELEBRATE BUTTON
 ========================================== */
 
-const btn=document.getElementById("celebrate");
+const btn = document.getElementById("celebrate");
+const popup = document.getElementById("birthdayPopup");
+const closePopup = document.getElementById("closePopup");
 
-btn.addEventListener("click",()=>{
+let fireworkInterval;
 
-    btn.innerHTML="<i class='fa-solid fa-heart'></i> Happy Birthday Ryan!";
+btn.addEventListener(() => {
 
-    btn.style.background="#ff4081";
+    btn.innerHTML = "<i class='fa-solid fa-heart'></i> Happy Birthday Ryan!";
+    btn.style.background = "#ff4081";
+    btn.style.color = "white";
 
-    btn.style.color="white";
+    popup.style.display = "flex";
 
-    popup.style.display="flex";
+    fireworkInterval = setInterval(createFirework,700);
 
-    fireworkInterval=setInterval(createFirework,700);
+});
+
+closePopup.addEventListener(() => {
+
+    popup.style.display = "none";
+
+    clearInterval(fireworkInterval);
 
 });
 /* ==========================================
@@ -55,14 +65,6 @@ const popup = document.getElementById("birthdayPopup");
 const closePopup = document.getElementById("closePopup");
 
 let fireworkInterval;
-
-btn.addEventListener("click",()=>{
-
-    popup.style.display="flex";
-
-    fireworkInterval=setInterval(createFirework,700);
-
-});
 
 closePopup.addEventListener("click",()=>{
 
@@ -209,11 +211,15 @@ animateFireworks();
 
 const galleryBtn = document.getElementById("viewGallery");
 
-galleryBtn.addEventListener("click",()=>{
+if (galleryBtn) {
 
-    alert("Gallery coming soon!");
+    galleryBtn.addEventListener("click", () => {
 
-});
+        alert("Gallery coming soon!");
+
+    });
+
+}
 /* ==========================================
    MUSIC
 ========================================== */
@@ -221,22 +227,26 @@ galleryBtn.addEventListener("click",()=>{
 const music = document.getElementById("birthdaySong");
 const playBtn = document.getElementById("playMusic");
 
-playBtn.addEventListener("click",()=>{
+if (playBtn && music) {
 
-    if(music.paused){
+    playBtn.addEventListener("click", () => {
 
-        music.play();
+        if (music.paused) {
 
-        playBtn.innerHTML=
-        "<i class='fa-solid fa-pause'></i> Pause Music";
+            music.play();
 
-    }else{
+            playBtn.innerHTML =
+            "<i class='fa-solid fa-pause'></i> Pause Music";
 
-        music.pause();
+        } else {
 
-        playBtn.innerHTML=
-        "<i class='fa-solid fa-music'></i> Play Music";
+            music.pause();
 
-    }
+            playBtn.innerHTML =
+            "<i class='fa-solid fa-music'></i> Play Music";
 
-});
+        }
+
+    });
+
+}

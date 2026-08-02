@@ -54,11 +54,16 @@ btn.addEventListener("click",()=>{
 
     popup.style.display="flex";
 
+    fireworkInterval=setInterval(createFirework,700);
+
 });
+let fireworkInterval;
 
 closePopup.addEventListener("click",()=>{
 
     popup.style.display="none";
+
+    clearInterval(fireworkInterval);
 
 });
 /* ==========================================

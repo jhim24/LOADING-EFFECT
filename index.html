@@ -5,803 +5,130 @@
 
 <meta charset="UTF-8">
 
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
 
 <title>Happy Birthday Ryan</title>
 
-<style>
-
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:Arial,Helvetica,sans-serif;
-}
-
-body{
-
-background:#050816;
-
-overflow:hidden;
-
-height:100vh;
-
-display:flex;
-
-justify-content:center;
-
-align-items:center;
-
-}
-
-/* =========================
-BACKGROUND STARS
-========================= */
-
-.stars{
-
-position:absolute;
-
-width:100%;
-
-height:100%;
-
-overflow:hidden;
-
-}
-
-.star{
-
-position:absolute;
-
-width:3px;
-
-height:3px;
-
-background:white;
-
-border-radius:50%;
-
-animation:twinkle 2s infinite;
-
-}
-
-@keyframes twinkle{
-
-0%,100%{
-
-opacity:.2;
-
-transform:scale(1);
-
-}
-
-50%{
-
-opacity:1;
-
-transform:scale(2);
-
-}
-
-}
-
-/* =========================
-MAIN CARD
-========================= */
-
-.card{
-
-position:relative;
-
-z-index:10;
-
-width:90%;
-
-max-width:700px;
-
-padding:40px;
-
-border-radius:25px;
-
-background:rgba(255,255,255,.08);
-
-backdrop-filter:blur(15px);
-
-border:1px solid rgba(255,255,255,.2);
-
-text-align:center;
-
-box-shadow:
-
-0 0 25px rgba(255,215,0,.25);
-
-}
-
-/* =========================
-TEXT
-========================= */
-
-.small{
-
-color:#FFD54F;
-
-font-size:24px;
-
-letter-spacing:8px;
-
-animation:fadeUp 1s;
-
-}
-
-.big{
-
-margin-top:20px;
-
-font-size:65px;
-
-font-weight:bold;
-
-color:white;
-
-text-shadow:
-
-0 0 15px gold,
-
-0 0 40px orange;
-
-animation:zoom 1.2s;
-
-}
-
-.name{
-
-margin-top:25px;
-
-font-size:42px;
-
-font-weight:bold;
-
-color:#00E5FF;
-
-text-shadow:
-
-0 0 20px cyan;
-
-animation:fadeUp 2s;
-
-}
-
-.msg{
-
-margin-top:35px;
-
-font-size:22px;
-
-line-height:1.8;
-
-color:white;
-
-animation:fadeUp 3s;
-
-}
-
-/* =========================
-ANIMATION
-========================= */
-
-@keyframes zoom{
-
-from{
-
-transform:scale(.3);
-
-opacity:0;
-
-}
-
-to{
-
-transform:scale(1);
-
-opacity:1;
-
-}
-
-}
-
-@keyframes fadeUp{
-
-from{
-
-transform:translateY(40px);
-
-opacity:0;
-
-}
-
-to{
-
-transform:translateY(0);
-
-opacity:1;
-
-}
-
-}
-/* ===================================
-   FLOATING BALLOONS
-=================================== */
-
-.balloon{
-
-position:absolute;
-
-bottom:-200px;
-
-width:70px;
-
-height:90px;
-
-border-radius:50%;
-
-animation:floatUp linear infinite;
-
-box-shadow:0 0 20px rgba(255,255,255,.4);
-
-}
-
-.balloon::before{
-
-content:"";
-
-position:absolute;
-
-width:2px;
-
-height:120px;
-
-background:#ddd;
-
-left:50%;
-
-top:90px;
-
-}
-
-.red{
-background:#ff4b5c;
-left:10%;
-animation-duration:14s;
-}
-
-.blue{
-background:#4dc3ff;
-left:30%;
-animation-duration:16s;
-}
-
-.green{
-background:#00d084;
-left:50%;
-animation-duration:15s;
-}
-
-.yellow{
-background:#ffd93d;
-left:70%;
-animation-duration:18s;
-}
-
-.purple{
-background:#b84cff;
-left:90%;
-animation-duration:17s;
-}
-
-@keyframes floatUp{
-
-0%{
-
-transform:translateY(0);
-
-}
-
-100%{
-
-transform:translateY(-130vh);
-
-}
-
-}
-
-/* ===================================
-   FLOATING HEARTS
-=================================== */
-
-.heart{
-
-position:absolute;
-
-color:#ff4d88;
-
-font-size:25px;
-
-bottom:-40px;
-
-animation:heartFloat linear infinite;
-
-opacity:.8;
-
-}
-
-@keyframes heartFloat{
-
-0%{
-
-transform:translateY(0) rotate(0deg);
-
-opacity:0;
-
-}
-
-20%{
-
-opacity:1;
-
-}
-
-100%{
-
-transform:translateY(-120vh) rotate(360deg);
-
-opacity:0;
-
-}
-
-}
-
-/* ===================================
-   GOLDEN PARTICLES
-=================================== */
-
-.spark{
-
-position:absolute;
-
-width:4px;
-
-height:4px;
-
-background:gold;
-
-border-radius:50%;
-
-animation:sparkle 3s infinite;
-
-}
-
-@keyframes sparkle{
-
-0%,100%{
-
-opacity:.2;
-
-transform:scale(1);
-
-}
-
-50%{
-
-opacity:1;
-
-transform:scale(2.5);
-
-box-shadow:0 0 15px gold;
-
-}
-
-}
-    /* ===================================
-   FIREWORKS
-=================================== */
-
-.firework{
-
-position:absolute;
-
-width:8px;
-
-height:8px;
-
-border-radius:50%;
-
-background:white;
-
-box-shadow:
-0 0 20px gold,
-0 0 40px orange;
-
-animation:explode 2.5s infinite;
-
-}
-
-@keyframes explode{
-
-0%{
-
-transform:scale(.1);
-
-opacity:1;
-
-}
-
-60%{
-
-transform:scale(14);
-
-opacity:.9;
-
-}
-
-100%{
-
-transform:scale(22);
-
-opacity:0;
-
-}
-
-}
-
-/* ===================================
-   CONFETTI
-=================================== */
-
-.confetti{
-
-position:absolute;
-
-top:-20px;
-
-width:10px;
-
-height:16px;
-
-animation:fall linear infinite;
-
-}
-
-@keyframes fall{
-
-0%{
-
-transform:translateY(-30px) rotate(0deg);
-
-}
-
-100%{
-
-transform:translateY(120vh) rotate(720deg);
-
-}
-
-}
-    /* ===================================
-   BIRTHDAY CAKE
-=================================== */
-
-.cake{
-
-position:absolute;
-
-bottom:30px;
-
-left:50%;
-
-transform:translateX(-50%);
-
-width:180px;
-
-height:120px;
-
-animation:cakeUp 2s;
-
-}
-
-.layer{
-
-position:absolute;
-
-width:180px;
-
-height:40px;
-
-border-radius:12px;
-
-left:0;
-
-}
-
-.l1{
-
-bottom:0;
-
-background:#ff9ecb;
-
-}
-
-.l2{
-
-bottom:35px;
-
-width:150px;
-
-left:15px;
-
-background:#ffe082;
-
-}
-
-.l3{
-
-bottom:70px;
-
-width:120px;
-
-left:30px;
-
-background:#90caf9;
-
-}
-
-.candle{
-
-position:absolute;
-
-width:10px;
-
-height:40px;
-
-background:white;
-
-left:85px;
-
-bottom:105px;
-
-}
-
-.flame{
-
-position:absolute;
-
-width:16px;
-
-height:22px;
-
-background:gold;
-
-border-radius:50%;
-
-left:-3px;
-
-top:-18px;
-
-box-shadow:
-
-0 0 20px orange,
-
-0 0 35px yellow;
-
-animation:flame .5s infinite alternate;
-
-}
-
-@keyframes flame{
-
-from{
-
-transform:scale(.8);
-
-}
-
-to{
-
-transform:scale(1.2);
-
-}
-
-}
-
-@keyframes cakeUp{
-
-from{
-
-transform:translate(-50%,300px);
-
-opacity:0;
-
-}
-
-to{
-
-transform:translate(-50%,0);
-
-opacity:1;
-
-}
-
-}
-</style>
+<!-- CSS -->
+<link rel="stylesheet" href="style.css">
+
+<!-- Font Awesome -->
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 
 </head>
 
 <body>
 
-<div class="stars" id="stars"></div>
+<!-- =========================
+BACKGROUND
+========================= -->
 
-<div class="card">
+<div id="background"></div>
 
-<div class="small">
+<!-- =========================
+MAIN CONTAINER
+========================= -->
 
-🎉 CELEBRATING 🎉
+<div class="container">
+
+    <!-- Header -->
+
+    <header>
+
+        <div class="logo">
+
+            <i class="fa-solid fa-cake-candles"></i>
+
+            Happy Birthday
+
+        </div>
+
+    </header>
+
+    <!-- Hero -->
+
+    <section class="hero">
+
+        <h3>A Special Celebration</h3>
+
+        <h1>
+
+            RYAN
+
+            <br>
+
+            CORTEZ MANEBOG
+
+        </h1>
+
+        <p>
+
+            Wishing you happiness,
+
+            good health,
+
+            success,
+
+            and God's abundant blessings.
+
+        </p>
+
+        <button id="celebrate">
+
+            <i class="fa-solid fa-gift"></i>
+
+            Celebrate
+
+        </button>
+
+    </section>
+
+    <!-- Icons -->
+
+    <section class="icons">
+
+        <div>
+
+            <i class="fa-solid fa-cake-candles"></i>
+
+            Cake
+
+        </div>
+
+        <div>
+
+            <i class="fa-solid fa-gift"></i>
+
+            Gift
+
+        </div>
+
+        <div>
+
+            <i class="fa-solid fa-heart"></i>
+
+            Love
+
+        </div>
+
+        <div>
+
+            <i class="fa-solid fa-star"></i>
+
+            Wishes
+
+        </div>
+
+    </section>
 
 </div>
 
-<div class="big" id="typing">
+<!-- JavaScript -->
 
-</div>
+<script src="script.js"></script>
 
-<div class="name">
-
-RYAN CORTEZ MANEBOG
-
-</div>
-
-<div class="msg">
-
-Wishing you happiness,<br>
-
-good health,<br>
-
-success,<br>
-
-and God's abundant blessings.<br><br>
-
-🎂 Enjoy Your Special Day! 🎂
-
-</div>
-<div class="cake">
-
-<div class="layer l1"></div>
-
-<div class="layer l2"></div>
-
-<div class="layer l3"></div>
-
-<div class="candle">
-
-<div class="flame"></div>
-
-</div>
-
-</div>
-</div>
-
-<script>
-
-/* CREATE STARS */
-
-const stars=document.getElementById("stars");
-
-for(let i=0;i<150;i++){
-
-let s=document.createElement("div");
-
-s.className="star";
-
-s.style.left=Math.random()*100+"%";
-
-s.style.top=Math.random()*100+"%";
-
-s.style.animationDelay=Math.random()*3+"s";
-
-stars.appendChild(s);
-
-}
-/* ==========================
-   FIREWORKS
-========================== */
-
-const fireworks=document.getElementById("fireworks");
-
-setInterval(()=>{
-
-let f=document.createElement("div");
-
-f.className="firework";
-
-f.style.left=Math.random()*100+"%";
-
-f.style.top=Math.random()*70+"%";
-
-f.style.background=
-
-["red","cyan","yellow","orange","lime","violet"][
-
-Math.floor(Math.random()*6)
-
-];
-
-fireworks.appendChild(f);
-
-setTimeout(()=>{
-
-f.remove();
-
-},2500);
-
-},700);
-
-/* ==========================
-   CONFETTI
-========================== */
-
-const confetti=document.getElementById("confetti");
-
-setInterval(()=>{
-
-let c=document.createElement("div");
-
-c.className="confetti";
-
-c.style.left=Math.random()*100+"%";
-
-c.style.background=
-
-["red","yellow","blue","lime","orange","pink"][
-
-Math.floor(Math.random()*6)
-
-];
-
-c.style.animationDuration=(4+Math.random()*4)+"s";
-
-confetti.appendChild(c);
-
-setTimeout(()=>{
-
-c.remove();
-
-},8000);
-
-},120);
-</script>
-/* ==========================
-   TYPING EFFECT
-========================== */
-
-const txt="HAPPY BIRTHDAY";
-
-let n=0;
-
-const typing=document.getElementById("typing");
-
-function type(){
-
-if(n<txt.length){
-
-typing.innerHTML+=txt.charAt(n);
-
-n++;
-
-setTimeout(type,120);
-
-}
-
-}
-
-type();
 </body>
 
 </html>

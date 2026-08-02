@@ -869,3 +869,104 @@ font-size:17px;
 }
 
 }
+/* ==========================================
+SCROLL REVEAL
+========================================== */
+
+.reveal{
+
+opacity:0;
+
+transform:
+
+translateY(100px);
+
+transition:
+
+1s ease;
+
+}
+
+.reveal.active{
+
+opacity:1;
+
+transform:
+
+translateY(0);
+
+}
+
+/* ==========================================
+PHOTO EFFECT
+========================================== */
+
+.family-photo{
+
+overflow:hidden;
+
+border-radius:25px;
+
+}
+
+.family-photo img{
+
+transition:.6s;
+
+}
+
+.family-card:hover img{
+
+transform:scale(1.08);
+
+}
+
+/* ==========================================
+CARD SHIMMER
+========================================== */
+
+.family-card{
+
+position:relative;
+
+overflow:hidden;
+
+}
+
+.family-card::before{
+
+content:"";
+
+position:absolute;
+
+top:0;
+
+left:-100%;
+
+width:50%;
+
+height:100%;
+
+background:
+
+linear-gradient(
+
+90deg,
+
+transparent,
+
+rgba(255,255,255,.5),
+
+transparent
+
+);
+
+transition:1s;
+
+}
+
+.family-card:hover::before{
+
+left:150%;
+
+}

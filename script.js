@@ -42,3 +42,22 @@ btn.addEventListener("click",()=>{
     btn.style.color="white";
 
 });
+/* ==========================================
+   POPUP
+========================================== */
+
+const popup = document.getElementById("birthdayPopup");
+
+const closePopup = document.getElementById("closePopup");
+
+btn.addEventListener("click",()=>{
+
+    popup.style.display="flex";
+
+});
+
+closePopup.addEventListener("click",()=>{
+
+    popup.style.display="none";
+
+});

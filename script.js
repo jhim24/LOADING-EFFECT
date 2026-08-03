@@ -1031,6 +1031,8 @@ setTimeout(()=>{
 
 countdown.style.display="none";
 
+showGift();
+
 /* Auto Start Music */
 
 const music =

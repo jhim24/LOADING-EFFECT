@@ -1061,6 +1061,14 @@ startFireworks();
 }
 
 },1000);
+        },500);
+
+    }
+
+},40);
+
+}
+           
 /* ==========================================
 GIFT SURPRISE
 ========================================== */
@@ -1099,10 +1107,10 @@ music.play().catch(()=>{});
 
 setTimeout(()=>{
 
-giftScreen.style.display="none";
+    giftScreen.style.display = "none";
 
 },2000);
 
-}
+};
 
 }

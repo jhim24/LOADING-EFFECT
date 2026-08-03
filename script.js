@@ -1071,7 +1071,9 @@ startFireworks();
 
 },40);
 
-}
+};   // end of loginBtn.onclick
+
+}     // end of if(loginBtn)
            
 /* ==========================================
 GIFT SURPRISE

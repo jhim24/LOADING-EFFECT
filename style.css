@@ -2407,3 +2407,92 @@ font-size:22px;
 }
 
 }
+/* ==========================================
+GIFT SCREEN
+========================================== */
+
+#giftScreen{
+
+position:fixed;
+
+top:0;
+
+left:0;
+
+width:100%;
+
+height:100%;
+
+display:none;
+
+justify-content:center;
+
+align-items:center;
+
+background:
+
+radial-gradient(circle,#C8102E,#111);
+
+z-index:999996;
+
+}
+
+.gift-container{
+
+text-align:center;
+
+color:white;
+
+}
+
+.gift-container h2{
+
+font-size:45px;
+
+margin-bottom:15px;
+
+color:#FFD700;
+
+}
+
+.gift-container p{
+
+font-size:20px;
+
+margin-bottom:35px;
+
+}
+
+#giftBox{
+
+font-size:140px;
+
+cursor:pointer;
+
+animation:giftBounce 1s infinite;
+
+transition:.4s;
+
+}
+
+#giftBox:hover{
+
+transform:scale(1.15);
+
+}
+
+@keyframes giftBounce{
+
+0%,100%{
+
+transform:translateY(0);
+
+}
+
+50%{
+
+transform:translateY(-15px);
+
+}
+
+}

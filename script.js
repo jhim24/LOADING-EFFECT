@@ -949,16 +949,54 @@ return;
 
 }
 
-loginMessage.style.color="green";
+loginMessage.style.color = "lime";
 
-loginMessage.innerHTML="✅ Welcome...";
+loginMessage.innerHTML = "✅ Password Accepted";
 
-setTimeout(()=>{
+loginOverlay.style.display = "none";
 
-loginOverlay.style.display="none";
+const loading = document.getElementById("loadingScreen");
+const bar = document.getElementById("progressBar");
+const text = document.getElementById("loadingText");
 
-},2000);
+loading.style.display = "flex";
 
-}
+let percent = 0;
 
-}
+const timer = setInterval(() => {
+
+    percent++;
+
+    bar.style.width = percent + "%";
+
+    if(percent < 30){
+
+        text.innerHTML = "Checking Password...";
+
+    }else if(percent < 60){
+
+        text.innerHTML = "Preparing Birthday Surprise...";
+
+    }else if(percent < 90){
+
+        text.innerHTML = "Loading Memories...";
+
+    }else{
+
+        text.innerHTML = "Welcome Ryan! ❤️";
+
+    }
+
+    if(percent >= 100){
+
+        clearInterval(timer);
+
+        setTimeout(()=>{
+
+            loading.style.display = "none";
+
+        },500);
+
+    }
+
+},40);

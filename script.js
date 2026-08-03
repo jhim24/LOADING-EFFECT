@@ -993,10 +993,69 @@ const timer = setInterval(() => {
 
         setTimeout(()=>{
 
-            loading.style.display = "none";
+          loading.style.display = "none";
 
-        },500);
+const countdown =
+document.getElementById("countdownScreen");
 
-    }
+const number =
+document.getElementById("countNumber");
 
-},40);
+const message =
+document.getElementById("countMessage");
+
+countdown.style.display = "flex";
+
+const numbers = ["3","2","1","🎉"];
+
+let index = 0;
+
+const countdownTimer = setInterval(()=>{
+
+number.innerHTML = numbers[index];
+
+if(index===3){
+
+message.innerHTML =
+"🎂 HAPPY BIRTHDAY RYAN! 🎂";
+
+}
+
+index++;
+
+if(index>=numbers.length){
+
+clearInterval(countdownTimer);
+
+setTimeout(()=>{
+
+countdown.style.display="none";
+
+/* Auto Start Music */
+
+const music =
+document.getElementById("birthdayMusic");
+
+if(music){
+
+music.play().catch(()=>{
+
+console.log("Autoplay blocked.");
+
+});
+
+}
+
+/* Fireworks */
+
+if(typeof startFireworks==="function"){
+
+startFireworks();
+
+}
+
+},1800);
+
+}
+
+},1000);

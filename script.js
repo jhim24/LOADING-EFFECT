@@ -1059,3 +1059,48 @@ startFireworks();
 }
 
 },1000);
+/* ==========================================
+GIFT SURPRISE
+========================================== */
+
+const giftScreen =
+document.getElementById("giftScreen");
+
+const giftBox =
+document.getElementById("giftBox");
+
+function showGift(){
+
+giftScreen.style.display="flex";
+
+}
+
+if(giftBox){
+
+giftBox.onclick=function(){
+
+giftBox.innerHTML="🎉";
+
+giftBox.style.transform="scale(1.4)";
+
+launchConfetti();
+
+startFireworks();
+
+const music=document.getElementById("birthdayMusic");
+
+if(music){
+
+music.play().catch(()=>{});
+
+}
+
+setTimeout(()=>{
+
+giftScreen.style.display="none";
+
+},2000);
+
+}
+
+}

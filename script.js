@@ -940,6 +940,8 @@ return;
 
 }
 
+/*
+
 if(day !== 13 || month !== 8 || year !== 2026){
 
 loginMessage.innerHTML =
@@ -948,6 +950,8 @@ loginMessage.innerHTML =
 return;
 
 }
+
+*/
 
 loginMessage.style.color = "lime";
 

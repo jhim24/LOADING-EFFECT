@@ -909,3 +909,56 @@ console.log(
 "🎂 Happy Birthday Website V4 Loaded Successfully"
 
 );
+/* ==========================================
+LOGIN SYSTEM
+========================================== */
+
+const loginBtn = document.getElementById("loginBtn");
+const loginPassword = document.getElementById("loginPassword");
+const loginOverlay = document.getElementById("loginOverlay");
+const loginMessage = document.getElementById("loginMessage");
+
+if(loginBtn){
+
+loginBtn.onclick = function(){
+
+const password = "123";
+
+const today = new Date();
+
+const day = today.getDate();
+
+const month = today.getMonth() + 1;
+
+const year = today.getFullYear();
+
+if(loginPassword.value !== password){
+
+loginMessage.innerHTML = "❌ Incorrect Password";
+
+return;
+
+}
+
+if(day !== 13 || month !== 8 || year !== 2026){
+
+loginMessage.innerHTML =
+"🎂 This birthday surprise will open on August 13, 2026.";
+
+return;
+
+}
+
+loginMessage.style.color="green";
+
+loginMessage.innerHTML="✅ Welcome...";
+
+setTimeout(()=>{
+
+loginOverlay.style.display="none";
+
+},2000);
+
+}
+
+}

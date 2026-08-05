@@ -2082,31 +2082,104 @@ z-index:999999;
 
 .login-box{
 
+position:relative;
+
 width:90%;
 
-max-width:420px;
+max-width:480px;
 
-background:white;
+padding:55px 45px;
 
-padding:40px;
+border-radius:35px;
 
-border-radius:25px;
+background:rgba(255,255,255,.10);
 
-text-align:center;
+backdrop-filter:blur(18px);
+
+-webkit-backdrop-filter:blur(18px);
+
+border:2px solid rgba(212,175,55,.45);
 
 box-shadow:
 
-0 25px 60px rgba(0,0,0,.35);
+0 0 40px rgba(212,175,55,.25),
+
+0 30px 80px rgba(0,0,0,.45);
+
+text-align:center;
+
+overflow:hidden;
+
+animation:loginZoom .8s ease;
+
+}
+.login-box::before{
+
+content:"";
+
+position:absolute;
+
+top:-50%;
+
+left:-50%;
+
+width:200%;
+
+height:200%;
+
+background:
+
+conic-gradient(
+
+transparent,
+
+rgba(255,215,0,.6),
+
+transparent,
+
+rgba(255,215,0,.2),
+
+transparent
+
+);
+
+animation:borderRotate 8s linear infinite;
+
+}
+
+.login-box::after{
+
+content:"";
+
+position:absolute;
+
+inset:3px;
+
+border-radius:32px;
+
+background:rgba(30,10,10,.92);
+
+z-index:-1;
 
 }
 
 .login-box i{
 
-font-size:60px;
+font-size:85px;
 
-color:#D4AF37;
+color:#FFD700;
 
 margin-bottom:20px;
+
+display:block;
+
+animation:iconFloat 3s ease-in-out infinite;
+
+text-shadow:
+
+0 0 20px gold,
+
+0 0 40px rgba(255,215,0,.5);
 
 }
 
@@ -2175,6 +2248,51 @@ margin-top:15px;
 font-weight:bold;
 
 color:red;
+
+}
+@keyframes loginZoom{
+
+from{
+
+opacity:0;
+
+transform:scale(.7);
+
+}
+
+to{
+
+opacity:1;
+
+transform:scale(1);
+
+}
+
+}
+
+@keyframes borderRotate{
+
+100%{
+
+transform:rotate(360deg);
+
+}
+
+}
+
+@keyframes iconFloat{
+
+0%,100%{
+
+transform:translateY(0);
+
+}
+
+50%{
+
+transform:translateY(-12px);
+
+}
 
 }
 /* ==========================================

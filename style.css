@@ -2162,19 +2162,17 @@ left:-50%;
 width:200%;
 height:200%;
 
+z-index:0;
+
+pointer-events:none;
+
 background:
 conic-gradient(
-
 transparent,
-
 rgba(255,215,0,.6),
-
 transparent,
-
 rgba(255,215,0,.25),
-
 transparent
-
 );
 
 animation:borderRotate 10s linear infinite;
@@ -2182,38 +2180,33 @@ animation:borderRotate 10s linear infinite;
 }
 
 .login-box::after{
-z-index:1;
 
-pointer-events:none;
 content:"";
 
 position:absolute;
-z-index:0;
 
-pointer-events:none;
 inset:3px;
 
 border-radius:32px;
 
-background:
-
-linear-gradient(
+background:linear-gradient(
 180deg,
 rgba(35,15,15,.98),
 rgba(20,8,8,.98)
 );
 
-z-index:0;
+z-index:1;
+
+pointer-events:none;
 
 }
-
 /* Foreground */
 
 .login-box>*{
 
 position:relative;
 
-z-index:2;
+z-index:5;
 
 }
 /* ==========================================
@@ -2383,6 +2376,8 @@ box-shadow:
 font-size:20px;
 
 color:#FFD700;
+
+pointer-events:none;
 
 }
 

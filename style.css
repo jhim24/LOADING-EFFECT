@@ -2118,7 +2118,7 @@ LOGIN CARD
 .login-box{
 
 position:relative;
-
+isolation:isolate;
 width:92%;
 max-width:500px;
 
@@ -2182,11 +2182,15 @@ animation:borderRotate 10s linear infinite;
 }
 
 .login-box::after{
+z-index:1;
 
+pointer-events:none;
 content:"";
 
 position:absolute;
+z-index:0;
 
+pointer-events:none;
 inset:3px;
 
 border-radius:32px;
@@ -2341,7 +2345,9 @@ margin-bottom:30px;
 .input-group{
 
 display:flex;
+position:relative;
 
+z-index:10;
 align-items:center;
 
 gap:15px;
@@ -2383,7 +2389,11 @@ color:#FFD700;
 .input-group input{
 
 flex:1;
+position:relative;
 
+z-index:20;
+
+pointer-events:auto;
 background:transparent;
 
 border:none;

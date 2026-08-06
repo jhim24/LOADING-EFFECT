@@ -56,23 +56,37 @@ checkPassword();
 
 function checkPassword(){
 
-if(loginPassword.value!==PASSWORD){
+    if(loginPassword.value!==PASSWORD){
 
-loginMessage.style.color="#ff8080";
+        loginMessage.style.color="#ff8080";
 
-loginMessage.innerHTML="❌ Incorrect Password";
+        loginMessage.innerHTML="❌ Incorrect Password";
 
-loginPassword.focus();
+        loginPassword.focus();
 
-return;
+        return;
 
-}
+    }
 
-loginMessage.style.color="#7CFC00";
+    loginMessage.style.color="#7CFC00";
 
-loginMessage.innerHTML="✅ Password Accepted";
+    loginMessage.innerHTML="✅ Password Accepted";
 
-setTimeout(startLoading,600);
+    /* Hide Login Screen */
+
+    const loginOverlay=document.getElementById("loginOverlay");
+
+    loginOverlay.style.opacity="0";
+
+    loginOverlay.style.pointerEvents="none";
+
+    setTimeout(()=>{
+
+        loginOverlay.style.display="none";
+
+        startLoading();
+
+    },600);
 
 }
 /* ==========================================

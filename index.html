@@ -5,179 +5,33 @@
 
 <meta charset="UTF-8">
 
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
 
-<title>HAPPY BIRTHDAY BRO RYAN</title>
+<title>Birthday Login</title>
 
-<meta name="theme-color" content="#C8102E">
+<meta name="theme-color"
+content="#C8102E">
 
-<!-- CSS -->
-<link rel="stylesheet" href="style.css">
+<link rel="stylesheet"
+href="login.css">
 
-<!-- Google Fonts -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect"
+href="https://fonts.googleapis.com">
 
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect"
+href="https://fonts.gstatic.com"
+crossorigin>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Playfair+Display:wght@700;800&display=swap"
+rel="stylesheet">
 
-<!-- Font Awesome -->
 <link rel="stylesheet"
 href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 
 </head>
 
 <body>
-
-<!-- ==========================================
-CINEMATIC LOGIN V3
-========================================== -->
-
-<div id="loginOverlay">
-
-    <div class="login-box">
-
-        <div class="login-logo">
-            <i class="fa-solid fa-lock"></i>
-        </div>
-
-        <p class="login-present">
-            LOZADA FAMILY PRESENTS
-        </p>
-
-        <h1>Birthday Surprise</h1>
-
-        <h2>Ryan Cortez Manebog</h2>
-
-        <div class="login-divider"></div>
-
-        <p class="login-text">
-            Enter the password to unlock the birthday surprise.
-        </p>
-
-        <div class="input-group">
-
-            <i class="fa-solid fa-key"></i>
-
-            <input
-                type="password"
-                id="loginPassword"
-                placeholder="Enter Password">
-
-        </div>
-
-        <button id="loginBtn">
-
-            <i class="fa-solid fa-lock-open"></i>
-
-            UNLOCK SURPRISE
-
-        </button>
-
-        <p id="loginMessage"></p>
-
-        <div class="login-footer">
-            🎂 Available on August 13, 2026 🎂
-        </div>
-
-    </div>
-
-</div>
-<!-- ==========================================
-LOADING SCREEN
-========================================== -->
-
-<div id="loadingScreen">
-
-    <div class="loading-box">
-
-        <div class="birthday-loader">
-
-            🎂
-
-        </div>
-
-        <h2>
-
-            Preparing Birthday Surprise...
-
-        </h2>
-
-        <div class="progress">
-
-            <div id="progressBar"></div>
-
-        </div>
-
-        <p id="loadingText">
-
-            Please wait...
-
-        </p>
-
-    </div>
-
-</div>
-
-<!-- ==========================================
-COUNTDOWN
-========================================== -->
-
-<div id="countdownScreen">
-
-    <div class="countdown-content">
-
-        <h1 id="countNumber">3</h1>
-
-        <h2 id="countMessage">
-
-            Get Ready...
-
-        </h2>
-
-    </div>
-
-</div>
-
-<!-- ==========================================
-GIFT SURPRISE
-========================================== -->
-
-<div id="giftScreen">
-
-    <div class="gift-container">
-
-        <h2>A Special Birthday Surprise</h2>
-
-        <p>Tap the gift to open</p>
-
-        <div id="giftBox">
-
-            🎁
-
-        </div>
-
-    </div>
-
-</div>
-    
-<!-- ==========================================
-INTRO
-========================================== -->
-
-<div id="intro">
-
-    <div class="intro-content">
-
-        <h3>LOZADA & CORTEZ FAMILY PRESENTS</h3>
-
-        <h1>Happy Birthday</h1>
-
-        <h2>Ryan Cortez Manebog</h2>
-
-    </div>
-
-</div>
 
 <!-- ==========================================
 BACKGROUND EFFECTS
@@ -190,464 +44,174 @@ BACKGROUND EFFECTS
 <div id="balloons"></div>
 
 <!-- ==========================================
-HEADER
+LOGIN
 ========================================== -->
 
-<header>
+<div id="loginOverlay">
 
-    <div class="logo">
+<div class="login-box">
 
-        <i class="fa-solid fa-cake-candles"></i>
+<div class="login-logo">
 
-        <span>Happy Birthday Ryan</span>
+<i class="fa-solid fa-lock"></i>
 
-    </div>
+</div>
 
-    <nav>
+<p class="login-present">
 
-        <a href="#hero">Home</a>
+LOZADA FAMILY PRESENTS
 
-        <a href="#family">Family</a>
+</p>
 
-        <a href="#gallery">Gallery</a>
+<h1>
 
-        <a href="#footer">Footer</a>
+Birthday Surprise
 
-    </nav>
+</h1>
 
-</header>
+<h2>
 
+Ryan Cortez Manebog
+
+</h2>
+
+<div class="login-divider"></div>
+
+<p class="login-text">
+
+Enter the password to unlock
+the birthday surprise.
+
+</p>
+
+<div class="input-group">
+
+<i class="fa-solid fa-key"></i>
+
+<input
+
+type="password"
+
+id="loginPassword"
+
+placeholder="Enter Password"
+
+autocomplete="off"
+
+>
+
+</div>
+
+<button id="loginBtn">
+
+<i class="fa-solid fa-lock-open"></i>
+
+UNLOCK SURPRISE
+
+</button>
+
+<p id="loginMessage"></p>
+
+<div class="login-footer">
+
+🎂 Available on August 13, 2026 🎂
+
+</div>
+
+</div>
+
+</div>
 <!-- ==========================================
-HERO
+LOADING SCREEN
 ========================================== -->
 
-<section id="hero" class="hero">
+<div id="loadingScreen">
 
-    <div class="hero-overlay"></div>
+<div class="loading-box">
 
-    <div class="hero-content">
+<div class="birthday-loader">
 
-        <span class="hero-badge">
+🎂
 
-            <i class="fa-solid fa-crown"></i>
+</div>
 
-            LOZADA & CORTEZ FAMILY PRESENTS
+<h2>
 
-        </span>
+Preparing Birthday Surprise...
 
-        <h1>
+</h2>
 
-            Happy Birthday
+<div class="progress">
 
-        </h1>
+<div id="progressBar"></div>
 
-        <h2>
+</div>
 
-            Ryan Cortez Manebog
+<p id="loadingText">
 
-        </h2>
+Please wait...
 
-        <div class="hero-poster">
+</p>
 
-            <img
-            src="assets/images/hero-poster.jpg"
-            alt="Happy Birthday Ryan">
-
-        </div>
-
-        <p>
-
-            May your birthday be filled with joy,
-            love, happiness, success,
-            good health,
-            and God's abundant blessings.
-            Wishing you many more wonderful years ahead.
-
-        </p>
-
-        <div class="hero-buttons">
-
-            <button id="celebrate">
-
-                <i class="fa-solid fa-gift"></i>
-
-                Celebrate
-
-            </button>
-
-            <button id="galleryBtn">
-
-                <i class="fa-solid fa-images"></i>
-
-                Gallery
-
-            </button>
-
-            <button id="musicBtn">
-
-                <i class="fa-solid fa-music"></i>
-
-                Music
-
-            </button>
-
-        </div>
-
-        <div class="scroll-down">
-
-            <i class="fa-solid fa-angles-down"></i>
-
-            <span>
-
-                Scroll Down
-
-            </span>
-
-        </div>
-
-    </div>
-
-</section>
-
-<!-- ==========================================
-GALLERY
-========================================== -->
-
-<section id="gallery" class="gallery reveal">
-
-    <div class="section-title">
-
-        <h2>📸 Birthday Gallery</h2>
-
-        <p>
-            Beautiful memories captured together.
-        </p>
-
-    </div>
-
-    <div class="gallery-grid">
-
-        <div class="gallery-item">
-            <img src="assets/gallery/gallery1.jpg" alt="Gallery 1">
-        </div>
-
-        <div class="gallery-item">
-            <img src="assets/gallery/gallery2.jpg" alt="Gallery 2">
-        </div>
-
-        <div class="gallery-item">
-            <img src="assets/gallery/gallery3.jpg" alt="Gallery 3">
-        </div>
-
-        <div class="gallery-item">
-            <img src="assets/gallery/gallery4.jpg" alt="Gallery 4">
-        </div>
-
-        <div class="gallery-item">
-            <img src="assets/gallery/gallery5.jpg" alt="Gallery 5">
-        </div>
-
-        <div class="gallery-item">
-            <img src="assets/gallery/gallery6.jpg" alt="Gallery 6">
-        </div>
-
-    </div>
-
-</section>
-<!-- ==========================================
-FAMILY SECTION
-========================================== -->
-
-<section id="family" class="family reveal">
-
-    <div class="section-title">
-
-        <h2>❤️ With Love From Your Family ❤️</h2>
-
-        <p>
-
-            The people who love you the most.
-
-        </p>
-
-    </div>
-
-    <div class="family-grid">
-
-        <!-- WIFE -->
-
-        <div class="family-card reveal">
-
-            <img
-            src="assets/images/wife.jpg"
-            alt="Chevy">
-
-            <div class="family-info">
-
-                <h3>❤️ Chevy Lozada Cortez</h3>
-
-                <span>Beloved Wife</span>
-
-                <p>
-
-                    Happy Birthday, Mahal!
-
-                    Thank you for your love,
-
-                    sacrifices,
-
-                    and everything you do for our family.
-
-                    May God bless you with happiness,
-
-                    good health,
-
-                    success,
-
-                    and many more birthdays to celebrate.
-
-                    We love you always.
-
-                    ❤️
-
-                </p>
-
-            </div>
-
-        </div>
-
-        <!-- LYKA -->
-
-        <div class="family-card reveal">
-
-            <img
-            src="assets/images/lyka.jpg"
-            alt="Lyka">
-
-            <div class="family-info">
-
-                <h3>👑 Lyka Che L. Cortes</h3>
-
-                <span>Eldest Child</span>
-
-                <p>
-
-                    Happy Birthday Daddy!
-
-                    Thank you for always working hard for us.
-
-                    I hope all your dreams come true.
-
-                    I love you so much.
-
-                </p>
-
-            </div>
-
-        </div>
-
-        <!-- SEAN -->
-
-        <div class="family-card reveal">
-
-            <img
-            src="assets/images/sean.jpg"
-            alt="Sean">
-
-            <div class="family-info">
-
-                <h3>⭐ Sean Ryan Cortes</h3>
-
-                <span>Son</span>
-
-                <p>
-
-                    Happy Birthday Daddy!
-
-                    Thank you for always making us smile.
-
-                    Stay healthy,
-
-                    stay strong,
-
-                    and enjoy your special day.
-
-                </p>
-
-            </div>
-
-        </div>
-
-        <!-- RYE -->
-
-        <div class="family-card reveal">
-
-            <img
-            src="assets/images/rye.jpg"
-            alt="Rye">
-
-            <div class="family-info">
-
-                <h3>🌸 Rye Cortez</h3>
-
-                <span>Youngest Child</span>
-
-                <p>
-
-                    Happy Birthday Daddy!
-
-                    You're the best daddy in the world.
-
-                    We love you so much.
-
-                    Have a wonderful birthday!
-
-                </p>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-    
-<!-- ==========================================
-FOOTER
-========================================== -->
-
-<footer id="footer">
-
-    <h2>
-
-        Happy Birthday Ryan
-
-    </h2>
-
-    <p>
-
-        Made with ❤️ by
-
-        Chevy Lozada Cortez,
-
-        Lyka Che L. Cortes,
-
-        Sean Ryan Cortes
-
-        &
-
-        Rye Cortez
-
-    </p>
-
-</footer>
-
-<!-- ==========================================
-CELEBRATE MODAL
-========================================== -->
-
-<div id="birthdayModal">
-
-    <div class="modal-card">
-
-        <div class="cake">
-
-            🎂
-
-        </div>
-
-        <h1>
-
-            Happy Birthday
-
-        </h1>
-
-        <h2>
-
-            Ryan Cortez Manebog
-
-        </h2>
-
-        <p id="birthdayMessage">
-
-        </p>
-
-        <div class="modal-buttons">
-
-            <button id="playMusic">
-
-                <i class="fa-solid fa-music"></i>
-
-                Play Music
-
-            </button>
-
-            <button id="closeModal">
-
-                Continue
-
-            </button>
-
-        </div>
-
-    </div>
+</div>
 
 </div>
 
 <!-- ==========================================
-FULLSCREEN GALLERY
+COUNTDOWN
 ========================================== -->
 
-<div id="galleryModal">
+<div id="countdownScreen">
 
-    <span id="closeGallery">
+<div class="countdown-content">
 
-        &times;
+<h1 id="countNumber">
 
-    </span>
+3
 
-    <img
-    id="galleryImage"
-    src=""
-    alt="Gallery Image">
+</h1>
 
-    <button id="prevPhoto">
+<h2 id="countMessage">
 
-        <i class="fa-solid fa-chevron-left"></i>
+Get Ready...
 
-    </button>
+</h2>
 
-    <button id="nextPhoto">
-
-        <i class="fa-solid fa-chevron-right"></i>
-
-    </button>
+</div>
 
 </div>
 
 <!-- ==========================================
-AUDIO
+GIFT SURPRISE
 ========================================== -->
 
-<audio id="birthdayMusic" loop>
+<div id="giftScreen">
 
-<source
-src="assets/audio/happy-birthday.mp3"
-type="audio/mpeg">
+<div class="gift-container">
 
-</audio>
+<h2>
 
-<!-- ==========================================
-FIREWORKS
-========================================== -->
+A Special Birthday Surprise
 
-<canvas id="fireworksCanvas"></canvas>
+</h2>
 
-<!-- ==========================================
-SCRIPT
-========================================== -->
+<p>
 
-<script src="script.js"></script>
+Tap the gift to continue
+
+</p>
+
+<div id="giftBox">
+
+🎁
+
+</div>
+
+</div>
+
+</div>
+
+<script src="login.js"></script>
 
 </body>
 

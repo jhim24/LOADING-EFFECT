@@ -8,13 +8,13 @@
 <meta name="viewport"
 content="width=device-width, initial-scale=1.0">
 
-<title>Birthday Login</title>
+<title>Happy Birthday Ryan</title>
 
 <meta name="theme-color"
 content="#C8102E">
 
 <link rel="stylesheet"
-href="login.css">
+href="style.css">
 
 <link rel="preconnect"
 href="https://fonts.googleapis.com">
@@ -23,7 +23,7 @@ href="https://fonts.googleapis.com">
 href="https://fonts.gstatic.com"
 crossorigin>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Playfair+Display:wght@700;800&display=swap"
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Playfair+Display:wght@600;700;800&display=swap"
 rel="stylesheet">
 
 <link rel="stylesheet"
@@ -32,6 +32,36 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
 </head>
 
 <body>
+
+<!-- ==========================================
+INTRO
+========================================== -->
+
+<div id="intro">
+
+<div class="intro-content">
+
+<h3>
+
+LOZADA & CORTEZ FAMILY
+
+</h3>
+
+<h1>
+
+Happy Birthday
+
+</h1>
+
+<h2>
+
+Ryan Cortez Manebog
+
+</h2>
+
+</div>
+
+</div>
 
 <!-- ==========================================
 BACKGROUND EFFECTS
@@ -44,28 +74,76 @@ BACKGROUND EFFECTS
 <div id="balloons"></div>
 
 <!-- ==========================================
-LOGIN
+HEADER
 ========================================== -->
 
-<div id="loginOverlay">
+<header>
 
-<div class="login-box">
+<div class="logo">
 
-<div class="login-logo">
+<i class="fa-solid fa-cake-candles"></i>
 
-<i class="fa-solid fa-lock"></i>
+<span>
+
+Happy Birthday Ryan
+
+</span>
 
 </div>
 
-<p class="login-present">
+<nav>
+
+<a href="#hero">
+
+Home
+
+</a>
+
+<a href="#family">
+
+Family
+
+</a>
+
+<a href="#gallery">
+
+Gallery
+
+</a>
+
+<a href="#footer">
+
+Footer
+
+</a>
+
+</nav>
+
+</header>
+
+<!-- ==========================================
+HERO
+========================================== -->
+
+<section
+id="hero"
+class="hero">
+
+<div class="hero-overlay"></div>
+
+<div class="hero-content">
+
+<div class="hero-badge">
+
+<i class="fa-solid fa-crown"></i>
 
 LOZADA FAMILY PRESENTS
 
-</p>
+</div>
 
 <h1>
 
-Birthday Surprise
+Happy Birthday
 
 </h1>
 
@@ -75,135 +153,272 @@ Ryan Cortez Manebog
 
 </h2>
 
-<div class="login-divider"></div>
+<div class="hero-poster">
 
-<p class="login-text">
+<img
 
-Enter the password to unlock
-the birthday surprise.
+src="assets/images/hero-poster.jpg"
 
-</p>
-
-<div class="input-group">
-
-<i class="fa-solid fa-key"></i>
-
-<input
-
-type="password"
-
-id="loginPassword"
-
-placeholder="Enter Password"
-
-autocomplete="off"
+alt="Ryan"
 
 >
 
 </div>
 
-<button id="loginBtn">
+<p>
 
-<i class="fa-solid fa-lock-open"></i>
+May your birthday be filled with happiness,
+love, success,
+good health,
+peace,
+and God's abundant blessings.
 
-UNLOCK SURPRISE
+We are so thankful to have you in our lives.
 
-</button>
+Happy Birthday!
 
-<p id="loginMessage"></p>
-
-<div class="login-footer">
-
-🎂 Available on August 13, 2026 🎂
-
-</div>
-
-</div>
-
-</div>
-<!-- ==========================================
-LOADING SCREEN
-========================================== -->
-
-<div id="loadingScreen">
-
-<div class="loading-box">
-
-<div class="birthday-loader">
-
-🎂
-
-</div>
-
-<h2>
-
-Preparing Birthday Surprise...
-
-</h2>
-
-<div class="progress">
-
-<div id="progressBar"></div>
-
-</div>
-
-<p id="loadingText">
-
-Please wait...
+❤️
 
 </p>
 
-</div>
+<div class="hero-buttons">
+
+<button id="celebrate">
+
+<i class="fa-solid fa-gift"></i>
+
+Celebrate
+
+</button>
+
+<button id="galleryBtn">
+
+<i class="fa-solid fa-images"></i>
+
+Gallery
+
+</button>
+
+<button id="musicBtn">
+
+<i class="fa-solid fa-music"></i>
+
+Music
+
+</button>
 
 </div>
 
+<div class="scroll-down">
+
+<i class="fa-solid fa-angles-down"></i>
+
+<span>
+
+Scroll Down
+
+</span>
+
+</div>
+
+</div>
+
+</section>
 <!-- ==========================================
-COUNTDOWN
+FAMILY SECTION
 ========================================== -->
 
-<div id="countdownScreen">
+<section
+id="family"
+class="family reveal">
 
-<div class="countdown-content">
-
-<h1 id="countNumber">
-
-3
-
-</h1>
-
-<h2 id="countMessage">
-
-Get Ready...
-
-</h2>
-
-</div>
-
-</div>
-
-<!-- ==========================================
-GIFT SURPRISE
-========================================== -->
-
-<div id="giftScreen">
-
-<div class="gift-container">
+<div class="section-title">
 
 <h2>
 
-A Special Birthday Surprise
+❤️ With Love From Your Family ❤️
 
 </h2>
 
 <p>
 
-Tap the gift to continue
+The people who love you the most.
 
 </p>
 
-<div id="giftBox">
+</div>
 
-🎁
+<div class="family-grid">
+
+<!-- WIFE -->
+
+<div class="family-card reveal">
+
+<img
+src="assets/images/wife.jpg"
+alt="Chevy">
+
+<div class="family-info">
+
+<h3>
+
+❤️ Chevy Lozada Cortez
+
+</h3>
+
+<span>
+
+Beloved Wife
+
+</span>
+
+<p>
+
+Happy Birthday Mahal!
+
+Thank you for your unconditional love,
+hard work,
+and sacrifices for our family.
+
+May God bless you with good health,
+peace,
+success,
+happiness,
+and many more birthdays to celebrate.
+
+We love you forever.
+
+❤️
+
+</p>
+
+</div>
+
+</div>
+
+<!-- LYKA -->
+
+<div class="family-card reveal">
+
+<img
+src="assets/images/lyka.jpg"
+alt="Lyka">
+
+<div class="family-info">
+
+<h3>
+
+👑 Lyka Che L. Cortes
+
+</h3>
+
+<span>
+
+Eldest Daughter
+
+</span>
+
+<p>
+
+Happy Birthday Daddy!
+
+Thank you for always taking care of us.
+
+I hope all your dreams come true.
+
+Stay healthy,
+happy,
+and always smiling.
+
+I love you so much.
+
+❤️
+
+</p>
+
+</div>
+
+</div>
+
+<!-- SEAN -->
+
+<div class="family-card reveal">
+
+<img
+src="assets/images/sean.jpg"
+alt="Sean">
+
+<div class="family-info">
+
+<h3>
+
+⭐ Sean Ryan Cortes
+
+</h3>
+
+<span>
+
+Son
+
+</span>
+
+<p>
+
+Happy Birthday Daddy!
+
+Thank you for teaching us,
+protecting us,
+and always making us smile.
+
+May God bless you always.
+
+We love you!
+
+🎂
+
+</p>
+
+</div>
+
+</div>
+
+<!-- RYE -->
+
+<div class="family-card reveal">
+
+<img
+src="assets/images/rye.jpg"
+alt="Rye">
+
+<div class="family-info">
+
+<h3>
+
+🌸 Rye Cortez
+
+</h3>
+
+<span>
+
+Youngest Child
+
+</span>
+
+<p>
+
+Happy Birthday Daddy!
+
+You are the best daddy in the whole world.
+
+Thank you for loving us every day.
+
+Have a wonderful birthday.
+
+We love you forever!
+
+❤️
+
+</p>
 
 </div>
 
@@ -211,7 +426,246 @@ Tap the gift to continue
 
 </div>
 
-<script src="login.js"></script>
+</section>
+<!-- ==========================================
+GALLERY
+========================================== -->
+
+<section
+id="gallery"
+class="gallery reveal">
+
+<div class="section-title">
+
+<h2>
+
+📸 Birthday Gallery
+
+</h2>
+
+<p>
+
+Beautiful memories captured together.
+
+</p>
+
+</div>
+
+<div class="gallery-grid">
+
+<div class="gallery-item">
+
+<img
+src="assets/gallery/gallery1.jpg"
+alt="Gallery 1">
+
+</div>
+
+<div class="gallery-item">
+
+<img
+src="assets/gallery/gallery2.jpg"
+alt="Gallery 2">
+
+</div>
+
+<div class="gallery-item">
+
+<img
+src="assets/gallery/gallery3.jpg"
+alt="Gallery 3">
+
+</div>
+
+<div class="gallery-item">
+
+<img
+src="assets/gallery/gallery4.jpg"
+alt="Gallery 4">
+
+</div>
+
+<div class="gallery-item">
+
+<img
+src="assets/gallery/gallery5.jpg"
+alt="Gallery 5">
+
+</div>
+
+<div class="gallery-item">
+
+<img
+src="assets/gallery/gallery6.jpg"
+alt="Gallery 6">
+
+</div>
+
+<div class="gallery-item">
+
+<img
+src="assets/gallery/gallery7.jpg"
+alt="Gallery 7">
+
+</div>
+
+<div class="gallery-item">
+
+<img
+src="assets/gallery/gallery8.jpg"
+alt="Gallery 8">
+
+</div>
+
+<div class="gallery-item">
+
+<img
+src="assets/gallery/gallery9.jpg"
+alt="Gallery 9">
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ==========================================
+FULL SCREEN GALLERY
+========================================== -->
+
+<div id="galleryModal">
+
+<span id="closeGallery">
+
+&times;
+
+</span>
+
+<img
+id="galleryImage"
+src=""
+alt="Gallery Image">
+
+<button id="prevPhoto">
+
+<i class="fa-solid fa-chevron-left"></i>
+
+</button>
+
+<button id="nextPhoto">
+
+<i class="fa-solid fa-chevron-right"></i>
+
+</button>
+
+</div>
+<!-- ==========================================
+BIRTHDAY MODAL
+========================================== -->
+
+<div id="birthdayModal">
+
+<div class="modal-card">
+
+<div class="cake">
+
+🎂
+
+</div>
+
+<h1>
+
+Happy Birthday
+
+</h1>
+
+<h2>
+
+Ryan Cortez Manebog
+
+</h2>
+
+<p id="birthdayMessage">
+
+</p>
+
+<div class="modal-buttons">
+
+<button id="playMusic">
+
+<i class="fa-solid fa-music"></i>
+
+Play Music
+
+</button>
+
+<button id="closeModal">
+
+Continue
+
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- ==========================================
+AUDIO
+========================================== -->
+
+<audio
+id="birthdayMusic"
+loop>
+
+<source
+src="assets/audio/happy-birthday.mp3"
+type="audio/mpeg">
+
+</audio>
+
+<!-- ==========================================
+FIREWORKS
+========================================== -->
+
+<canvas id="fireworksCanvas"></canvas>
+
+<!-- ==========================================
+FOOTER
+========================================== -->
+
+<footer id="footer">
+
+<h2>
+
+Happy Birthday Ryan
+
+</h2>
+
+<p>
+
+Made with ❤️ by
+
+Chevy Lozada Cortez,
+
+Lyka Che L. Cortes,
+
+Sean Ryan Cortes
+
+&
+
+Rye Cortez
+
+</p>
+
+</footer>
+
+<!-- ==========================================
+SCRIPT
+========================================== -->
+
+<script src="script.js"></script>
 
 </body>
 

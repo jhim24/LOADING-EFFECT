@@ -55,11 +55,13 @@ function checkPassword() {
 
     loginBtn.disabled = true;
 
-    setTimeout(() => {
+   setTimeout(() => {
 
-        window.location.href = "index.html";
+    sessionStorage.setItem("birthdayLogin","true");
 
-    }, 800);
+    window.location.href="index.html";
+
+},800);
 
 }
 

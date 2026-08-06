@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Birthday Login</title>
+
+<meta name="theme-color" content="#C8102E">
+
+<link rel="stylesheet" href="login.css">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+</head>
+
+<body>
+
+<!-- BACKGROUND -->
+
+<div id="stars"></div>
+
+<div id="particles"></div>
+
+<div id="balloons"></div>
+
+<!-- LOGIN -->
+
+<div id="loginOverlay">
+
+<div class="login-box">
+
+<div class="login-logo">
+
+<i class="fa-solid fa-lock"></i>
+
+</div>
+
+<p class="login-present">
+
+LOZADA FAMILY PRESENTS
+
+</p>
+
+<h1>Birthday Surprise</h1>
+
+<h2>Ryan Cortez Manebog</h2>
+
+<div class="login-divider"></div>
+
+<p class="login-text">
+
+Enter the password to unlock the birthday surprise.
+
+</p>
+
+<div class="input-group">
+
+<i class="fa-solid fa-key"></i>
+
+<input
+type="password"
+id="loginPassword"
+placeholder="Enter Password"
+autocomplete="off">
+
+</div>
+
+<button id="loginBtn">
+
+<i class="fa-solid fa-lock-open"></i>
+
+UNLOCK SURPRISE
+
+</button>
+
+<p id="loginMessage"></p>
+
+<div class="login-footer">
+
+🎂 August 13, 2026 🎂
+
+</div>
+
+</div>
+
+</div>
+
+<!-- LOADING -->
+
+<div id="loadingScreen">
+
+<div class="loading-box">
+
+<div class="birthday-loader">
+
+🎂
+
+</div>
+
+<h2>Preparing Birthday Surprise...</h2>
+
+<div class="progress">
+
+<div id="progressBar"></div>
+
+</div>
+
+<p id="loadingText">
+
+Please wait...
+
+</p>
+
+</div>
+
+</div>
+
+<!-- COUNTDOWN -->
+
+<div id="countdownScreen">
+
+<div class="countdown-content">
+
+<h1 id="countNumber">
+
+3
+
+</h1>
+
+<h2 id="countMessage">
+
+Get Ready...
+
+</h2>
+
+</div>
+
+</div>
+
+<!-- GIFT -->
+
+<div id="giftScreen">
+
+<div class="gift-container">
+
+<h2>
+
+A Special Birthday Surprise
+
+</h2>
+
+<p>
+
+Tap the gift to continue
+
+</p>
+
+<div id="giftBox">
+
+🎁
+
+</div>
+
+</div>
+
+</div>
+
+<script src="login.js"></script>
+
+</body>
+
+</html>

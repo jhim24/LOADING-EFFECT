@@ -1,0 +1,707 @@
+/* =====================================================
+   CINEMATIC LOGIN V1
+===================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Playfair+Display:wght@700;800&display=swap');
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
+
+font-family:'Poppins',sans-serif;
+
+height:100vh;
+
+overflow:hidden;
+
+background:#000;
+
+}
+
+/* =====================================
+BACKGROUND
+===================================== */
+
+#loginOverlay{
+
+position:fixed;
+
+inset:0;
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+overflow:hidden;
+
+background:
+
+radial-gradient(circle at top,
+#8B0000,
+#400000,
+#000);
+
+}
+
+/* Golden Glow */
+
+#loginOverlay::before{
+
+content:"";
+
+position:absolute;
+
+width:800px;
+
+height:800px;
+
+top:-300px;
+
+right:-250px;
+
+border-radius:50%;
+
+background:
+
+radial-gradient(circle,
+
+rgba(255,215,0,.20),
+
+transparent 70%);
+
+animation:rotateGlow 18s linear infinite;
+
+}
+
+#loginOverlay::after{
+
+content:"";
+
+position:absolute;
+
+width:700px;
+
+height:700px;
+
+left:-250px;
+
+bottom:-250px;
+
+border-radius:50%;
+
+background:
+
+radial-gradient(circle,
+
+rgba(200,16,46,.30),
+
+transparent 70%);
+
+animation:rotateGlowReverse 22s linear infinite;
+
+}
+
+/* =====================================
+LOGIN CARD
+===================================== */
+
+.login-box{
+
+position:relative;
+
+width:92%;
+
+max-width:500px;
+
+padding:55px 40px;
+
+border-radius:35px;
+
+background:
+
+rgba(20,10,10,.75);
+
+backdrop-filter:blur(20px);
+
+-webkit-backdrop-filter:blur(20px);
+
+border:2px solid rgba(255,215,0,.35);
+
+box-shadow:
+
+0 0 50px rgba(255,215,0,.15),
+
+0 30px 80px rgba(0,0,0,.55);
+
+overflow:hidden;
+
+text-align:center;
+
+animation:loginAppear .8s ease;
+
+}
+
+/* Rotating Border */
+
+.login-box::before{
+
+content:"";
+
+position:absolute;
+
+top:-50%;
+
+left:-50%;
+
+width:200%;
+
+height:200%;
+
+background:
+
+conic-gradient(
+
+transparent,
+
+rgba(255,215,0,.65),
+
+transparent,
+
+rgba(255,215,0,.15),
+
+transparent
+
+);
+
+animation:borderRotate 10s linear infinite;
+
+}
+
+.login-box::after{
+
+content:"";
+
+position:absolute;
+
+inset:3px;
+
+border-radius:32px;
+
+background:
+
+linear-gradient(
+
+180deg,
+
+rgba(35,15,15,.98),
+
+rgba(15,5,5,.98)
+
+);
+
+z-index:0;
+
+}
+
+.login-box>*{
+
+position:relative;
+
+z-index:2;
+
+}
+/* =====================================
+LOGO
+===================================== */
+
+.login-logo{
+
+width:110px;
+height:110px;
+
+margin:0 auto 25px;
+
+border-radius:50%;
+
+display:flex;
+justify-content:center;
+align-items:center;
+
+background:linear-gradient(
+135deg,
+#FFD700,
+#D4AF37
+);
+
+box-shadow:
+0 0 25px rgba(255,215,0,.6),
+0 0 60px rgba(255,215,0,.25);
+
+animation:logoFloat 3s ease-in-out infinite;
+
+}
+
+.login-logo i{
+
+font-size:50px;
+
+color:#7A0000;
+
+}
+
+/* =====================================
+TEXT
+===================================== */
+
+.login-present{
+
+font-size:13px;
+
+letter-spacing:6px;
+
+text-transform:uppercase;
+
+color:#FFD700;
+
+font-weight:700;
+
+margin-bottom:15px;
+
+}
+
+.login-box h1{
+
+font-family:'Playfair Display',serif;
+
+font-size:42px;
+
+color:#FFFFFF;
+
+margin-bottom:8px;
+
+}
+
+.login-box h2{
+
+font-size:24px;
+
+font-weight:500;
+
+color:#FFD700;
+
+margin-bottom:20px;
+
+}
+
+.login-divider{
+
+width:120px;
+
+height:4px;
+
+margin:25px auto;
+
+border-radius:50px;
+
+background:linear-gradient(
+90deg,
+transparent,
+#FFD700,
+transparent
+);
+
+}
+
+.login-text{
+
+font-size:16px;
+
+line-height:1.7;
+
+color:rgba(255,255,255,.88);
+
+margin-bottom:30px;
+
+}
+
+/* =====================================
+INPUT
+===================================== */
+
+.input-group{
+
+position:relative;
+
+display:flex;
+align-items:center;
+
+gap:15px;
+
+height:62px;
+
+padding:0 20px;
+
+border-radius:50px;
+
+background:rgba(255,255,255,.08);
+
+border:2px solid rgba(255,215,0,.25);
+
+margin-bottom:25px;
+
+transition:.35s;
+
+}
+
+.input-group:hover{
+
+border-color:#FFD700;
+
+box-shadow:
+
+0 0 20px rgba(255,215,0,.25);
+
+}
+
+.input-group:focus-within{
+
+border-color:#FFD700;
+
+box-shadow:
+
+0 0 25px rgba(255,215,0,.35);
+
+}
+
+.input-group i{
+
+color:#FFD700;
+
+font-size:20px;
+
+flex-shrink:0;
+
+}
+
+.input-group input{
+
+flex:1;
+
+height:100%;
+
+background:transparent;
+
+border:none;
+
+outline:none;
+
+color:#FFFFFF;
+
+font-size:18px;
+
+font-family:'Poppins',sans-serif;
+
+z-index:5;
+
+}
+
+.input-group input::placeholder{
+
+color:rgba(255,255,255,.55);
+
+}
+/* =====================================
+UNLOCK BUTTON
+===================================== */
+
+#loginBtn{
+
+width:100%;
+height:62px;
+
+border:none;
+border-radius:50px;
+
+background:linear-gradient(
+90deg,
+#C8102E,
+#D4AF37,
+#FFD700
+);
+
+background-size:300%;
+
+color:#FFFFFF;
+
+font-size:18px;
+font-weight:700;
+
+letter-spacing:1px;
+
+display:flex;
+justify-content:center;
+align-items:center;
+gap:12px;
+
+cursor:pointer;
+
+transition:.35s;
+
+animation:buttonGlow 6s linear infinite;
+
+box-shadow:
+0 15px 35px rgba(212,175,55,.35);
+
+}
+
+#loginBtn:hover{
+
+transform:translateY(-4px) scale(1.03);
+
+box-shadow:
+0 20px 45px rgba(255,215,0,.45);
+
+}
+
+#loginBtn:active{
+
+transform:scale(.97);
+
+}
+
+#loginBtn i{
+
+font-size:18px;
+
+}
+
+/* =====================================
+MESSAGE
+===================================== */
+
+#loginMessage{
+
+margin-top:18px;
+
+min-height:24px;
+
+font-size:15px;
+
+font-weight:600;
+
+color:#FFB3B3;
+
+}
+
+/* =====================================
+FOOTER
+===================================== */
+
+.login-footer{
+
+margin-top:30px;
+
+font-size:14px;
+
+letter-spacing:2px;
+
+color:#FFD700;
+
+opacity:.9;
+
+}
+
+/* =====================================
+ANIMATIONS
+===================================== */
+
+@keyframes loginAppear{
+
+from{
+
+opacity:0;
+
+transform:translateY(40px) scale(.9);
+
+}
+
+to{
+
+opacity:1;
+
+transform:translateY(0) scale(1);
+
+}
+
+}
+
+@keyframes borderRotate{
+
+100%{
+
+transform:rotate(360deg);
+
+}
+
+}
+
+@keyframes rotateGlow{
+
+100%{
+
+transform:rotate(360deg);
+
+}
+
+}
+
+@keyframes rotateGlowReverse{
+
+100%{
+
+transform:rotate(-360deg);
+
+}
+
+}
+
+@keyframes logoFloat{
+
+0%,100%{
+
+transform:translateY(0);
+
+}
+
+50%{
+
+transform:translateY(-12px);
+
+}
+
+}
+
+@keyframes buttonGlow{
+
+0%{
+
+background-position:0%;
+
+}
+
+100%{
+
+background-position:300%;
+
+}
+
+}
+
+/* =====================================
+BACKGROUND EFFECTS
+===================================== */
+
+#stars,
+#particles,
+#balloons{
+
+position:fixed;
+
+top:0;
+left:0;
+
+width:100%;
+height:100%;
+
+pointer-events:none;
+
+z-index:1;
+
+}
+
+/* =====================================
+MOBILE
+===================================== */
+
+@media(max-width:768px){
+
+.login-box{
+
+padding:40px 25px;
+
+width:94%;
+
+}
+
+.login-logo{
+
+width:90px;
+height:90px;
+
+}
+
+.login-logo i{
+
+font-size:40px;
+
+}
+
+.login-box h1{
+
+font-size:34px;
+
+}
+
+.login-box h2{
+
+font-size:20px;
+
+}
+
+.login-present{
+
+font-size:11px;
+
+letter-spacing:4px;
+
+}
+
+.login-text{
+
+font-size:15px;
+
+}
+
+.input-group{
+
+height:56px;
+
+}
+
+.input-group input{
+
+font-size:16px;
+
+}
+
+#loginBtn{
+
+height:56px;
+
+font-size:16px;
+
+}
+
+.login-footer{
+
+font-size:12px;
+
+}
+
+}

@@ -1,3 +1,14 @@
+/* ==========================================
+LOGIN PROTECTION
+========================================== */
+
+if(sessionStorage.getItem("birthdayLogin")!=="true"){
+
+    window.location.href="login.html";
+
+}
+
+
 /* ==========================================================
    HAPPY BIRTHDAY WEBSITE V6
    SCRIPT.JS

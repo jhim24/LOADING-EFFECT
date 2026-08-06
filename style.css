@@ -2,44 +2,32 @@
    HAPPY BIRTHDAY WEBSITE V6
    STYLE.CSS
    PART 1
-   RESET • ROOT • GLOBAL
 ========================================================== */
-
-/* ==========================
-   GOOGLE FONT
-========================== */
 
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Playfair+Display:wght@600;700;800&display=swap');
 
-/* ==========================
-   ROOT
-========================== */
+/* ==========================================
+ROOT
+========================================== */
 
 :root{
 
 --red:#C8102E;
---red-dark:#8E0E24;
+--red-dark:#990F25;
 
 --gold:#D4AF37;
---gold-light:#FFD95A;
+--gold-light:#FFD700;
 
---white:#FFFFFF;
 --black:#1F1F1F;
+--white:#FFFFFF;
 
---text:#555555;
-
---bg:#FFF8F2;
-
---radius:30px;
-
---shadow:
-0 20px 45px rgba(0,0,0,.15);
+--bg:#FFF7F1;
 
 }
 
-/* ==========================
-   RESET
-========================== */
+/* ==========================================
+RESET
+========================================== */
 
 *{
 
@@ -67,9 +55,9 @@ overflow-x:hidden;
 
 }
 
-/* ==========================
-   DEFAULT
-========================== */
+/* ==========================================
+DEFAULT
+========================================== */
 
 img{
 
@@ -85,13 +73,13 @@ user-select:none;
 
 button{
 
-border:none;
-
-outline:none;
+font-family:'Poppins',sans-serif;
 
 cursor:pointer;
 
-font-family:'Poppins',sans-serif;
+border:none;
+
+outline:none;
 
 transition:.35s;
 
@@ -105,174 +93,22 @@ color:inherit;
 
 }
 
-section{
-
-position:relative;
-
-z-index:2;
-
-padding:120px 8%;
-
-}
-
-/* ==========================
-   BACKGROUND EFFECTS
-========================== */
-
-#stars,
-#particles,
-#balloons{
-
-position:fixed;
-
-top:0;
-left:0;
-
-width:100%;
-height:100%;
-
-pointer-events:none;
-
-overflow:hidden;
-
-z-index:0;
-
-}
-
-/* ==========================
-   STAR
-========================== */
-
-.star{
-
-position:absolute;
-
-width:3px;
-height:3px;
-
-background:#ffffff;
-
-border-radius:50%;
-
-box-shadow:
-
-0 0 10px white,
-0 0 20px white;
-
-animation:twinkle infinite;
-
-}
-
-/* ==========================
-   PARTICLE
-========================== */
-
-.particle{
-
-position:absolute;
-
-width:6px;
-height:6px;
-
-background:#FFD700;
-
-border-radius:50%;
-
-box-shadow:
-
-0 0 15px gold;
-
-animation:particleFloat linear infinite;
-
-}
-
-/* ==========================
-   BALLOON
-========================== */
-
-.balloon{
-
-position:absolute;
-
-bottom:-180px;
-
-width:70px;
-height:90px;
-
-border-radius:50%;
-
-animation:balloonFloat linear infinite;
-
-box-shadow:
-
-0 10px 25px rgba(0,0,0,.25);
-
-}
-
-.balloon::after{
-
-content:"";
-
-position:absolute;
-
-left:50%;
-
-top:88px;
-
-width:2px;
-height:120px;
-
-background:#ddd;
-
-transform:translateX(-50%);
-
-}
-
-.red{
-
-background:#C8102E;
-
-}
-
-.gold{
-
-background:#FFD700;
-
-}
-
-.white{
-
-background:#FFFFFF;
-
-}
-
-.black{
-
-background:#333333;
-
-}
-/* ==========================================================
-   HAPPY BIRTHDAY WEBSITE V6
-   STYLE.CSS
-   PART 2
-   INTRO • HEADER • HERO
-========================================================== */
-
-/* ==========================
-   INTRO
-========================== */
+/* ==========================================
+INTRO
+========================================== */
 
 #intro{
 
 position:fixed;
+
 inset:0;
 
 display:flex;
+
 justify-content:center;
 align-items:center;
 
 background:
-
 linear-gradient(
 135deg,
 #5C0000,
@@ -289,11 +125,10 @@ transition:1s;
 .intro-content{
 
 text-align:center;
+
 color:#fff;
 
 padding:20px;
-
-animation:introFade 1s ease;
 
 }
 
@@ -301,7 +136,7 @@ animation:introFade 1s ease;
 
 font-size:18px;
 
-letter-spacing:8px;
+letter-spacing:6px;
 
 margin-bottom:20px;
 
@@ -321,21 +156,22 @@ margin-bottom:10px;
 
 .intro-content h2{
 
-font-size:34px;
+font-size:32px;
 
 font-weight:500;
 
 }
 
-/* ==========================
-   HEADER
-========================== */
+/* ==========================================
+HEADER
+========================================== */
 
 header{
 
 position:fixed;
 
 top:0;
+
 left:0;
 
 width:100%;
@@ -347,23 +183,17 @@ display:flex;
 justify-content:space-between;
 align-items:center;
 
-background:
+background:rgba(255,255,255,.88);
 
-rgba(255,255,255,.88);
-
-backdrop-filter:blur(20px);
+backdrop-filter:blur(18px);
 
 box-shadow:
 
-0 10px 25px rgba(0,0,0,.08);
+0 10px 30px rgba(0,0,0,.08);
 
 z-index:999;
 
 }
-
-/* ==========================
-   LOGO
-========================== */
 
 .logo{
 
@@ -383,15 +213,11 @@ color:var(--red);
 
 .logo i{
 
-font-size:30px;
+font-size:28px;
 
 color:var(--gold);
 
 }
-
-/* ==========================
-   NAVIGATION
-========================== */
 
 nav{
 
@@ -403,17 +229,9 @@ gap:35px;
 
 nav a{
 
-position:relative;
-
 font-weight:600;
 
-transition:.3s;
-
-}
-
-nav a:hover{
-
-color:var(--red);
+position:relative;
 
 }
 
@@ -424,16 +242,22 @@ content:"";
 position:absolute;
 
 left:0;
+
 bottom:-6px;
 
 width:0;
-height:3px;
 
-border-radius:10px;
+height:3px;
 
 background:var(--gold);
 
 transition:.35s;
+
+}
+
+nav a:hover{
+
+color:var(--red);
 
 }
 
@@ -443,9 +267,9 @@ width:100%;
 
 }
 
-/* ==========================
-   HERO
-========================== */
+/* ==========================================
+HERO
+========================================== */
 
 .hero{
 
@@ -478,13 +302,7 @@ background-position:center;
 
 background-repeat:no-repeat;
 
-overflow:hidden;
-
 }
-
-/* ==========================
-   HERO OVERLAY
-========================== */
 
 .hero-overlay{
 
@@ -500,15 +318,11 @@ circle,
 
 transparent,
 
-rgba(0,0,0,.40)
+rgba(0,0,0,.35)
 
 );
 
 }
-
-/* ==========================
-   HERO CONTENT
-========================== */
 
 .hero-content{
 
@@ -522,13 +336,11 @@ max-width:1200px;
 
 text-align:center;
 
-animation:heroFade 1.2s ease;
-
 }
 
-/* ==========================
-   HERO BADGE
-========================== */
+/* ==========================================
+BADGE
+========================================== */
 
 .hero-badge{
 
@@ -538,41 +350,37 @@ align-items:center;
 
 gap:10px;
 
-padding:12px 28px;
+padding:12px 30px;
 
 border-radius:50px;
 
-background:
+background:rgba(255,255,255,.15);
 
-rgba(255,255,255,.15);
-
-backdrop-filter:blur(12px);
+backdrop-filter:blur(10px);
 
 color:#FFD700;
 
 font-weight:600;
 
-letter-spacing:2px;
-
 margin-bottom:25px;
 
 }
 
-/* ==========================
-   HERO TITLE
-========================== */
+/* ==========================================
+TITLE
+========================================== */
 
 .hero h1{
 
 font-family:'Playfair Display',serif;
 
-font-size:74px;
+font-size:76px;
 
 color:#fff;
 
 text-shadow:
 
-0 0 25px rgba(255,215,0,.35);
+0 0 25px rgba(212,175,55,.5);
 
 margin-bottom:10px;
 
@@ -582,41 +390,19 @@ margin-bottom:10px;
 
 font-size:34px;
 
-font-weight:600;
-
 color:#FFD700;
 
-margin-bottom:30px;
+margin-bottom:35px;
+
+font-weight:600;
 
 }
 
-/* ==========================
-   HERO DESCRIPTION
-========================== */
-
-.hero p{
-
-max-width:900px;
-
-margin:35px auto;
-
-font-size:22px;
-
-line-height:1.9;
-
-color:#fff;
-
-}
-
-/* ==========================
-   HERO POSTER
-========================== */
+/* ==========================================
+POSTER
+========================================== */
 
 .hero-poster{
-
-position:relative;
-
-width:100%;
 
 max-width:850px;
 
@@ -636,125 +422,77 @@ linear-gradient(
 
 #D4AF37,
 
-#FFF5B0,
+#FFF4B0,
 
-#D4AF37
+#FFD700
 
 );
 
-background-size:300%;
-
-overflow:hidden;
-
-animation:
-
-posterFloat 6s ease-in-out infinite,
-
-borderGlow 8s linear infinite;
-
 box-shadow:
 
-0 20px 40px rgba(0,0,0,.35),
-
-0 0 30px rgba(212,175,55,.40);
+0 20px 50px rgba(0,0,0,.35);
 
 }
 
 .hero-poster img{
 
-width:100%;
-
 border-radius:22px;
+
+width:100%;
 
 display:block;
 
 }
 
-.hero-poster::before{
+.hero p{
 
-content:"";
+max-width:900px;
 
-position:absolute;
+margin:35px auto;
 
-top:0;
+font-size:22px;
 
-left:-150%;
+line-height:1.8;
 
-width:50%;
-height:100%;
-
-background:
-
-linear-gradient(
-
-90deg,
-
-transparent,
-
-rgba(255,255,255,.65),
-
-transparent
-
-);
-
-transform:skewX(-25deg);
-
-animation:lightSweep 4s linear infinite;
+color:#fff;
 
 }
-/* ==========================================================
-   HAPPY BIRTHDAY WEBSITE V6
-   STYLE.CSS
-   PART 3
-   HERO BUTTONS • FAMILY • SECTION TITLE
-========================================================== */
 
-/* ==========================
-   HERO BUTTONS
-========================== */
+/* ==========================================
+BUTTONS
+========================================== */
 
 .hero-buttons{
 
 display:flex;
+
 justify-content:center;
-align-items:center;
+
 gap:20px;
 
 flex-wrap:wrap;
 
-margin-top:40px;
+margin-top:35px;
 
 }
 
 .hero-buttons button{
 
-min-width:200px;
-height:62px;
+min-width:190px;
 
-border-radius:60px;
+height:60px;
+
+border-radius:50px;
 
 font-size:18px;
+
 font-weight:700;
-
-display:flex;
-justify-content:center;
-align-items:center;
-gap:12px;
-
-transition:.35s;
-
-box-shadow:
-0 15px 35px rgba(0,0,0,.20);
 
 }
 
 #celebrate{
 
-background:linear-gradient(
-135deg,
-#C8102E,
-#E63946
-);
+background:#C8102E;
 
 color:#fff;
 
@@ -762,7 +500,7 @@ color:#fff;
 
 #galleryBtn{
 
-background:#ffffff;
+background:#fff;
 
 color:#C8102E;
 
@@ -770,7 +508,7 @@ color:#C8102E;
 
 #musicBtn{
 
-background:#222;
+background:#1F1F1F;
 
 color:#fff;
 
@@ -778,50 +516,22 @@ color:#fff;
 
 .hero-buttons button:hover{
 
-transform:
-translateY(-8px)
-scale(1.05);
+transform:translateY(-5px);
 
 }
 
-#celebrate:hover{
-
-background:linear-gradient(
-135deg,
-#FFD700,
-#D4AF37
-);
-
-color:#111;
-
-}
-
-#galleryBtn:hover{
-
-background:#FFD700;
-
-color:#111;
-
-}
-
-#musicBtn:hover{
-
-background:#FFD700;
-
-color:#111;
-
-}
-
-/* ==========================
-   SCROLL DOWN
-========================== */
+/* ==========================================
+SCROLL
+========================================== */
 
 .scroll-down{
 
-margin-top:70px;
+margin-top:60px;
 
 display:flex;
+
 flex-direction:column;
+
 align-items:center;
 
 color:#fff;
@@ -832,27 +542,131 @@ animation:bounce 2s infinite;
 
 .scroll-down i{
 
-font-size:32px;
+font-size:30px;
 
 color:#FFD700;
 
 margin-bottom:10px;
 
 }
+/* ==========================================================
+   STYLE.CSS
+   PART 2
+========================================================== */
 
-.scroll-down span{
+/* ==========================================
+BACKGROUND EFFECTS
+========================================== */
 
-font-size:13px;
+#stars,
+#particles,
+#balloons{
 
-letter-spacing:3px;
+position:fixed;
 
-text-transform:uppercase;
+top:0;
+left:0;
+
+width:100%;
+height:100%;
+
+pointer-events:none;
+
+overflow:hidden;
+
+z-index:0;
 
 }
 
-/* ==========================
-   SECTION TITLE
-========================== */
+.star{
+
+position:absolute;
+
+width:3px;
+height:3px;
+
+background:#fff;
+
+border-radius:50%;
+
+box-shadow:
+0 0 10px #fff,
+0 0 20px #fff;
+
+animation:twinkle infinite;
+
+}
+
+.particle{
+
+position:absolute;
+
+width:6px;
+height:6px;
+
+border-radius:50%;
+
+background:#FFD700;
+
+box-shadow:
+0 0 15px gold;
+
+animation:particleFloat linear infinite;
+
+}
+
+.balloon{
+
+position:absolute;
+
+bottom:-180px;
+
+width:70px;
+height:90px;
+
+border-radius:50%;
+
+box-shadow:
+0 10px 25px rgba(0,0,0,.25);
+
+animation:balloonFloat linear infinite;
+
+}
+
+.balloon::after{
+
+content:"";
+
+position:absolute;
+
+width:2px;
+height:120px;
+
+background:#ddd;
+
+left:50%;
+
+top:88px;
+
+transform:translateX(-50%);
+
+}
+
+/* ==========================================
+SECTION
+========================================== */
+
+section{
+
+position:relative;
+
+z-index:2;
+
+}
+
+/* ==========================================
+SECTION TITLE
+========================================== */
 
 .section-title{
 
@@ -866,7 +680,7 @@ margin-bottom:70px;
 
 font-family:'Playfair Display',serif;
 
-font-size:54px;
+font-size:52px;
 
 color:#C8102E;
 
@@ -880,22 +694,17 @@ font-size:20px;
 
 color:#666;
 
-max-width:700px;
-
-margin:auto;
-
-line-height:1.8;
-
 }
 
-/* ==========================
-   FAMILY SECTION
-========================== */
+/* ==========================================
+FAMILY
+========================================== */
 
 .family{
 
-background:
+padding:120px 8%;
 
+background:
 linear-gradient(
 180deg,
 #FFF8F2,
@@ -918,10 +727,6 @@ margin:auto;
 
 }
 
-/* ==========================
-   FAMILY CARD
-========================== */
-
 .family-card{
 
 display:flex;
@@ -930,72 +735,24 @@ align-items:center;
 
 gap:35px;
 
-padding:35px;
+padding:30px;
+
+background:rgba(255,255,255,.92);
 
 border-radius:30px;
 
-background:
-
-rgba(255,255,255,.90);
-
-backdrop-filter:blur(18px);
-
-border:
-
-1px solid rgba(212,175,55,.30);
-
 box-shadow:
-
-0 20px 45px rgba(0,0,0,.10);
+0 20px 45px rgba(0,0,0,.08);
 
 transition:.4s;
-
-position:relative;
 
 overflow:hidden;
 
 }
 
-/* Alternate Layout */
-
 .family-card:nth-child(even){
 
 flex-direction:row-reverse;
-
-}
-
-/* Shine Effect */
-
-.family-card::before{
-
-content:"";
-
-position:absolute;
-
-top:0;
-left:-140%;
-
-width:60%;
-height:100%;
-
-background:
-
-linear-gradient(
-90deg,
-transparent,
-rgba(255,255,255,.65),
-transparent
-);
-
-transform:skewX(-25deg);
-
-transition:1s;
-
-}
-
-.family-card:hover::before{
-
-left:160%;
 
 }
 
@@ -1005,18 +762,14 @@ transform:
 translateY(-10px);
 
 box-shadow:
-
-0 30px 60px rgba(200,16,46,.18);
+0 25px 55px rgba(200,16,46,.18);
 
 }
-
-/* ==========================
-   FAMILY IMAGE
-========================== */
 
 .family-card img{
 
 width:260px;
+
 height:260px;
 
 object-fit:cover;
@@ -1025,23 +778,7 @@ border-radius:25px;
 
 border:6px solid #FFD700;
 
-box-shadow:
-
-0 0 30px rgba(255,215,0,.35);
-
-transition:.4s;
-
 }
-
-.family-card:hover img{
-
-transform:scale(1.05);
-
-}
-
-/* ==========================
-   FAMILY INFO
-========================== */
 
 .family-info{
 
@@ -1057,7 +794,7 @@ font-size:34px;
 
 color:#C8102E;
 
-margin-bottom:10px;
+margin-bottom:12px;
 
 }
 
@@ -1065,17 +802,17 @@ margin-bottom:10px;
 
 display:inline-block;
 
-padding:10px 20px;
+padding:8px 18px;
 
-border-radius:50px;
+border-radius:30px;
 
 background:#FFD700;
 
 font-weight:700;
 
-color:#111;
-
 margin-bottom:20px;
+
+color:#111;
 
 }
 
@@ -1089,78 +826,13 @@ color:#555;
 
 }
 
-/* ==========================
-   RESPONSIVE
-========================== */
-
-@media(max-width:900px){
-
-.family-card,
-.family-card:nth-child(even){
-
-flex-direction:column;
-
-text-align:center;
-
-}
-
-.family-card img{
-
-width:220px;
-height:220px;
-
-}
-
-.family-info h3{
-
-font-size:28px;
-
-}
-
-.family-info p{
-
-font-size:17px;
-
-}
-
-.section-title h2{
-
-font-size:38px;
-
-}
-
-.section-title p{
-
-font-size:17px;
-
-}
-
-.hero-buttons{
-
-flex-direction:column;
-
-}
-
-.hero-buttons button{
-
-width:100%;
-max-width:340px;
-
-}
-
-}
-/* ==========================================================
-   HAPPY BIRTHDAY WEBSITE V6
-   STYLE.CSS
-   PART 4
-   GALLERY • MODAL • FOOTER • FIREWORKS
-========================================================== */
-
-/* ==========================
-   GALLERY
-========================== */
+/* ==========================================
+GALLERY
+========================================== */
 
 .gallery{
+
+padding:120px 8%;
 
 background:#FFF7F1;
 
@@ -1173,29 +845,22 @@ display:grid;
 grid-template-columns:
 repeat(auto-fit,minmax(280px,1fr));
 
-gap:28px;
-
-max-width:1300px;
-
-margin:auto;
+gap:25px;
 
 }
 
 .gallery-item{
 
-position:relative;
-
 overflow:hidden;
 
 border-radius:25px;
 
-cursor:pointer;
-
 background:#fff;
 
-box-shadow:
+cursor:pointer;
 
-0 18px 40px rgba(0,0,0,.12);
+box-shadow:
+0 15px 35px rgba(0,0,0,.10);
 
 transition:.4s;
 
@@ -1203,13 +868,10 @@ transition:.4s;
 
 .gallery-item:hover{
 
-transform:
-
-translateY(-10px);
+transform:translateY(-10px);
 
 box-shadow:
-
-0 30px 60px rgba(200,16,46,.20);
+0 25px 45px rgba(200,16,46,.18);
 
 }
 
@@ -1217,57 +879,27 @@ box-shadow:
 
 width:100%;
 
-height:300px;
+height:280px;
 
 object-fit:cover;
 
-transition:.6s;
+transition:.5s;
 
 }
 
 .gallery-item:hover img{
 
-transform:scale(1.12);
+transform:scale(1.08);
 
 }
+/* ==========================================================
+   STYLE.CSS
+   PART 3
+========================================================== */
 
-/* Overlay */
-
-.gallery-item::after{
-
-content:"";
-
-position:absolute;
-
-inset:0;
-
-background:
-
-linear-gradient(
-
-180deg,
-
-transparent,
-
-rgba(0,0,0,.45)
-
-);
-
-opacity:0;
-
-transition:.4s;
-
-}
-
-.gallery-item:hover::after{
-
-opacity:1;
-
-}
-
-/* ==========================
-   FULLSCREEN GALLERY
-========================== */
+/* ==========================================
+FULLSCREEN GALLERY
+========================================== */
 
 #galleryModal{
 
@@ -1284,15 +916,9 @@ display:none;
 justify-content:center;
 align-items:center;
 
-background:
-
-rgba(0,0,0,.94);
-
-backdrop-filter:blur(10px);
+background:rgba(0,0,0,.95);
 
 z-index:99999;
-
-animation:fadeGallery .35s;
 
 }
 
@@ -1302,23 +928,20 @@ max-width:90%;
 
 max-height:88%;
 
-border-radius:22px;
+border-radius:20px;
 
 box-shadow:
-
-0 0 45px rgba(255,255,255,.20);
+0 0 40px rgba(255,255,255,.20);
 
 }
-
-/* Close */
 
 #closeGallery{
 
 position:absolute;
 
-top:25px;
+top:30px;
 
-right:35px;
+right:40px;
 
 font-size:55px;
 
@@ -1332,13 +955,11 @@ transition:.3s;
 
 #closeGallery:hover{
 
+transform:scale(1.2);
+
 color:#FFD700;
 
-transform:rotate(90deg);
-
 }
-
-/* Arrows */
 
 #prevPhoto,
 #nextPhoto{
@@ -1349,8 +970,8 @@ top:50%;
 
 transform:translateY(-50%);
 
-width:70px;
-height:70px;
+width:65px;
+height:65px;
 
 border:none;
 
@@ -1360,17 +981,11 @@ background:#FFD700;
 
 color:#111;
 
-font-size:26px;
+font-size:24px;
 
 cursor:pointer;
 
-display:flex;
-
-justify-content:center;
-
-align-items:center;
-
-transition:.35s;
+transition:.3s;
 
 }
 
@@ -1390,16 +1005,14 @@ right:35px;
 #nextPhoto:hover{
 
 transform:
-
 translateY(-50%)
-
-scale(1.12);
+scale(1.1);
 
 }
 
-/* ==========================
-   BIRTHDAY MODAL
-========================== */
+/* ==========================================
+BIRTHDAY MODAL
+========================================== */
 
 #birthdayModal{
 
@@ -1416,11 +1029,9 @@ display:none;
 justify-content:center;
 align-items:center;
 
-background:
+background:rgba(0,0,0,.75);
 
-rgba(0,0,0,.82);
-
-backdrop-filter:blur(14px);
+backdrop-filter:blur(12px);
 
 z-index:99998;
 
@@ -1428,33 +1039,28 @@ z-index:99998;
 
 .modal-card{
 
-width:92%;
+width:90%;
 
-max-width:760px;
+max-width:720px;
 
-padding:50px;
-
-border-radius:35px;
-
-text-align:center;
+padding:45px;
 
 background:#fff;
 
+border-radius:30px;
+
+text-align:center;
+
 box-shadow:
-
-0 35px 70px rgba(0,0,0,.30);
-
-animation:popup .5s;
+0 30px 70px rgba(0,0,0,.30);
 
 }
 
 .modal-card .cake{
 
-font-size:70px;
+font-size:90px;
 
 margin-bottom:20px;
-
-animation:bounceCake 2s infinite;
 
 }
 
@@ -1462,7 +1068,7 @@ animation:bounceCake 2s infinite;
 
 font-family:'Playfair Display',serif;
 
-font-size:56px;
+font-size:52px;
 
 color:#C8102E;
 
@@ -1474,9 +1080,9 @@ margin-bottom:10px;
 
 font-size:30px;
 
-color:#444;
-
 margin-bottom:20px;
+
+color:#444;
 
 }
 
@@ -1484,11 +1090,11 @@ margin-bottom:20px;
 
 font-size:20px;
 
-line-height:1.9;
+line-height:1.8;
 
 color:#555;
 
-margin-bottom:35px;
+margin-bottom:30px;
 
 }
 
@@ -1506,19 +1112,15 @@ flex-wrap:wrap;
 
 .modal-buttons button{
 
-padding:18px 40px;
+padding:16px 35px;
 
-border:none;
-
-border-radius:60px;
+border-radius:50px;
 
 font-size:18px;
 
 font-weight:700;
 
 cursor:pointer;
-
-transition:.35s;
 
 }
 
@@ -1538,21 +1140,9 @@ color:#fff;
 
 }
 
-#playMusic:hover{
-
-transform:translateY(-4px);
-
-}
-
-#closeModal:hover{
-
-transform:translateY(-4px);
-
-}
-
-/* ==========================
-   FIREWORKS
-========================== */
+/* ==========================================
+FIREWORKS
+========================================== */
 
 #fireworksCanvas{
 
@@ -1569,22 +1159,24 @@ pointer-events:none;
 z-index:99997;
 
 }
+/* ==========================================================
+   STYLE.CSS
+   PART 4
+========================================================== */
 
-/* ==========================
-   FOOTER
-========================== */
+/* ==========================================
+FOOTER
+========================================== */
 
 footer{
 
-background:#161616;
+background:#1F1F1F;
 
 padding:80px 20px;
 
 text-align:center;
 
 color:#fff;
-
-margin-top:100px;
 
 position:relative;
 
@@ -1602,20 +1194,13 @@ top:0;
 left:0;
 
 width:100%;
-height:5px;
+height:4px;
 
-background:
-
-linear-gradient(
-
+background:linear-gradient(
 90deg,
-
 #C8102E,
-
 #FFD700,
-
 #C8102E
-
 );
 
 }
@@ -1628,7 +1213,7 @@ font-size:42px;
 
 color:#FFD700;
 
-margin-bottom:18px;
+margin-bottom:15px;
 
 }
 
@@ -1640,430 +1225,83 @@ margin:auto;
 
 font-size:18px;
 
-line-height:1.9;
+line-height:1.8;
 
 color:#ddd;
 
 }
 
-footer small{
-
-display:block;
-
-margin-top:25px;
-
-color:#999;
-
-letter-spacing:2px;
-
-}
-
-/* ==========================
-   ANIMATIONS
-========================== */
-
-@keyframes popup{
-
-from{
-
-opacity:0;
-
-transform:scale(.8);
-
-}
-
-to{
-
-opacity:1;
-
-transform:scale(1);
-
-}
-
-}
-
-@keyframes bounceCake{
-
-0%,100%{
-
-transform:translateY(0);
-
-}
-
-50%{
-
-transform:translateY(-12px);
-
-}
-
-}
-
-@keyframes fadeGallery{
-
-from{
-
-opacity:0;
-
-}
-
-to{
-
-opacity:1;
-
-}
-
-}
-
-/* ==========================
-   MOBILE
-========================== */
-
-@media(max-width:768px){
-
-.gallery-item img{
-
-height:230px;
-
-}
-
-#prevPhoto,
-#nextPhoto{
-
-display:none;
-
-}
-
-.modal-card{
-
-padding:35px 25px;
-
-}
-
-.modal-card h1{
-
-font-size:40px;
-
-}
-
-.modal-card h2{
-
-font-size:24px;
-
-}
-
-.modal-card p{
-
-font-size:17px;
-
-}
-
-footer h2{
-
-font-size:30px;
-
-}
-
-footer p{
-
-font-size:16px;
-
-}
-
-}
-/* ==========================================================
-   HAPPY BIRTHDAY WEBSITE V6
-   STYLE.CSS
-   PART 5 (FINAL)
-   PREMIUM EFFECTS • MOBILE • SCROLLBAR
-========================================================== */
-
-/* ==========================
-   FLOATING HEARTS
-========================== */
-
-@keyframes heartUp{
-
-0%{
-
-transform:
-translateY(0)
-scale(.6);
-
-opacity:0;
-
-}
-
-20%{
-
-opacity:1;
-
-}
-
-100%{
-
-transform:
-translateY(-120vh)
-scale(1.5);
-
-opacity:0;
-
-}
-
-}
-
-/* ==========================
-   FALLING FLOWERS
-========================== */
-
-@keyframes flowerFall{
-
-0%{
-
-transform:
-translateY(-50px)
-rotate(0deg);
-
-opacity:0;
-
-}
-
-20%{
-
-opacity:1;
-
-}
-
-100%{
-
-transform:
-translateY(120vh)
-rotate(720deg);
-
-opacity:0;
-
-}
-
-}
-
-/* ==========================
-   CONFETTI
-========================== */
-
-@keyframes confettiFall{
-
-0%{
-
-transform:
-translateY(-40px)
-rotate(0deg);
-
-opacity:1;
-
-}
-
-100%{
-
-transform:
-translateY(120vh)
-rotate(1080deg);
-
-opacity:0;
-
-}
-
-}
-
-/* ==========================
-   BALLOON FLOAT
-========================== */
-
-@keyframes float{
-
-0%{
-
-transform:
-translateY(0);
-
-}
-
-100%{
-
-transform:
-translateY(-150vh);
-
-}
-
-}
-
-/* ==========================
-   SECTION FADE
-========================== */
-
-.reveal{
-
-opacity:0;
-
-transform:
-translateY(60px);
-
-transition:
-
-1s ease;
-
-}
-
-.reveal.active{
-
-opacity:1;
-
-transform:
-translateY(0);
-
-}
-
-/* ==========================
-   IMAGE EFFECT
-========================== */
-
-img{
-
-user-select:none;
-
--webkit-user-drag:none;
-
-transition:.35s;
-
-}
-
-img:hover{
-
-filter:brightness(1.05);
-
-}
-
-/* ==========================
-   BUTTON EFFECT
-========================== */
-
-button{
-
-transition:
-
-.35s ease;
-
-}
-
-button:active{
-
-transform:
-
-scale(.96);
-
-}
-
-/* ==========================
-   LINKS
-========================== */
-
-a{
-
-transition:.3s;
-
-}
-
-a:hover{
-
-opacity:.85;
-
-}
-
-/* ==========================
-   CUSTOM SCROLLBAR
-========================== */
+/* ==========================================
+SCROLLBAR
+========================================== */
 
 ::-webkit-scrollbar{
 
-width:12px;
+width:10px;
 
 }
 
 ::-webkit-scrollbar-track{
 
-background:#181818;
+background:#f1f1f1;
 
 }
 
 ::-webkit-scrollbar-thumb{
 
-border-radius:30px;
-
-background:
-
-linear-gradient(
-
+background:linear-gradient(
 180deg,
-
 #C8102E,
-
 #FFD700
-
 );
 
-}
-
-::-webkit-scrollbar-thumb:hover{
-
-background:
-
-linear-gradient(
-
-180deg,
-
-#FFD700,
-
-#C8102E
-
-);
+border-radius:20px;
 
 }
 
-/* ==========================
-   TEXT SELECTION
-========================== */
-
-::selection{
-
-background:#FFD700;
-
-color:#111;
-
-}
-
-/* ==========================
-   MOBILE OPTIMIZATION
-========================== */
+/* ==========================================
+RESPONSIVE
+========================================== */
 
 @media(max-width:992px){
 
-section{
+nav{
 
-padding:
-
-90px 20px;
+display:none;
 
 }
 
-.gallery-grid{
+.hero h1{
 
-grid-template-columns:
-
-repeat(auto-fit,minmax(240px,1fr));
+font-size:54px;
 
 }
 
-.family-grid{
+.hero h2{
 
-gap:30px;
+font-size:28px;
+
+}
+
+.hero p{
+
+font-size:18px;
+
+}
+
+.family-card{
+
+flex-direction:column !important;
+
+text-align:center;
+
+}
+
+.family-card img{
+
+width:220px;
+
+height:220px;
 
 }
 
@@ -2071,33 +1309,13 @@ gap:30px;
 
 @media(max-width:768px){
 
-header{
-
-padding:
-
-14px 20px;
-
-}
-
-.logo{
-
-font-size:18px;
-
-gap:8px;
-
-}
-
-.logo i{
-
-font-size:22px;
-
-}
-
 .hero{
 
-padding:
+padding-top:100px;
 
-100px 20px 70px;
+padding-bottom:70px;
+
+background-attachment:scroll;
 
 }
 
@@ -2117,7 +1335,7 @@ font-size:22px;
 
 font-size:16px;
 
-line-height:1.8;
+padding:0 10px;
 
 }
 
@@ -2139,15 +1357,15 @@ max-width:320px;
 
 .hero-poster{
 
-border-radius:18px;
-
 padding:6px;
+
+border-radius:20px;
 
 }
 
 .hero-poster img{
 
-border-radius:14px;
+border-radius:15px;
 
 }
 
@@ -2163,21 +1381,33 @@ font-size:16px;
 
 }
 
+.family{
+
+padding:80px 20px;
+
+}
+
 .family-card{
-
-flex-direction:column !important;
-
-text-align:center;
 
 padding:25px;
 
 }
 
-.family-card img{
+.family-info h3{
 
-width:220px;
+font-size:28px;
 
-height:220px;
+}
+
+.family-info p{
+
+font-size:17px;
+
+}
+
+.gallery{
+
+padding:80px 20px;
 
 }
 
@@ -2189,13 +1419,13 @@ height:220px;
 
 .modal-card{
 
-padding:30px 22px;
+padding:30px 20px;
 
 }
 
 .modal-card h1{
 
-font-size:38px;
+font-size:36px;
 
 }
 
@@ -2211,9 +1441,10 @@ font-size:17px;
 
 }
 
-footer{
+#prevPhoto,
+#nextPhoto{
 
-padding:60px 20px;
+display:none;
 
 }
 
@@ -2231,9 +1462,427 @@ font-size:16px;
 
 }
 
-/* ==========================
-   SMALL DEVICES
-========================== */
+/* ==========================================
+ANIMATIONS
+========================================== */
+
+@keyframes heroFade{
+
+from{
+
+opacity:0;
+
+transform:translateY(60px);
+
+}
+
+to{
+
+opacity:1;
+
+transform:translateY(0);
+
+}
+
+}
+
+@keyframes bounce{
+
+0%,100%{
+
+transform:translateY(0);
+
+}
+
+50%{
+
+transform:translateY(10px);
+
+}
+
+}
+
+@keyframes twinkle{
+
+0%,100%{
+
+opacity:.2;
+
+transform:scale(.5);
+
+}
+
+50%{
+
+opacity:1;
+
+transform:scale(2);
+
+}
+
+}
+
+@keyframes particleFloat{
+
+0%{
+
+transform:translateY(0);
+
+opacity:0;
+
+}
+
+20%{
+
+opacity:.7;
+
+}
+
+100%{
+
+transform:translateY(-120vh);
+
+opacity:0;
+
+}
+
+}
+
+@keyframes balloonFloat{
+
+0%{
+
+transform:translateY(0);
+
+}
+
+100%{
+
+transform:translateY(-140vh);
+
+}
+
+}
+
+@keyframes posterFloat{
+
+0%,100%{
+
+transform:translateY(0);
+
+}
+
+50%{
+
+transform:translateY(-12px);
+
+}
+
+}
+/* ==========================================================
+   STYLE.CSS
+   PART 5 (FINAL)
+========================================================== */
+
+/* ==========================================
+PREMIUM HERO EFFECTS
+========================================== */
+
+.hero-content{
+
+animation:heroFade 1.2s ease;
+
+}
+
+.hero-poster{
+
+position:relative;
+
+overflow:hidden;
+
+background-size:300%;
+
+animation:
+
+posterFloat 6s ease-in-out infinite,
+
+goldBorder 8s linear infinite;
+
+}
+
+.hero-poster::before{
+
+content:"";
+
+position:absolute;
+
+top:0;
+
+left:-150%;
+
+width:50%;
+
+height:100%;
+
+background:
+
+linear-gradient(
+
+90deg,
+
+transparent,
+
+rgba(255,255,255,.65),
+
+transparent
+
+);
+
+transform:skewX(-25deg);
+
+animation:lightSweep 4s linear infinite;
+
+}
+
+/* ==========================================
+BUTTON EFFECTS
+========================================== */
+
+.hero-buttons button{
+
+box-shadow:
+
+0 12px 30px rgba(0,0,0,.18);
+
+}
+
+.hero-buttons button:hover{
+
+transform:
+
+translateY(-6px)
+
+scale(1.05);
+
+}
+
+#celebrate:hover{
+
+background:#FFD700;
+
+color:#111;
+
+}
+
+#galleryBtn:hover{
+
+background:#FFD700;
+
+color:#111;
+
+}
+
+#musicBtn:hover{
+
+background:#FFD700;
+
+color:#111;
+
+}
+
+/* ==========================================
+FAMILY CARD EFFECT
+========================================== */
+
+.family-card{
+
+position:relative;
+
+}
+
+.family-card::before{
+
+content:"";
+
+position:absolute;
+
+top:0;
+
+left:-120%;
+
+width:60%;
+
+height:100%;
+
+background:
+
+linear-gradient(
+
+90deg,
+
+transparent,
+
+rgba(255,255,255,.60),
+
+transparent
+
+);
+
+transform:skewX(-25deg);
+
+transition:1s;
+
+}
+
+.family-card:hover::before{
+
+left:160%;
+
+}
+
+/* ==========================================
+GALLERY EFFECT
+========================================== */
+
+.gallery-item{
+
+position:relative;
+
+}
+
+.gallery-item::after{
+
+content:"";
+
+position:absolute;
+
+inset:0;
+
+background:
+
+linear-gradient(
+
+180deg,
+
+transparent,
+
+rgba(0,0,0,.20)
+
+);
+
+opacity:0;
+
+transition:.4s;
+
+}
+
+.gallery-item:hover::after{
+
+opacity:1;
+
+}
+
+/* ==========================================
+MODAL BUTTONS
+========================================== */
+
+.modal-buttons button{
+
+transition:.35s;
+
+}
+
+.modal-buttons button:hover{
+
+transform:
+
+translateY(-4px)
+
+scale(1.05);
+
+}
+
+/* ==========================================
+SMOOTH EFFECTS
+========================================== */
+
+section{
+
+transition:1s;
+
+}
+
+button:active{
+
+transform:scale(.96);
+
+}
+
+/* ==========================================
+ANIMATIONS
+========================================== */
+
+@keyframes goldBorder{
+
+0%{
+
+background-position:0%;
+
+}
+
+100%{
+
+background-position:300%;
+
+}
+
+}
+
+@keyframes lightSweep{
+
+0%{
+
+left:-150%;
+
+}
+
+100%{
+
+left:180%;
+
+}
+
+}
+
+/* ==========================================
+DESKTOP
+========================================== */
+
+@media(min-width:1400px){
+
+.hero h1{
+
+font-size:90px;
+
+}
+
+.hero h2{
+
+font-size:40px;
+
+}
+
+.hero-poster{
+
+max-width:950px;
+
+}
+
+}
+
+/* ==========================================
+LARGE MOBILE
+========================================== */
 
 @media(max-width:480px){
 
@@ -2245,15 +1894,15 @@ font-size:34px;
 
 .hero h2{
 
-font-size:20px;
+font-size:18px;
 
 }
 
-.hero-badge{
+.hero p{
 
-font-size:12px;
+font-size:15px;
 
-padding:10px 18px;
+line-height:1.7;
 
 }
 
@@ -2261,7 +1910,7 @@ padding:10px 18px;
 
 height:54px;
 
-font-size:16px;
+font-size:15px;
 
 }
 
@@ -2273,9 +1922,21 @@ height:180px;
 
 }
 
+.family-info h3{
+
+font-size:24px;
+
+}
+
+.family-info p{
+
+font-size:15px;
+
+}
+
 .gallery-item img{
 
-height:190px;
+height:180px;
 
 }
 
@@ -2287,48 +1948,8 @@ font-size:26px;
 
 footer p{
 
-font-size:15px;
+font-size:14px;
 
 }
 
 }
-
-/* ==========================
-   FINAL POLISH
-========================== */
-
-body{
-
-overflow-x:hidden;
-
-}
-
-html{
-
-scroll-behavior:smooth;
-
-}
-
-section{
-
-position:relative;
-
-z-index:2;
-
-}
-
-canvas{
-
-display:block;
-
-}
-
-audio{
-
-display:none;
-
-}
-
-/* ==========================
-   END OF STYLE.CSS V6
-========================== */

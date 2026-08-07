@@ -56,25 +56,6 @@ setTimeout(()=>{
 },5000);
 
 }
-/* ==========================================
-INTRO
-========================================== */
-
-function introAnimation(){
-
-const intro=document.getElementById("intro");
-
-if(!intro) return;
-
-setTimeout(()=>{
-
-intro.style.opacity="0";
-
-intro.style.visibility="hidden";
-
-},2500);
-
-}
 
 /* ==========================================
 STARS

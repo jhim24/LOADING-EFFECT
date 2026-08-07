@@ -10,7 +10,7 @@
 CONFIG
 ========================================== */
 
-const PASSWORD="HappyBirthday2026";
+const PASSWORD="2026";
 
 /* ==========================================
 ELEMENTS

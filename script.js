@@ -492,30 +492,27 @@ ANIMATE FIREWORKS
 
 function animateFireworks(){
 
-ctx.clearRect(0,0,canvas.width,canvas.height);
+    ctx.clearRect(0,0,canvas.width,canvas.height);
 
-for(let i=fireworkParticles.length-1;i>=0;i--){
+    for(let i=fireworkParticles.length-1;i>=0;i--){
 
-fireworkParticles[i].update();
+        fireworkParticles[i].update();
 
-fireworkParticles[i].draw();
+        fireworkParticles[i].draw();
 
-if(fireworkParticles[i].life<=0){
+        if(fireworkParticles[i].life<=0){
 
-fireworkParticles.splice(i,1);
+            fireworkParticles.splice(i,1);
 
-}
+        }
 
-}
+    }
 
-}
-
-requestAnimationFrame(animateFireworks);
+    requestAnimationFrame(animateFireworks);
 
 }
 
 animateFireworks();
-
 /* ==========================================
 START / STOP FIREWORKS
 ========================================== */

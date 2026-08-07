@@ -179,3 +179,282 @@ container.appendChild(particle);
 }
 
 console.log("✨ Background Effects Ready");
+/* ==========================================================
+   BIRTHDAY WEBSITE V8
+   APP.JS
+   PART 3
+========================================================== */
+
+/* ==========================================
+FIREWORKS
+========================================== */
+
+const canvas=document.getElementById("fireworksCanvas");
+
+const ctx=canvas?canvas.getContext("2d"):null;
+
+let fireworks=[];
+
+let fireworkInterval=null;
+
+function resizeCanvas(){
+
+if(!canvas) return;
+
+canvas.width=window.innerWidth;
+
+canvas.height=window.innerHeight;
+
+}
+
+if(canvas){
+
+resizeCanvas();
+
+window.addEventListener("resize",resizeCanvas);
+
+}
+
+class Firework{
+
+constructor(x,y,color){
+
+this.x=x;
+
+this.y=y;
+
+this.color=color;
+
+this.life=100;
+
+this.radius=Math.random()*3+2;
+
+this.dx=(Math.random()-.5)*10;
+
+this.dy=(Math.random()-.5)*10;
+
+}
+
+update(){
+
+this.x+=this.dx;
+
+this.y+=this.dy;
+
+this.dy+=0.05;
+
+this.life--;
+
+}
+
+draw(){
+
+ctx.beginPath();
+
+ctx.arc(this.x,this.y,this.radius,0,Math.PI*2);
+
+ctx.fillStyle=this.color;
+
+ctx.shadowBlur=18;
+
+ctx.shadowColor=this.color;
+
+ctx.fill();
+
+}
+
+}
+
+function createFirework(){
+
+if(!ctx) return;
+
+const colors=[
+
+"#FFD700",
+
+"#FFFFFF",
+
+"#C8102E",
+
+"#FFA500"
+
+];
+
+const color=
+
+colors[Math.floor(Math.random()*colors.length)];
+
+const x=Math.random()*canvas.width;
+
+const y=Math.random()*canvas.height*.45;
+
+const total=window.innerWidth<768?45:90;
+
+for(let i=0;i<total;i++){
+
+fireworks.push(
+
+new Firework(x,y,color)
+
+);
+
+}
+
+}
+
+function animateFireworks(){
+
+if(!ctx) return;
+
+ctx.clearRect(0,0,canvas.width,canvas.height);
+
+for(let i=fireworks.length-1;i>=0;i--){
+
+fireworks[i].update();
+
+fireworks[i].draw();
+
+if(fireworks[i].life<=0){
+
+fireworks.splice(i,1);
+
+}
+
+}
+
+requestAnimationFrame(animateFireworks);
+
+}
+
+if(canvas){
+
+animateFireworks();
+
+}
+
+function startFireworks(){
+
+stopFireworks();
+
+createFirework();
+
+fireworkInterval=
+
+setInterval(createFirework,700);
+
+}
+
+function stopFireworks(){
+
+clearInterval(fireworkInterval);
+
+fireworks=[];
+
+}
+
+/* ==========================================
+CELEBRATE BUTTON
+========================================== */
+
+if(celebrateBtn){
+
+celebrateBtn.addEventListener("click",()=>{
+
+startFireworks();
+
+launchConfetti();
+
+setTimeout(stopFireworks,7000);
+
+});
+
+}
+
+/* ==========================================
+CONFETTI
+========================================== */
+
+function launchConfetti(){
+
+const total=
+
+window.innerWidth<768?70:160;
+
+for(let i=0;i<total;i++){
+
+const conf=document.createElement("div");
+
+conf.className="confetti";
+
+conf.style.left=Math.random()*100+"%";
+
+conf.style.background=
+
+`hsl(${Math.random()*360},100%,60%)`;
+
+conf.style.animationDuration=
+
+(3+Math.random()*3)+"s";
+
+document.body.appendChild(conf);
+
+setTimeout(()=>{
+
+conf.remove();
+
+},6000);
+
+}
+
+}
+
+/* ==========================================
+MUSIC
+========================================== */
+
+const music=
+
+document.getElementById("birthdayMusic");
+
+let playing=false;
+
+if(musicBtn && music){
+
+musicBtn.addEventListener("click",async()=>{
+
+try{
+
+if(!playing){
+
+await music.play();
+
+playing=true;
+
+musicBtn.innerHTML="⏸ Pause";
+
+}else{
+
+music.pause();
+
+playing=false;
+
+musicBtn.innerHTML="🎵 Music";
+
+}
+
+}catch(e){
+
+console.log(e);
+
+}
+
+});
+
+}
+
+/* ==========================================
+END PART 3
+========================================== */
+
+console.log("🎆 APP.JS PART 3 READY");

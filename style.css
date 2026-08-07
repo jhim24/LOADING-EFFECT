@@ -1,5 +1,5 @@
 /* ==========================================================
-   HAPPY BIRTHDAY WEBSITE V6
+   HAPPY BIRTHDAY WEBSITE V7
    STYLE.CSS
    PART 1
 ========================================================== */
@@ -7,21 +7,30 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Playfair+Display:wght@600;700;800&display=swap');
 
 /* ==========================================
-ROOT
+ROOT VARIABLES
 ========================================== */
 
 :root{
 
 --red:#C8102E;
---red-dark:#990F25;
+--red-dark:#8B0E22;
 
 --gold:#D4AF37;
 --gold-light:#FFD700;
 
---black:#1F1F1F;
 --white:#FFFFFF;
+--black:#111111;
 
---bg:#FFF7F1;
+--text:#2D2D2D;
+--text-light:#666666;
+
+--bg:#FFF8F3;
+
+--shadow:0 15px 45px rgba(0,0,0,.12);
+
+--radius:28px;
+
+--transition:.35s ease;
 
 }
 
@@ -41,6 +50,8 @@ html{
 
 scroll-behavior:smooth;
 
+-webkit-text-size-adjust:100%;
+
 }
 
 body{
@@ -49,14 +60,18 @@ font-family:'Poppins',sans-serif;
 
 background:var(--bg);
 
-color:var(--black);
+color:var(--text);
 
 overflow-x:hidden;
+
+min-height:100vh;
+
+line-height:1.6;
 
 }
 
 /* ==========================================
-DEFAULT
+GLOBAL
 ========================================== */
 
 img{
@@ -64,6 +79,8 @@ img{
 display:block;
 
 max-width:100%;
+
+height:auto;
 
 user-select:none;
 
@@ -75,13 +92,13 @@ button{
 
 font-family:'Poppins',sans-serif;
 
-cursor:pointer;
-
 border:none;
 
 outline:none;
 
-transition:.35s;
+cursor:pointer;
+
+transition:var(--transition);
 
 }
 
@@ -91,13 +108,49 @@ text-decoration:none;
 
 color:inherit;
 
+transition:var(--transition);
+
+}
+
+section{
+
+position:relative;
+
+width:100%;
+
+z-index:2;
+
 }
 
 /* ==========================================
-INTRO
+BACKGROUND EFFECTS
 ========================================== */
 
-#intro{
+#stars,
+#particles,
+#balloons{
+
+position:fixed;
+
+top:0;
+left:0;
+
+width:100%;
+height:100%;
+
+pointer-events:none;
+
+overflow:hidden;
+
+z-index:0;
+
+}
+
+/* ==========================================
+CINEMATIC INTRO
+========================================== */
+
+#cinematicIntro{
 
 position:fixed;
 
@@ -108,59 +161,512 @@ display:flex;
 justify-content:center;
 align-items:center;
 
+padding:20px;
+
 background:
-linear-gradient(
-135deg,
-#5C0000,
-#C8102E,
-#D4AF37
-);
+radial-gradient(circle at center,
+#1a0000 0%,
+#090909 65%,
+#000 100%);
 
-z-index:99999;
+overflow:hidden;
 
-transition:1s;
+z-index:999999;
+
+transition:
+opacity 1.2s ease,
+visibility 1.2s ease;
 
 }
 
-.intro-content{
+#cinematicIntro::before{
+
+content:"";
+
+position:absolute;
+
+width:900px;
+height:900px;
+
+border-radius:50%;
+
+background:
+radial-gradient(circle,
+rgba(255,215,0,.18),
+transparent 70%);
+
+animation:introRotate 20s linear infinite;
+
+}
+
+#cinematicIntro::after{
+
+content:"";
+
+position:absolute;
+
+width:700px;
+height:700px;
+
+border-radius:50%;
+
+background:
+radial-gradient(circle,
+rgba(200,16,46,.22),
+transparent 70%);
+
+animation:introRotateReverse 24s linear infinite;
+
+}
+
+.cinematic-content{
+
+position:relative;
+
+z-index:2;
 
 text-align:center;
 
-color:#fff;
+max-width:900px;
+
+animation:introFade 1.5s ease;
 
 padding:20px;
 
 }
 
-.intro-content h3{
+.intro-small{
 
-font-size:18px;
+display:block;
 
-letter-spacing:6px;
+font-size:15px;
 
-margin-bottom:20px;
+font-weight:700;
 
-color:#FFD700;
+letter-spacing:8px;
+
+text-transform:uppercase;
+
+color:var(--gold-light);
+
+margin-bottom:25px;
 
 }
 
-.intro-content h1{
+.cinematic-content h1{
 
 font-family:'Playfair Display',serif;
 
 font-size:72px;
 
+color:#fff;
+
+margin-bottom:25px;
+
+text-shadow:
+0 0 25px rgba(255,215,0,.35);
+
+}
+
+.gold-divider{
+
+width:180px;
+
+height:4px;
+
+margin:0 auto 35px;
+
+border-radius:30px;
+
+background:
+linear-gradient(
+90deg,
+transparent,
+var(--gold-light),
+transparent
+);
+
+}
+
+.cinematic-content h2{
+
+font-size:38px;
+
+font-weight:600;
+
+color:var(--gold-light);
+
 margin-bottom:10px;
 
 }
 
-.intro-content h2{
+.cinematic-content h3{
+
+font-family:'Playfair Display',serif;
+
+font-size:54px;
+
+color:#fff;
+
+margin-bottom:25px;
+
+}
+
+.cinematic-content p{
+
+font-size:22px;
+
+color:#fff;
+
+opacity:.95;
+
+line-height:1.8;
+
+}
+
+/* ==========================================
+RESPONSIVE BASE
+========================================== */
+
+@media(max-width:768px){
+
+body{
+
+font-size:15px;
+
+}
+
+.cinematic-content{
+
+padding:20px;
+
+}
+
+.intro-small{
+
+font-size:12px;
+
+letter-spacing:4px;
+
+}
+
+.cinematic-content h1{
+
+font-size:42px;
+
+}
+
+.cinematic-content h2{
+
+font-size:24px;
+
+}
+
+.cinematic-content h3{
 
 font-size:32px;
 
-font-weight:500;
+}
+
+.cinematic-content p{
+
+font-size:16px;
 
 }
+
+.gold-divider{
+
+width:120px;
+
+}
+
+}
+/* ==========================================================
+   HAPPY BIRTHDAY WEBSITE V7
+   STYLE.CSS
+   PART 2
+========================================================== */
+
+/* ==========================================
+BACKGROUND EFFECTS
+========================================== */
+
+#stars,
+#particles,
+#balloons{
+
+position:fixed;
+
+top:0;
+left:0;
+
+width:100%;
+height:100%;
+
+overflow:hidden;
+
+pointer-events:none;
+
+z-index:1;
+
+}
+
+/* ==========================================
+STARS
+========================================== */
+
+.star{
+
+position:absolute;
+
+width:2px;
+height:2px;
+
+border-radius:50%;
+
+background:#FFFFFF;
+
+box-shadow:
+
+0 0 8px #FFFFFF,
+
+0 0 15px #FFFFFF,
+
+0 0 25px rgba(255,255,255,.8);
+
+animation:
+
+twinkle linear infinite;
+
+}
+
+/* ==========================================
+GOLD PARTICLES
+========================================== */
+
+.particle{
+
+position:absolute;
+
+width:6px;
+height:6px;
+
+border-radius:50%;
+
+background:
+
+radial-gradient(circle,
+
+#FFF7C2,
+
+#FFD700,
+
+#D4AF37);
+
+box-shadow:
+
+0 0 15px rgba(255,215,0,.9),
+
+0 0 35px rgba(255,215,0,.45);
+
+opacity:.7;
+
+animation:
+
+particleFloat linear infinite;
+
+}
+
+/* ==========================================
+BALLOONS
+========================================== */
+
+.balloon{
+
+position:absolute;
+
+bottom:-180px;
+
+width:70px;
+height:90px;
+
+border-radius:50%;
+
+opacity:.92;
+
+box-shadow:
+
+0 10px 30px rgba(0,0,0,.25);
+
+animation:
+
+balloonFloat linear infinite;
+
+}
+
+.balloon::before{
+
+content:"";
+
+position:absolute;
+
+top:12px;
+left:18px;
+
+width:18px;
+height:18px;
+
+border-radius:50%;
+
+background:
+
+rgba(255,255,255,.45);
+
+filter:blur(2px);
+
+}
+
+.balloon::after{
+
+content:"";
+
+position:absolute;
+
+left:50%;
+
+top:88px;
+
+transform:translateX(-50%);
+
+width:2px;
+height:120px;
+
+background:#DDDDDD;
+
+}
+
+/* ==========================================
+GLOBAL SECTION
+========================================== */
+
+section{
+
+position:relative;
+
+z-index:2;
+
+}
+
+/* ==========================================
+SECTION TITLE
+========================================== */
+
+.section-title{
+
+text-align:center;
+
+max-width:900px;
+
+margin:0 auto 70px;
+
+padding:0 20px;
+
+}
+
+.section-title h2{
+
+font-family:'Playfair Display',serif;
+
+font-size:52px;
+
+color:var(--red);
+
+margin-bottom:15px;
+
+line-height:1.2;
+
+}
+
+.section-title p{
+
+font-size:20px;
+
+color:var(--text-light);
+
+line-height:1.7;
+
+}
+
+/* ==========================================
+REVEAL
+========================================== */
+
+.reveal{
+
+opacity:0;
+
+transform:translateY(70px);
+
+transition:
+
+opacity .8s ease,
+
+transform .8s ease;
+
+}
+
+.reveal.active{
+
+opacity:1;
+
+transform:translateY(0);
+
+}
+
+/* ==========================================
+MOBILE
+========================================== */
+
+@media(max-width:768px){
+
+.section-title{
+
+margin-bottom:50px;
+
+}
+
+.section-title h2{
+
+font-size:34px;
+
+}
+
+.section-title p{
+
+font-size:16px;
+
+}
+
+.balloon{
+
+width:55px;
+
+height:72px;
+
+}
+
+.balloon::after{
+
+height:90px;
+
+}
+
+}
+/* ==========================================================
+   HAPPY BIRTHDAY WEBSITE V7
+   STYLE.CSS
+   PART 3
+========================================================== */
 
 /* ==========================================
 HEADER
@@ -171,12 +677,11 @@ header{
 position:fixed;
 
 top:0;
-
 left:0;
 
 width:100%;
 
-padding:18px 8%;
+padding:16px 5%;
 
 display:flex;
 
@@ -187,11 +692,13 @@ background:rgba(255,255,255,.88);
 
 backdrop-filter:blur(18px);
 
-box-shadow:
+-webkit-backdrop-filter:blur(18px);
 
-0 10px 30px rgba(0,0,0,.08);
+box-shadow:0 8px 30px rgba(0,0,0,.08);
 
 z-index:999;
+
+transition:.35s;
 
 }
 
@@ -213,9 +720,11 @@ color:var(--red);
 
 .logo i{
 
-font-size:28px;
+font-size:30px;
 
-color:var(--gold);
+color:var(--gold-light);
+
+animation:bounce 3s infinite;
 
 }
 
@@ -223,15 +732,27 @@ nav{
 
 display:flex;
 
-gap:35px;
+align-items:center;
+
+gap:30px;
 
 }
 
 nav a{
 
+position:relative;
+
 font-weight:600;
 
-position:relative;
+padding:6px 0;
+
+transition:.3s;
+
+}
+
+nav a:hover{
+
+color:var(--red);
 
 }
 
@@ -242,22 +763,17 @@ content:"";
 position:absolute;
 
 left:0;
-
-bottom:-6px;
+bottom:-4px;
 
 width:0;
 
 height:3px;
 
-background:var(--gold);
+border-radius:20px;
+
+background:var(--gold-light);
 
 transition:.35s;
-
-}
-
-nav a:hover{
-
-color:var(--red);
 
 }
 
@@ -275,22 +791,22 @@ HERO
 
 position:relative;
 
-min-height:100vh;
-
 display:flex;
 
 justify-content:center;
 align-items:center;
 
+min-height:100vh;
+
 padding:120px 20px 80px;
 
-background-image:
+background:
 
 linear-gradient(
 
 rgba(0,0,0,.45),
 
-rgba(0,0,0,.60)
+rgba(0,0,0,.65)
 
 ),
 
@@ -301,6 +817,8 @@ background-size:cover;
 background-position:center;
 
 background-repeat:no-repeat;
+
+overflow:hidden;
 
 }
 
@@ -334,7 +852,11 @@ width:100%;
 
 max-width:1200px;
 
+margin:auto;
+
 text-align:center;
+
+animation:heroFade 1.2s ease;
 
 }
 
@@ -350,7 +872,7 @@ align-items:center;
 
 gap:10px;
 
-padding:12px 30px;
+padding:12px 28px;
 
 border-radius:50px;
 
@@ -362,7 +884,7 @@ color:#FFD700;
 
 font-weight:600;
 
-margin-bottom:25px;
+margin-bottom:30px;
 
 }
 
@@ -376,13 +898,13 @@ font-family:'Playfair Display',serif;
 
 font-size:76px;
 
-color:#fff;
+color:#FFFFFF;
+
+margin-bottom:10px;
 
 text-shadow:
 
-0 0 25px rgba(212,175,55,.5);
-
-margin-bottom:10px;
+0 0 25px rgba(255,215,0,.35);
 
 }
 
@@ -390,11 +912,11 @@ margin-bottom:10px;
 
 font-size:34px;
 
+font-weight:600;
+
 color:#FFD700;
 
 margin-bottom:35px;
-
-font-weight:600;
 
 }
 
@@ -404,13 +926,15 @@ POSTER
 
 .hero-poster{
 
+width:100%;
+
 max-width:850px;
 
-margin:auto;
+margin:0 auto;
 
 padding:10px;
 
-border-radius:30px;
+border-radius:28px;
 
 background:
 
@@ -420,41 +944,59 @@ linear-gradient(
 
 #FFD700,
 
-#D4AF37,
+#FFF0A5,
 
-#FFF4B0,
+#D4AF37,
 
 #FFD700
 
 );
 
+background-size:300%;
+
 box-shadow:
 
-0 20px 50px rgba(0,0,0,.35);
+0 25px 60px rgba(0,0,0,.35);
+
+animation:
+
+posterFloat 6s ease-in-out infinite,
+
+goldBorder 8s linear infinite;
+
+overflow:hidden;
 
 }
 
 .hero-poster img{
 
-border-radius:22px;
-
 width:100%;
 
 display:block;
 
+border-radius:20px;
+
 }
 
+/* ==========================================
+MESSAGE
+========================================== */
+
 .hero p{
+
+width:100%;
 
 max-width:900px;
 
 margin:35px auto;
 
+padding:0 15px;
+
 font-size:22px;
 
-line-height:1.8;
+line-height:1.9;
 
-color:#fff;
+color:#FFFFFF;
 
 }
 
@@ -468,9 +1010,11 @@ display:flex;
 
 justify-content:center;
 
-gap:20px;
+align-items:center;
 
 flex-wrap:wrap;
+
+gap:18px;
 
 margin-top:35px;
 
@@ -478,45 +1022,67 @@ margin-top:35px;
 
 .hero-buttons button{
 
-min-width:190px;
+width:100%;
+
+max-width:220px;
 
 height:60px;
 
 border-radius:50px;
 
-font-size:18px;
+font-size:17px;
 
 font-weight:700;
+
+box-shadow:
+
+0 12px 30px rgba(0,0,0,.20);
+
+transition:.35s;
 
 }
 
 #celebrate{
 
-background:#C8102E;
+background:var(--red);
 
-color:#fff;
+color:#FFFFFF;
 
 }
 
 #galleryBtn{
 
-background:#fff;
+background:#FFFFFF;
 
-color:#C8102E;
+color:var(--red);
 
 }
 
 #musicBtn{
 
-background:#1F1F1F;
+background:#222;
 
-color:#fff;
+color:#FFFFFF;
 
 }
 
 .hero-buttons button:hover{
 
-transform:translateY(-5px);
+transform:
+
+translateY(-5px)
+
+scale(1.03);
+
+}
+
+#celebrate:hover,
+#galleryBtn:hover,
+#musicBtn:hover{
+
+background:var(--gold-light);
+
+color:#111;
 
 }
 
@@ -526,7 +1092,7 @@ SCROLL
 
 .scroll-down{
 
-margin-top:60px;
+margin-top:55px;
 
 display:flex;
 
@@ -534,7 +1100,9 @@ flex-direction:column;
 
 align-items:center;
 
-color:#fff;
+gap:10px;
+
+color:#FFFFFF;
 
 animation:bounce 2s infinite;
 
@@ -542,192 +1110,164 @@ animation:bounce 2s infinite;
 
 .scroll-down i{
 
-font-size:30px;
+font-size:28px;
 
 color:#FFD700;
 
-margin-bottom:10px;
+}
+
+/* ==========================================
+TABLET
+========================================== */
+
+@media(max-width:992px){
+
+header{
+
+padding:14px 20px;
+
+}
+
+nav{
+
+display:none;
+
+}
+
+.hero h1{
+
+font-size:56px;
+
+}
+
+.hero h2{
+
+font-size:28px;
+
+}
+
+.hero p{
+
+font-size:18px;
+
+}
+
+}
+
+/* ==========================================
+MOBILE
+========================================== */
+
+@media(max-width:768px){
+
+.hero{
+
+padding:100px 20px 70px;
+
+}
+
+.hero h1{
+
+font-size:40px;
+
+}
+
+.hero h2{
+
+font-size:22px;
+
+}
+
+.hero p{
+
+font-size:16px;
+
+line-height:1.8;
+
+}
+
+.hero-buttons{
+
+flex-direction:column;
+
+}
+
+.hero-buttons button{
+
+max-width:320px;
+
+height:56px;
+
+font-size:16px;
+
+}
+
+.hero-poster{
+
+padding:6px;
+
+border-radius:20px;
+
+}
+
+.hero-poster img{
+
+border-radius:16px;
+
+}
+
+.logo{
+
+font-size:18px;
+
+}
+
+.logo i{
+
+font-size:22px;
+
+}
 
 }
 /* ==========================================================
+   HAPPY BIRTHDAY WEBSITE V7
    STYLE.CSS
-   PART 2
+   PART 4
 ========================================================== */
 
 /* ==========================================
-BACKGROUND EFFECTS
-========================================== */
-
-#stars,
-#particles,
-#balloons{
-
-position:fixed;
-
-top:0;
-left:0;
-
-width:100%;
-height:100%;
-
-pointer-events:none;
-
-overflow:hidden;
-
-z-index:0;
-
-}
-
-.star{
-
-position:absolute;
-
-width:3px;
-height:3px;
-
-background:#fff;
-
-border-radius:50%;
-
-box-shadow:
-0 0 10px #fff,
-0 0 20px #fff;
-
-animation:twinkle infinite;
-
-}
-
-.particle{
-
-position:absolute;
-
-width:6px;
-height:6px;
-
-border-radius:50%;
-
-background:#FFD700;
-
-box-shadow:
-0 0 15px gold;
-
-animation:particleFloat linear infinite;
-
-}
-
-.balloon{
-
-position:absolute;
-
-bottom:-180px;
-
-width:70px;
-height:90px;
-
-border-radius:50%;
-
-box-shadow:
-0 10px 25px rgba(0,0,0,.25);
-
-animation:balloonFloat linear infinite;
-
-}
-
-.balloon::after{
-
-content:"";
-
-position:absolute;
-
-width:2px;
-height:120px;
-
-background:#ddd;
-
-left:50%;
-
-top:88px;
-
-transform:translateX(-50%);
-
-}
-
-/* ==========================================
-SECTION
-========================================== */
-
-section{
-
-position:relative;
-
-z-index:2;
-
-}
-
-/* ==========================================
-SECTION TITLE
-========================================== */
-
-.section-title{
-
-text-align:center;
-
-margin-bottom:70px;
-
-}
-
-.section-title h2{
-
-font-family:'Playfair Display',serif;
-
-font-size:52px;
-
-color:#C8102E;
-
-margin-bottom:15px;
-
-}
-
-.section-title p{
-
-font-size:20px;
-
-color:#666;
-
-}
-
-/* ==========================================
-FAMILY
+FAMILY SECTION
 ========================================== */
 
 .family{
 
-padding:120px 8%;
+padding:120px 5%;
 
-background:
-linear-gradient(
+background:linear-gradient(
 180deg,
-#FFF8F2,
-#FFFDFB
+#FFF8F3,
+#FFFFFF
 );
 
 }
 
 .family-grid{
 
+max-width:1300px;
+
+margin:auto;
+
 display:flex;
 
 flex-direction:column;
 
-gap:40px;
-
-max-width:1200px;
-
-margin:auto;
+gap:45px;
 
 }
 
 .family-card{
+
+position:relative;
 
 display:flex;
 
@@ -735,18 +1275,18 @@ align-items:center;
 
 gap:35px;
 
-padding:30px;
+padding:35px;
 
-background:rgba(255,255,255,.92);
+background:rgba(255,255,255,.95);
 
 border-radius:30px;
 
+overflow:hidden;
+
 box-shadow:
-0 20px 45px rgba(0,0,0,.08);
+0 20px 50px rgba(0,0,0,.08);
 
 transition:.4s;
-
-overflow:hidden;
 
 }
 
@@ -758,11 +1298,45 @@ flex-direction:row-reverse;
 
 .family-card:hover{
 
-transform:
-translateY(-10px);
+transform:translateY(-10px);
 
 box-shadow:
-0 25px 55px rgba(200,16,46,.18);
+0 30px 60px rgba(200,16,46,.18);
+
+}
+
+.family-card::before{
+
+content:"";
+
+position:absolute;
+
+top:0;
+
+left:-120%;
+
+width:60%;
+
+height:100%;
+
+background:
+
+linear-gradient(
+90deg,
+transparent,
+rgba(255,255,255,.55),
+transparent
+);
+
+transform:skewX(-25deg);
+
+transition:1s;
+
+}
+
+.family-card:hover::before{
+
+left:160%;
 
 }
 
@@ -776,7 +1350,13 @@ object-fit:cover;
 
 border-radius:25px;
 
-border:6px solid #FFD700;
+border:6px solid var(--gold-light);
+
+box-shadow:
+
+0 15px 40px rgba(0,0,0,.18);
+
+flex-shrink:0;
 
 }
 
@@ -792,9 +1372,9 @@ font-family:'Playfair Display',serif;
 
 font-size:34px;
 
-color:#C8102E;
+color:var(--red);
 
-margin-bottom:12px;
+margin-bottom:15px;
 
 }
 
@@ -802,17 +1382,17 @@ margin-bottom:12px;
 
 display:inline-block;
 
-padding:8px 18px;
+padding:8px 20px;
 
 border-radius:30px;
 
-background:#FFD700;
+background:var(--gold-light);
+
+color:#111;
 
 font-weight:700;
 
 margin-bottom:20px;
-
-color:#111;
 
 }
 
@@ -822,19 +1402,19 @@ font-size:18px;
 
 line-height:1.9;
 
-color:#555;
+color:var(--text-light);
 
 }
 
 /* ==========================================
-GALLERY
+GALLERY SECTION
 ========================================== */
 
 .gallery{
 
-padding:120px 8%;
+padding:120px 5%;
 
-background:#FFF7F1;
+background:#FFF7F2;
 
 }
 
@@ -843,13 +1423,20 @@ background:#FFF7F1;
 display:grid;
 
 grid-template-columns:
-repeat(auto-fit,minmax(280px,1fr));
+
+repeat(auto-fit,minmax(260px,1fr));
 
 gap:25px;
+
+max-width:1400px;
+
+margin:auto;
 
 }
 
 .gallery-item{
+
+position:relative;
 
 overflow:hidden;
 
@@ -860,7 +1447,8 @@ background:#fff;
 cursor:pointer;
 
 box-shadow:
-0 15px 35px rgba(0,0,0,.10);
+
+0 18px 40px rgba(0,0,0,.10);
 
 transition:.4s;
 
@@ -868,10 +1456,13 @@ transition:.4s;
 
 .gallery-item:hover{
 
-transform:translateY(-10px);
+transform:
+
+translateY(-8px);
 
 box-shadow:
-0 25px 45px rgba(200,16,46,.18);
+
+0 25px 55px rgba(200,16,46,.20);
 
 }
 
@@ -892,39 +1483,186 @@ transition:.5s;
 transform:scale(1.08);
 
 }
+
+.gallery-item::after{
+
+content:"";
+
+position:absolute;
+
+inset:0;
+
+background:
+
+linear-gradient(
+
+180deg,
+
+transparent,
+
+rgba(0,0,0,.25)
+
+);
+
+opacity:0;
+
+transition:.35s;
+
+}
+
+.gallery-item:hover::after{
+
+opacity:1;
+
+}
+
+/* ==========================================
+TABLET
+========================================== */
+
+@media(max-width:992px){
+
+.family-card{
+
+flex-direction:column !important;
+
+text-align:center;
+
+}
+
+.family-card img{
+
+width:220px;
+
+height:220px;
+
+}
+
+.family-info h3{
+
+font-size:30px;
+
+}
+
+.family-info p{
+
+font-size:17px;
+
+}
+
+}
+
+/* ==========================================
+MOBILE
+========================================== */
+
+@media(max-width:768px){
+
+.family{
+
+padding:80px 20px;
+
+}
+
+.family-card{
+
+padding:25px;
+
+border-radius:24px;
+
+}
+
+.family-card img{
+
+width:180px;
+
+height:180px;
+
+}
+
+.family-info h3{
+
+font-size:24px;
+
+}
+
+.family-info span{
+
+font-size:14px;
+
+padding:7px 16px;
+
+}
+
+.family-info p{
+
+font-size:15px;
+
+line-height:1.8;
+
+}
+
+.gallery{
+
+padding:80px 20px;
+
+}
+
+.gallery-grid{
+
+grid-template-columns:1fr;
+
+gap:20px;
+
+}
+
+.gallery-item{
+
+border-radius:20px;
+
+}
+
+.gallery-item img{
+
+height:220px;
+
+}
+
+}
 /* ==========================================================
+   HAPPY BIRTHDAY WEBSITE V7
    STYLE.CSS
-   PART 3
+   PART 5 (FINAL)
 ========================================================== */
 
 /* ==========================================
-FULLSCREEN GALLERY
+FULL SCREEN GALLERY
 ========================================== */
 
 #galleryModal{
 
 position:fixed;
 
-top:0;
-left:0;
-
-width:100%;
-height:100%;
+inset:0;
 
 display:none;
 
 justify-content:center;
 align-items:center;
 
-background:rgba(0,0,0,.95);
+background:rgba(0,0,0,.96);
+
+backdrop-filter:blur(10px);
 
 z-index:99999;
+
+animation:fadeIn .35s ease;
 
 }
 
 #galleryImage{
 
-max-width:90%;
+max-width:92%;
 
 max-height:88%;
 
@@ -939,9 +1677,9 @@ box-shadow:
 
 position:absolute;
 
-top:30px;
+top:25px;
 
-right:40px;
+right:30px;
 
 font-size:55px;
 
@@ -955,9 +1693,9 @@ transition:.3s;
 
 #closeGallery:hover{
 
-transform:scale(1.2);
+color:var(--gold-light);
 
-color:#FFD700;
+transform:scale(1.15);
 
 }
 
@@ -973,17 +1711,18 @@ transform:translateY(-50%);
 width:65px;
 height:65px;
 
-border:none;
-
 border-radius:50%;
 
-background:#FFD700;
+background:rgba(255,215,0,.95);
 
 color:#111;
 
 font-size:24px;
 
-cursor:pointer;
+display:flex;
+
+justify-content:center;
+align-items:center;
 
 transition:.3s;
 
@@ -991,13 +1730,13 @@ transition:.3s;
 
 #prevPhoto{
 
-left:35px;
+left:25px;
 
 }
 
 #nextPhoto{
 
-right:35px;
+right:25px;
 
 }
 
@@ -1006,7 +1745,7 @@ right:35px;
 
 transform:
 translateY(-50%)
-scale(1.1);
+scale(1.08);
 
 }
 
@@ -1018,49 +1757,54 @@ BIRTHDAY MODAL
 
 position:fixed;
 
-top:0;
-left:0;
-
-width:100%;
-height:100%;
+inset:0;
 
 display:none;
 
 justify-content:center;
 align-items:center;
 
-background:rgba(0,0,0,.75);
+padding:20px;
+
+background:rgba(0,0,0,.72);
 
 backdrop-filter:blur(12px);
 
 z-index:99998;
 
+animation:fadeIn .4s ease;
+
 }
 
 .modal-card{
 
-width:90%;
+width:100%;
 
 max-width:720px;
 
 padding:45px;
 
-background:#fff;
-
 border-radius:30px;
+
+background:#FFFFFF;
 
 text-align:center;
 
 box-shadow:
+
 0 30px 70px rgba(0,0,0,.30);
+
+animation:popup .45s ease;
 
 }
 
-.modal-card .cake{
+.cake{
 
 font-size:90px;
 
 margin-bottom:20px;
+
+animation:bounce 2s infinite;
 
 }
 
@@ -1070,7 +1814,7 @@ font-family:'Playfair Display',serif;
 
 font-size:52px;
 
-color:#C8102E;
+color:var(--red);
 
 margin-bottom:10px;
 
@@ -1078,7 +1822,7 @@ margin-bottom:10px;
 
 .modal-card h2{
 
-font-size:30px;
+font-size:28px;
 
 margin-bottom:20px;
 
@@ -1088,13 +1832,15 @@ color:#444;
 
 .modal-card p{
 
-font-size:20px;
+font-size:19px;
 
-line-height:1.8;
+line-height:1.9;
 
 color:#555;
 
 margin-bottom:30px;
+
+white-space:pre-line;
 
 }
 
@@ -1104,7 +1850,7 @@ display:flex;
 
 justify-content:center;
 
-gap:20px;
+gap:18px;
 
 flex-wrap:wrap;
 
@@ -1112,21 +1858,21 @@ flex-wrap:wrap;
 
 .modal-buttons button{
 
-padding:16px 35px;
+padding:16px 34px;
 
 border-radius:50px;
 
-font-size:18px;
+font-size:17px;
 
 font-weight:700;
 
-cursor:pointer;
+transition:.35s;
 
 }
 
 #playMusic{
 
-background:#FFD700;
+background:var(--gold-light);
 
 color:#111;
 
@@ -1134,9 +1880,17 @@ color:#111;
 
 #closeModal{
 
-background:#C8102E;
+background:var(--red);
 
 color:#fff;
+
+}
+
+.modal-buttons button:hover{
+
+transform:
+translateY(-4px)
+scale(1.04);
 
 }
 
@@ -1148,8 +1902,7 @@ FIREWORKS
 
 position:fixed;
 
-top:0;
-left:0;
+inset:0;
 
 width:100%;
 height:100%;
@@ -1159,10 +1912,6 @@ pointer-events:none;
 z-index:99997;
 
 }
-/* ==========================================================
-   STYLE.CSS
-   PART 4
-========================================================== */
 
 /* ==========================================
 FOOTER
@@ -1170,9 +1919,9 @@ FOOTER
 
 footer{
 
-background:#1F1F1F;
+background:#181818;
 
-padding:80px 20px;
+padding:90px 20px;
 
 text-align:center;
 
@@ -1191,16 +1940,18 @@ content:"";
 position:absolute;
 
 top:0;
+
 left:0;
 
 width:100%;
+
 height:4px;
 
 background:linear-gradient(
 90deg,
-#C8102E,
-#FFD700,
-#C8102E
+var(--red),
+var(--gold-light),
+var(--red)
 );
 
 }
@@ -1211,7 +1962,7 @@ font-family:'Playfair Display',serif;
 
 font-size:42px;
 
-color:#FFD700;
+color:var(--gold-light);
 
 margin-bottom:15px;
 
@@ -1225,9 +1976,9 @@ margin:auto;
 
 font-size:18px;
 
-line-height:1.8;
+line-height:1.9;
 
-color:#ddd;
+color:#DDD;
 
 }
 
@@ -1241,18 +1992,12 @@ width:10px;
 
 }
 
-::-webkit-scrollbar-track{
-
-background:#f1f1f1;
-
-}
-
 ::-webkit-scrollbar-thumb{
 
 background:linear-gradient(
 180deg,
-#C8102E,
-#FFD700
+var(--red),
+var(--gold-light)
 );
 
 border-radius:20px;
@@ -1260,160 +2005,15 @@ border-radius:20px;
 }
 
 /* ==========================================
-RESPONSIVE
+MOBILE
 ========================================== */
-
-@media(max-width:992px){
-
-nav{
-
-display:none;
-
-}
-
-.hero h1{
-
-font-size:54px;
-
-}
-
-.hero h2{
-
-font-size:28px;
-
-}
-
-.hero p{
-
-font-size:18px;
-
-}
-
-.family-card{
-
-flex-direction:column !important;
-
-text-align:center;
-
-}
-
-.family-card img{
-
-width:220px;
-
-height:220px;
-
-}
-
-}
 
 @media(max-width:768px){
 
-.hero{
+#prevPhoto,
+#nextPhoto{
 
-padding-top:100px;
-
-padding-bottom:70px;
-
-background-attachment:scroll;
-
-}
-
-.hero h1{
-
-font-size:42px;
-
-}
-
-.hero h2{
-
-font-size:22px;
-
-}
-
-.hero p{
-
-font-size:16px;
-
-padding:0 10px;
-
-}
-
-.hero-buttons{
-
-flex-direction:column;
-
-align-items:center;
-
-}
-
-.hero-buttons button{
-
-width:100%;
-
-max-width:320px;
-
-}
-
-.hero-poster{
-
-padding:6px;
-
-border-radius:20px;
-
-}
-
-.hero-poster img{
-
-border-radius:15px;
-
-}
-
-.section-title h2{
-
-font-size:34px;
-
-}
-
-.section-title p{
-
-font-size:16px;
-
-}
-
-.family{
-
-padding:80px 20px;
-
-}
-
-.family-card{
-
-padding:25px;
-
-}
-
-.family-info h3{
-
-font-size:28px;
-
-}
-
-.family-info p{
-
-font-size:17px;
-
-}
-
-.gallery{
-
-padding:80px 20px;
-
-}
-
-.gallery-item img{
-
-height:220px;
+display:none;
 
 }
 
@@ -1425,26 +2025,37 @@ padding:30px 20px;
 
 .modal-card h1{
 
-font-size:36px;
+font-size:34px;
 
 }
 
 .modal-card h2{
 
-font-size:24px;
+font-size:22px;
 
 }
 
 .modal-card p{
 
-font-size:17px;
+font-size:16px;
 
 }
 
-#prevPhoto,
-#nextPhoto{
+.modal-buttons{
 
-display:none;
+flex-direction:column;
+
+}
+
+.modal-buttons button{
+
+width:100%;
+
+}
+
+footer{
+
+padding:70px 20px;
 
 }
 
@@ -1456,7 +2067,7 @@ font-size:30px;
 
 footer p{
 
-font-size:16px;
+font-size:15px;
 
 }
 
@@ -1466,13 +2077,49 @@ font-size:16px;
 ANIMATIONS
 ========================================== */
 
+@keyframes fadeIn{
+
+from{
+
+opacity:0;
+
+}
+
+to{
+
+opacity:1;
+
+}
+
+}
+
+@keyframes popup{
+
+0%{
+
+opacity:0;
+
+transform:scale(.85);
+
+}
+
+100%{
+
+opacity:1;
+
+transform:scale(1);
+
+}
+
+}
+
 @keyframes heroFade{
 
 from{
 
 opacity:0;
 
-transform:translateY(60px);
+transform:translateY(50px);
 
 }
 
@@ -1496,7 +2143,23 @@ transform:translateY(0);
 
 50%{
 
-transform:translateY(10px);
+transform:translateY(-10px);
+
+}
+
+}
+
+@keyframes posterFloat{
+
+0%,100%{
+
+transform:translateY(0);
+
+}
+
+50%{
+
+transform:translateY(-12px);
 
 }
 
@@ -1508,7 +2171,7 @@ transform:translateY(10px);
 
 opacity:.2;
 
-transform:scale(.5);
+transform:scale(.6);
 
 }
 
@@ -1516,7 +2179,7 @@ transform:scale(.5);
 
 opacity:1;
 
-transform:scale(2);
+transform:scale(1.8);
 
 }
 
@@ -1534,7 +2197,7 @@ opacity:0;
 
 20%{
 
-opacity:.7;
+opacity:.8;
 
 }
 
@@ -1564,263 +2227,45 @@ transform:translateY(-140vh);
 
 }
 
-@keyframes posterFloat{
+@keyframes introFade{
 
-0%,100%{
-
-transform:translateY(0);
-
-}
-
-50%{
-
-transform:translateY(-12px);
-
-}
-
-}
-/* ==========================================================
-   STYLE.CSS
-   PART 5 (FINAL)
-========================================================== */
-
-/* ==========================================
-PREMIUM HERO EFFECTS
-========================================== */
-
-.hero-content{
-
-animation:heroFade 1.2s ease;
-
-}
-
-.hero-poster{
-
-position:relative;
-
-overflow:hidden;
-
-background-size:300%;
-
-animation:
-
-posterFloat 6s ease-in-out infinite,
-
-goldBorder 8s linear infinite;
-
-}
-
-.hero-poster::before{
-
-content:"";
-
-position:absolute;
-
-top:0;
-
-left:-150%;
-
-width:50%;
-
-height:100%;
-
-background:
-
-linear-gradient(
-
-90deg,
-
-transparent,
-
-rgba(255,255,255,.65),
-
-transparent
-
-);
-
-transform:skewX(-25deg);
-
-animation:lightSweep 4s linear infinite;
-
-}
-
-/* ==========================================
-BUTTON EFFECTS
-========================================== */
-
-.hero-buttons button{
-
-box-shadow:
-
-0 12px 30px rgba(0,0,0,.18);
-
-}
-
-.hero-buttons button:hover{
-
-transform:
-
-translateY(-6px)
-
-scale(1.05);
-
-}
-
-#celebrate:hover{
-
-background:#FFD700;
-
-color:#111;
-
-}
-
-#galleryBtn:hover{
-
-background:#FFD700;
-
-color:#111;
-
-}
-
-#musicBtn:hover{
-
-background:#FFD700;
-
-color:#111;
-
-}
-
-/* ==========================================
-FAMILY CARD EFFECT
-========================================== */
-
-.family-card{
-
-position:relative;
-
-}
-
-.family-card::before{
-
-content:"";
-
-position:absolute;
-
-top:0;
-
-left:-120%;
-
-width:60%;
-
-height:100%;
-
-background:
-
-linear-gradient(
-
-90deg,
-
-transparent,
-
-rgba(255,255,255,.60),
-
-transparent
-
-);
-
-transform:skewX(-25deg);
-
-transition:1s;
-
-}
-
-.family-card:hover::before{
-
-left:160%;
-
-}
-
-/* ==========================================
-GALLERY EFFECT
-========================================== */
-
-.gallery-item{
-
-position:relative;
-
-}
-
-.gallery-item::after{
-
-content:"";
-
-position:absolute;
-
-inset:0;
-
-background:
-
-linear-gradient(
-
-180deg,
-
-transparent,
-
-rgba(0,0,0,.20)
-
-);
+from{
 
 opacity:0;
 
-transition:.4s;
+transform:scale(.95);
 
 }
 
-.gallery-item:hover::after{
+to{
 
 opacity:1;
 
-}
-
-/* ==========================================
-MODAL BUTTONS
-========================================== */
-
-.modal-buttons button{
-
-transition:.35s;
+transform:scale(1);
 
 }
 
-.modal-buttons button:hover{
+}
 
-transform:
+@keyframes introRotate{
 
-translateY(-4px)
+100%{
 
-scale(1.05);
+transform:rotate(360deg);
 
 }
 
-/* ==========================================
-SMOOTH EFFECTS
-========================================== */
+}
 
-section{
+@keyframes introRotateReverse{
 
-transition:1s;
+100%{
+
+transform:rotate(-360deg);
 
 }
 
-button:active{
-
-transform:scale(.96);
-
 }
-
-/* ==========================================
-ANIMATIONS
-========================================== */
 
 @keyframes goldBorder{
 
@@ -1849,587 +2294,6 @@ left:-150%;
 100%{
 
 left:180%;
-
-}
-
-}
-
-/* ==========================================
-DESKTOP
-========================================== */
-
-@media(min-width:1400px){
-
-.hero h1{
-
-font-size:90px;
-
-}
-
-.hero h2{
-
-font-size:40px;
-
-}
-
-.hero-poster{
-
-max-width:950px;
-
-}
-
-}
-
-/* ==========================================
-LARGE MOBILE
-========================================== */
-
-@media(max-width:480px){
-
-.hero h1{
-
-font-size:34px;
-
-}
-
-.hero h2{
-
-font-size:18px;
-
-}
-
-.hero p{
-
-font-size:15px;
-
-line-height:1.7;
-
-}
-
-.hero-buttons button{
-
-height:54px;
-
-font-size:15px;
-
-}
-
-.family-card img{
-
-width:180px;
-
-height:180px;
-
-}
-
-.family-info h3{
-
-font-size:24px;
-
-}
-
-.family-info p{
-
-font-size:15px;
-
-}
-
-.gallery-item img{
-
-height:180px;
-
-}
-
-footer h2{
-
-font-size:26px;
-
-}
-
-footer p{
-
-font-size:14px;
-
-}
-
-}
-/* ==========================================================
-   CINEMATIC INTRO V1
-========================================================== */
-
-#cinematicIntro{
-
-position:fixed;
-
-top:0;
-left:0;
-
-width:100%;
-height:100%;
-
-display:flex;
-
-justify-content:center;
-align-items:center;
-
-background:
-radial-gradient(
-circle,
-#1a0000 0%,
-#080808 70%,
-#000000 100%
-);
-
-overflow:hidden;
-
-z-index:999999;
-
-transition:opacity 1.5s ease,
-visibility 1.5s ease;
-
-}
-
-/* ==========================================
-BACKGROUND GLOW
-========================================== */
-
-#cinematicIntro::before{
-
-content:"";
-
-position:absolute;
-
-width:900px;
-
-height:900px;
-
-border-radius:50%;
-
-background:
-
-radial-gradient(
-
-circle,
-
-rgba(255,215,0,.18),
-
-transparent 70%
-
-);
-
-animation:introRotate 18s linear infinite;
-
-}
-
-#cinematicIntro::after{
-
-content:"";
-
-position:absolute;
-
-width:700px;
-
-height:700px;
-
-border-radius:50%;
-
-background:
-
-radial-gradient(
-
-circle,
-
-rgba(200,16,46,.22),
-
-transparent 70%
-
-);
-
-animation:introRotateReverse 22s linear infinite;
-
-}
-
-/* ==========================================
-CONTENT
-========================================== */
-
-.cinematic-content{
-
-position:relative;
-
-z-index:2;
-
-text-align:center;
-
-padding:20px;
-
-max-width:900px;
-
-animation:introFade 2s ease;
-
-}
-
-/* Small Title */
-
-.intro-small{
-
-display:block;
-
-font-size:16px;
-
-letter-spacing:10px;
-
-text-transform:uppercase;
-
-color:#FFD700;
-
-margin-bottom:25px;
-
-font-weight:700;
-
-}
-
-/* PRESENTS */
-
-.cinematic-content h1{
-
-font-family:'Playfair Display',serif;
-
-font-size:72px;
-
-color:#FFFFFF;
-
-margin-bottom:25px;
-
-text-shadow:
-
-0 0 30px rgba(255,215,0,.25);
-
-}
-
-/* Divider */
-
-.gold-divider{
-
-width:180px;
-
-height:4px;
-
-margin:0 auto 35px;
-
-border-radius:20px;
-
-background:
-
-linear-gradient(
-
-90deg,
-
-transparent,
-
-#FFD700,
-
-transparent
-
-);
-
-}
-
-/* Happy Birthday */
-
-.cinematic-content h2{
-
-font-size:40px;
-
-font-weight:600;
-
-color:#FFD700;
-
-margin-bottom:10px;
-
-}
-
-/* Name */
-
-.cinematic-content h3{
-
-font-family:'Playfair Display',serif;
-
-font-size:54px;
-
-color:#FFFFFF;
-
-margin-bottom:25px;
-
-}
-
-/* Family */
-
-.cinematic-content p{
-
-font-size:22px;
-
-color:#FFFFFF;
-
-line-height:1.8;
-
-}
-/* ==========================================================
-   CINEMATIC INTRO
-   PART 2
-========================================================== */
-
-/* ==========================================
-PREMIUM TEXT ANIMATION
-========================================== */
-
-.intro-small{
-
-animation:
-
-fadeDown 1.2s ease,
-
-goldGlow 3s infinite;
-
-}
-
-.cinematic-content h1{
-
-animation:
-
-zoomTitle 2s ease;
-
-}
-
-.cinematic-content h2{
-
-animation:
-
-fadeUp 2.4s ease;
-
-}
-
-.cinematic-content h3{
-
-animation:
-
-fadeUp 2.8s ease;
-
-}
-
-.cinematic-content p{
-
-animation:
-
-fadeUp 3.2s ease;
-
-opacity:.95;
-
-}
-
-/* ==========================================
-GOLD DIVIDER
-========================================== */
-
-.gold-divider{
-
-background-size:300%;
-
-animation:
-
-dividerGlow 4s linear infinite;
-
-}
-
-/* ==========================================
-MOBILE
-========================================== */
-
-@media(max-width:768px){
-
-.cinematic-content{
-
-padding:25px;
-
-}
-
-.intro-small{
-
-font-size:12px;
-
-letter-spacing:5px;
-
-}
-
-.cinematic-content h1{
-
-font-size:42px;
-
-}
-
-.cinematic-content h2{
-
-font-size:26px;
-
-}
-
-.cinematic-content h3{
-
-font-size:34px;
-
-}
-
-.cinematic-content p{
-
-font-size:17px;
-
-line-height:1.7;
-
-}
-
-.gold-divider{
-
-width:120px;
-
-}
-
-}
-
-/* ==========================================
-ANIMATIONS
-========================================== */
-
-@keyframes introFade{
-
-from{
-
-opacity:0;
-
-transform:scale(.95);
-
-}
-
-to{
-
-opacity:1;
-
-transform:scale(1);
-
-}
-
-}
-
-@keyframes fadeDown{
-
-from{
-
-opacity:0;
-
-transform:translateY(-30px);
-
-}
-
-to{
-
-opacity:1;
-
-transform:translateY(0);
-
-}
-
-}
-
-@keyframes fadeUp{
-
-from{
-
-opacity:0;
-
-transform:translateY(35px);
-
-}
-
-to{
-
-opacity:1;
-
-transform:translateY(0);
-
-}
-
-}
-
-@keyframes zoomTitle{
-
-0%{
-
-opacity:0;
-
-transform:scale(.75);
-
-}
-
-100%{
-
-opacity:1;
-
-transform:scale(1);
-
-}
-
-}
-
-@keyframes goldGlow{
-
-0%,100%{
-
-text-shadow:
-
-0 0 10px rgba(255,215,0,.4);
-
-}
-
-50%{
-
-text-shadow:
-
-0 0 25px rgba(255,215,0,.9);
-
-}
-
-}
-
-@keyframes dividerGlow{
-
-0%{
-
-background-position:0%;
-
-}
-
-100%{
-
-background-position:300%;
-
-}
-
-}
-
-@keyframes introRotate{
-
-100%{
-
-transform:rotate(360deg);
-
-}
-
-}
-
-@keyframes introRotateReverse{
-
-100%{
-
-transform:rotate(-360deg);
 
 }
 

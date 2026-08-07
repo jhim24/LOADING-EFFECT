@@ -1,47 +1,98 @@
-/* ==========================================
-   BIRTHDAY LOGIN V6
-========================================== */
+/* ==========================================================
+   BIRTHDAY LOGIN V7 PREMIUM
+   PART 1
+========================================================== */
 
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Playfair+Display:wght@700;800&display=swap');
+/* ==========================
+GOOGLE FONTS
+========================== */
 
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-}
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Playfair+Display:wght@600;700;800&display=swap');
 
-html,
-body{
+/* ==========================
+ROOT
+========================== */
 
-width:100%;
-height:100%;
+:root{
 
-font-family:'Poppins',sans-serif;
+--red:#C8102E;
+--red-dark:#8B0000;
 
-background:#0b0b0b;
+--gold:#D4AF37;
+--gold-light:#FFD700;
 
-overflow:hidden;
+--white:#FFFFFF;
+
+--black:#111111;
+
+--glass:rgba(30,20,20,.72);
+
+--border:rgba(255,215,0,.25);
 
 }
 
 /* ==========================
-BACKGROUND
+RESET
 ========================== */
 
+*{
+
+margin:0;
+
+padding:0;
+
+box-sizing:border-box;
+
+}
+
+html{
+
+width:100%;
+
+height:100%;
+
+scroll-behavior:smooth;
+
+}
+
 body{
+
+width:100%;
+
+height:100%;
+
+overflow:hidden;
+
+font-family:'Poppins',sans-serif;
 
 display:flex;
 
 justify-content:center;
+
 align-items:center;
 
+position:relative;
+
 background:
-radial-gradient(circle at top,#8B0000 0%,#320000 45%,#000 100%);
+
+radial-gradient(
+
+circle at top,
+
+#B00020 0%,
+
+#5C0000 35%,
+
+#220000 65%,
+
+#000000 100%
+
+);
 
 }
 
 /* ==========================
-EFFECTS
+BACKGROUND EFFECTS
 ========================== */
 
 #stars,
@@ -51,21 +102,91 @@ EFFECTS
 position:fixed;
 
 top:0;
+
 left:0;
 
 width:100%;
+
 height:100%;
 
-pointer-events:none;
-
 overflow:hidden;
+
+pointer-events:none;
 
 z-index:1;
 
 }
 
 /* ==========================
-CENTER
+ANIMATED GLOW
+========================== */
+
+body::before{
+
+content:"";
+
+position:absolute;
+
+width:900px;
+
+height:900px;
+
+top:-350px;
+
+right:-280px;
+
+border-radius:50%;
+
+background:
+
+radial-gradient(
+
+circle,
+
+rgba(255,215,0,.20),
+
+transparent 70%
+
+);
+
+animation:rotateGlow 20s linear infinite;
+
+}
+
+body::after{
+
+content:"";
+
+position:absolute;
+
+width:800px;
+
+height:800px;
+
+left:-300px;
+
+bottom:-300px;
+
+border-radius:50%;
+
+background:
+
+radial-gradient(
+
+circle,
+
+rgba(200,16,46,.28),
+
+transparent 70%
+
+);
+
+animation:rotateGlowReverse 24s linear infinite;
+
+}
+
+/* ==========================
+WRAPPER
 ========================== */
 
 .login-wrapper{
@@ -77,6 +198,7 @@ width:100%;
 display:flex;
 
 justify-content:center;
+
 align-items:center;
 
 padding:20px;
@@ -84,31 +206,120 @@ padding:20px;
 z-index:20;
 
 }
+/* ==========================================================
+   BIRTHDAY LOGIN V7 PREMIUM
+   PART 2
+========================================================== */
 
 /* ==========================
-CARD
+LOGIN CARD
 ========================== */
 
 .login-card{
 
+position:relative;
+
+overflow:hidden;
+
 width:100%;
-max-width:420px;
 
-padding:40px 30px;
+max-width:440px;
 
-border-radius:28px;
+padding:50px 35px;
 
-background:rgba(25,25,25,.75);
+border-radius:32px;
 
-backdrop-filter:blur(18px);
+background:var(--glass);
 
-border:1px solid rgba(255,215,0,.25);
+backdrop-filter:blur(22px);
+
+-webkit-backdrop-filter:blur(22px);
+
+border:2px solid rgba(255,215,0,.28);
 
 box-shadow:
 
-0 20px 50px rgba(0,0,0,.45);
+0 30px 80px rgba(0,0,0,.45),
 
-text-align:center;
+0 0 40px rgba(255,215,0,.10),
+
+inset 0 1px 0 rgba(255,255,255,.08);
+
+animation:cardAppear .8s ease;
+
+}
+
+/* ==========================
+ROTATING GOLD BORDER
+========================== */
+
+.login-card::before{
+
+content:"";
+
+position:absolute;
+
+top:-50%;
+
+left:-50%;
+
+width:200%;
+
+height:200%;
+
+background:
+
+conic-gradient(
+
+transparent,
+
+rgba(255,215,0,.55),
+
+transparent,
+
+rgba(255,215,0,.18),
+
+transparent
+
+);
+
+animation:borderRotate 10s linear infinite;
+
+}
+
+.login-card::after{
+
+content:"";
+
+position:absolute;
+
+inset:2px;
+
+border-radius:30px;
+
+background:
+
+linear-gradient(
+
+180deg,
+
+rgba(35,15,15,.96),
+
+rgba(18,8,8,.96)
+
+);
+
+z-index:0;
+
+}
+
+/* Foreground */
+
+.login-card>*{
+
+position:relative;
+
+z-index:2;
 
 }
 
@@ -118,88 +329,185 @@ LOGO
 
 .logo{
 
-width:90px;
-height:90px;
+width:110px;
 
-margin:auto;
+height:110px;
 
-margin-bottom:20px;
+margin:0 auto 25px;
 
 border-radius:50%;
 
 display:flex;
 
 justify-content:center;
+
 align-items:center;
 
-background:linear-gradient(135deg,#FFD700,#D4AF37);
+background:
+
+linear-gradient(
+
+135deg,
+
+#FFD700,
+
+#D4AF37
+
+);
+
+box-shadow:
+
+0 0 25px rgba(255,215,0,.60),
+
+0 0 60px rgba(255,215,0,.25);
+
+animation:logoFloat 3s ease-in-out infinite;
 
 }
 
 .logo i{
 
-font-size:42px;
+font-size:48px;
 
 color:#8B0000;
 
 }
 
 /* ==========================
-TEXT
+TITLE
 ========================== */
 
 .login-card h1{
 
 font-family:'Playfair Display',serif;
 
-font-size:34px;
+font-size:40px;
 
-color:#fff;
+font-weight:700;
+
+color:#FFFFFF;
 
 margin-bottom:10px;
+
+text-shadow:
+
+0 0 20px rgba(255,215,0,.18);
 
 }
 
 .login-card h2{
 
-font-size:20px;
+font-size:22px;
+
+font-weight:500;
 
 color:#FFD700;
 
-margin-bottom:15px;
+margin-bottom:18px;
 
 }
+
+/* ==========================
+DESCRIPTION
+========================== */
 
 .login-card p{
 
-color:#ddd;
+font-size:16px;
 
-margin-bottom:20px;
+line-height:1.8;
+
+color:rgba(255,255,255,.88);
+
+margin-bottom:22px;
 
 }
-/* ==========================================
+/* ==========================================================
+   BIRTHDAY LOGIN V7 PREMIUM
+   PART 3
+========================================================== */
+
+/* ==========================
 INPUT BOX
-========================================== */
+========================== */
 
 .input-box{
 
+position:relative;
+
 display:flex;
+
 align-items:center;
 
 width:100%;
-height:58px;
 
-padding:0 18px;
+height:64px;
 
-margin-bottom:20px;
+padding:0 22px;
 
-border-radius:50px;
+margin-bottom:25px;
+
+border-radius:60px;
 
 background:rgba(255,255,255,.08);
 
-border:2px solid rgba(255,215,0,.25);
+border:2px solid rgba(255,215,0,.20);
 
-transition:.3s;
+transition:.35s;
+
+overflow:hidden;
+
+}
+
+/* Gold Light */
+
+.input-box::before{
+
+content:"";
+
+position:absolute;
+
+top:0;
+
+left:-120%;
+
+width:60%;
+
+height:100%;
+
+background:
+
+linear-gradient(
+
+90deg,
+
+transparent,
+
+rgba(255,255,255,.35),
+
+transparent
+
+);
+
+transform:skewX(-25deg);
+
+transition:1s;
+
+}
+
+.input-box:hover::before{
+
+left:160%;
+
+}
+
+.input-box:hover{
+
+border-color:#FFD700;
+
+box-shadow:
+
+0 0 20px rgba(255,215,0,.18);
 
 }
 
@@ -207,7 +515,11 @@ transition:.3s;
 
 border-color:#FFD700;
 
-box-shadow:0 0 20px rgba(255,215,0,.35);
+box-shadow:
+
+0 0 28px rgba(255,215,0,.35);
+
+background:rgba(255,255,255,.10);
 
 }
 
@@ -215,21 +527,24 @@ box-shadow:0 0 20px rgba(255,215,0,.35);
 
 color:#FFD700;
 
-font-size:20px;
+font-size:22px;
 
-margin-right:12px;
+margin-right:15px;
 
 flex-shrink:0;
 
 }
 
-/* IMPORTANT FOR MOBILE */
+/* ==========================
+PASSWORD INPUT
+========================== */
 
 .input-box input{
 
 flex:1;
 
 width:100%;
+
 height:100%;
 
 background:transparent;
@@ -238,16 +553,15 @@ border:none;
 
 outline:none;
 
-color:#fff;
-
 font-size:18px;
 
 font-family:'Poppins',sans-serif;
 
--webkit-appearance:none;
-appearance:none;
+color:#FFFFFF;
 
-pointer-events:auto;
+-webkit-appearance:none;
+
+appearance:none;
 
 touch-action:manipulation;
 
@@ -259,105 +573,446 @@ color:rgba(255,255,255,.55);
 
 }
 
-/* ==========================================
-BUTTON
-========================================== */
+/* ==========================
+LOGIN BUTTON
+========================== */
 
 #loginBtn{
 
 width:100%;
-height:58px;
+
+height:62px;
 
 border:none;
 
-border-radius:50px;
+border-radius:60px;
 
-background:linear-gradient(
+background:
+
+linear-gradient(
+
 90deg,
+
+#8B0000,
+
 #C8102E,
-#D4AF37
+
+#D4AF37,
+
+#FFD700
+
 );
 
-color:#fff;
+background-size:300%;
+
+color:#FFFFFF;
 
 font-size:18px;
 
 font-weight:700;
 
+letter-spacing:1px;
+
 cursor:pointer;
 
-transition:.3s;
+transition:.35s;
+
+animation:buttonGlow 6s linear infinite;
+
+box-shadow:
+
+0 15px 35px rgba(212,175,55,.30);
 
 }
 
 #loginBtn:hover{
 
-transform:translateY(-2px);
+transform:
+
+translateY(-4px)
+
+scale(1.02);
+
+box-shadow:
+
+0 20px 45px rgba(255,215,0,.40);
 
 }
 
 #loginBtn:active{
 
-transform:scale(.98);
+transform:scale(.97);
 
 }
 
-/* ==========================================
-MESSAGE
-========================================== */
+/* ==========================
+LOGIN MESSAGE
+========================== */
 
 #loginMessage{
 
-margin-top:18px;
+margin-top:20px;
 
-min-height:24px;
+min-height:26px;
+
+font-size:15px;
 
 font-weight:600;
 
-color:#ffb3b3;
+color:#FFB3B3;
+
+transition:.3s;
 
 }
 
-/* ==========================================
+/* ==========================
+FOOTER
+========================== */
+
+.login-footer{
+
+margin-top:30px;
+
+font-size:13px;
+
+letter-spacing:2px;
+
+color:#FFD700;
+
+opacity:.9;
+
+text-transform:uppercase;
+
+}
+/* ==========================================================
+   BIRTHDAY LOGIN V7 PREMIUM
+   PART 4
+========================================================== */
+
+/* ==========================
+LOADING SCREEN
+========================== */
+
+#loadingScreen{
+
+position:fixed;
+
+top:0;
+left:0;
+
+width:100%;
+height:100%;
+
+display:none;
+
+justify-content:center;
+align-items:center;
+
+background:
+
+linear-gradient(
+135deg,
+#000000,
+#4A0000,
+#8B0000
+);
+
+z-index:9999;
+
+}
+
+.loading-box{
+
+width:90%;
+
+max-width:450px;
+
+text-align:center;
+
+color:#FFFFFF;
+
+}
+
+.birthday-loader{
+
+font-size:90px;
+
+margin-bottom:20px;
+
+animation:loaderBounce 1.2s infinite;
+
+}
+
+.loading-box h2{
+
+font-family:'Playfair Display',serif;
+
+font-size:34px;
+
+color:#FFD700;
+
+margin-bottom:25px;
+
+}
+
+.progress{
+
+width:100%;
+
+height:14px;
+
+border-radius:30px;
+
+overflow:hidden;
+
+background:rgba(255,255,255,.18);
+
+}
+
+#progressBar{
+
+width:0%;
+
+height:100%;
+
+border-radius:30px;
+
+background:
+
+linear-gradient(
+
+90deg,
+
+#FFD700,
+
+#FFF4B0,
+
+#FFD700
+
+);
+
+background-size:300%;
+
+animation:buttonGlow 4s linear infinite;
+
+}
+
+#loadingText{
+
+margin-top:18px;
+
+font-size:18px;
+
+letter-spacing:2px;
+
+color:#FFFFFF;
+
+}
+
+/* ==========================
+COUNTDOWN
+========================== */
+
+#countdownScreen{
+
+position:fixed;
+
+top:0;
+left:0;
+
+width:100%;
+height:100%;
+
+display:none;
+
+justify-content:center;
+align-items:center;
+
+background:
+
+radial-gradient(
+
+circle,
+
+#C8102E,
+
+#111111
+
+);
+
+z-index:9998;
+
+}
+
+.countdown-content{
+
+text-align:center;
+
+color:#FFFFFF;
+
+}
+
+#countNumber{
+
+font-size:180px;
+
+font-weight:800;
+
+color:#FFD700;
+
+text-shadow:
+
+0 0 20px #FFD700,
+
+0 0 50px orange;
+
+animation:pulse 1s infinite;
+
+}
+
+#countMessage{
+
+margin-top:20px;
+
+font-size:30px;
+
+letter-spacing:3px;
+
+}
+
+/* ==========================
+GIFT SCREEN
+========================== */
+
+#giftScreen{
+
+position:fixed;
+
+top:0;
+left:0;
+
+width:100%;
+height:100%;
+
+display:none;
+
+justify-content:center;
+align-items:center;
+
+background:
+
+radial-gradient(
+
+circle,
+
+#8B0000,
+
+#111111
+
+);
+
+z-index:9997;
+
+}
+
+.gift-container{
+
+text-align:center;
+
+color:#FFFFFF;
+
+}
+
+.gift-container h2{
+
+font-family:'Playfair Display',serif;
+
+font-size:42px;
+
+color:#FFD700;
+
+margin-bottom:15px;
+
+}
+
+.gift-container p{
+
+font-size:20px;
+
+margin-bottom:35px;
+
+color:#FFFFFF;
+
+}
+
+#giftBox{
+
+font-size:150px;
+
+cursor:pointer;
+
+transition:.4s;
+
+animation:giftBounce 1.2s infinite;
+
+}
+
+#giftBox:hover{
+
+transform:scale(1.15);
+
+filter:drop-shadow(0 0 20px gold);
+
+}
+
+/* ==========================
 MOBILE
-========================================== */
+========================== */
 
 @media(max-width:768px){
 
 .login-card{
 
-padding:30px 22px;
+padding:35px 22px;
 
-}
-
-.login-card h1{
-
-font-size:28px;
-
-}
-
-.login-card h2{
-
-font-size:18px;
+max-width:100%;
 
 }
 
 .logo{
 
-width:80px;
-height:80px;
+width:90px;
+height:90px;
 
 }
 
 .logo i{
 
-font-size:36px;
+font-size:42px;
+
+}
+
+.login-card h1{
+
+font-size:32px;
+
+}
+
+.login-card h2{
+
+font-size:20px;
+
+}
+
+.login-card p{
+
+font-size:15px;
 
 }
 
 .input-box{
 
-height:56px;
+height:58px;
 
 }
 
@@ -369,10 +1024,416 @@ font-size:16px;
 
 #loginBtn{
 
-height:56px;
+height:58px;
 
 font-size:16px;
 
 }
+
+.birthday-loader{
+
+font-size:70px;
+
+}
+
+.loading-box h2{
+
+font-size:28px;
+
+}
+
+#countNumber{
+
+font-size:100px;
+
+}
+
+#countMessage{
+
+font-size:22px;
+
+}
+
+.gift-container h2{
+
+font-size:30px;
+
+}
+
+#giftBox{
+
+font-size:100px;
+
+}
+
+}
+/* ==========================================================
+   BIRTHDAY LOGIN V7 PREMIUM
+   PART 5 (FINAL)
+========================================================== */
+
+/* ==========================
+SMOOTH TRANSITIONS
+========================== */
+
+*{
+
+transition:
+
+background .35s,
+
+color .35s,
+
+border-color .35s,
+
+box-shadow .35s,
+
+transform .35s;
+
+}
+
+button{
+
+font-family:'Poppins',sans-serif;
+
+outline:none;
+
+}
+
+input{
+
+font-family:'Poppins',sans-serif;
+
+outline:none;
+
+}
+
+/* ==========================
+SCROLLBAR
+========================== */
+
+::-webkit-scrollbar{
+
+width:10px;
+
+}
+
+::-webkit-scrollbar-track{
+
+background:#111;
+
+}
+
+::-webkit-scrollbar-thumb{
+
+border-radius:20px;
+
+background:
+
+linear-gradient(
+
+180deg,
+
+#C8102E,
+
+#FFD700
+
+);
+
+}
+
+/* ==========================
+ANIMATIONS
+========================== */
+
+@keyframes cardAppear{
+
+from{
+
+opacity:0;
+
+transform:
+
+translateY(40px)
+
+scale(.92);
+
+}
+
+to{
+
+opacity:1;
+
+transform:
+
+translateY(0)
+
+scale(1);
+
+}
+
+}
+
+@keyframes borderRotate{
+
+100%{
+
+transform:rotate(360deg);
+
+}
+
+}
+
+@keyframes rotateGlow{
+
+100%{
+
+transform:rotate(360deg);
+
+}
+
+}
+
+@keyframes rotateGlowReverse{
+
+100%{
+
+transform:rotate(-360deg);
+
+}
+
+}
+
+@keyframes logoFloat{
+
+0%,100%{
+
+transform:translateY(0);
+
+}
+
+50%{
+
+transform:translateY(-12px);
+
+}
+
+}
+
+@keyframes buttonGlow{
+
+0%{
+
+background-position:0%;
+
+}
+
+100%{
+
+background-position:300%;
+
+}
+
+}
+
+@keyframes loaderBounce{
+
+0%,100%{
+
+transform:translateY(0);
+
+}
+
+50%{
+
+transform:translateY(-14px);
+
+}
+
+}
+
+@keyframes pulse{
+
+0%,100%{
+
+transform:scale(1);
+
+}
+
+50%{
+
+transform:scale(1.15);
+
+}
+
+}
+
+@keyframes giftBounce{
+
+0%,100%{
+
+transform:translateY(0);
+
+}
+
+50%{
+
+transform:translateY(-15px);
+
+}
+
+}
+
+@keyframes twinkle{
+
+0%,100%{
+
+opacity:.2;
+
+transform:scale(.6);
+
+}
+
+50%{
+
+opacity:1;
+
+transform:scale(2);
+
+}
+
+}
+
+@keyframes particleFloat{
+
+0%{
+
+transform:
+
+translateY(0)
+
+rotate(0deg);
+
+opacity:0;
+
+}
+
+20%{
+
+opacity:.7;
+
+}
+
+100%{
+
+transform:
+
+translateY(-120vh)
+
+rotate(360deg);
+
+opacity:0;
+
+}
+
+}
+
+@keyframes balloonFloat{
+
+0%{
+
+transform:
+
+translateY(0);
+
+}
+
+100%{
+
+transform:
+
+translateY(-140vh);
+
+}
+
+}
+
+/* ==========================
+PREMIUM HOVER EFFECTS
+========================== */
+
+.logo:hover{
+
+transform:
+
+scale(1.08)
+
+rotate(8deg);
+
+box-shadow:
+
+0 0 35px rgba(255,215,0,.80),
+
+0 0 80px rgba(255,215,0,.35);
+
+}
+
+.login-card:hover{
+
+transform:
+
+translateY(-5px);
+
+box-shadow:
+
+0 35px 90px rgba(0,0,0,.50),
+
+0 0 50px rgba(255,215,0,.18);
+
+}
+
+#loginBtn:hover{
+
+letter-spacing:2px;
+
+}
+
+.input-box:hover{
+
+background:
+
+rgba(255,255,255,.10);
+
+}
+
+/* ==========================
+FINAL POLISH
+========================== */
+
+.login-card{
+
+will-change:transform;
+
+}
+
+.logo{
+
+will-change:transform;
+
+}
+
+#loginBtn{
+
+will-change:transform;
+
+}
+
+#stars,
+
+#particles,
+
+#balloons{
+
+will-change:transform;
 
 }

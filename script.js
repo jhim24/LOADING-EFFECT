@@ -17,7 +17,7 @@ if(sessionStorage.getItem("birthdayLogin")!=="true"){
 
 window.addEventListener("DOMContentLoaded",()=>{
 
-introAnimation();
+startCinematicIntro();
 
 createStars();
 
@@ -29,6 +29,63 @@ initReveal();
 
 });
 
+/* ==========================================================
+   CINEMATIC INTRO
+========================================================== */
+
+function startCinematicIntro(){
+
+const cinematic=document.getElementById("cinematicIntro");
+
+const intro=document.getElementById("intro");
+
+if(!cinematic) return;
+
+/* Hide old intro habang cinematic ang tumatakbo */
+
+if(intro){
+
+intro.style.display="none";
+
+}
+
+/* Show cinematic */
+
+cinematic.style.opacity="1";
+
+cinematic.style.visibility="visible";
+
+/* After 5 seconds */
+
+setTimeout(()=>{
+
+cinematic.style.opacity="0";
+
+cinematic.style.visibility="hidden";
+
+/* Show old intro */
+
+if(intro){
+
+intro.style.display="flex";
+
+intro.style.opacity="1";
+
+/* Hide old intro after 2 seconds */
+
+setTimeout(()=>{
+
+intro.style.opacity="0";
+
+intro.style.visibility="hidden";
+
+},2000);
+
+}
+
+},5000);
+
+}
 /* ==========================================
 INTRO
 ========================================== */

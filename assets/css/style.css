@@ -1758,3 +1758,46 @@ width:100%;
 }
 
 }
+/* ==========================================
+FOOTER
+========================================== */
+
+footer{
+
+background:#0b0b0b;
+
+padding:80px 20px;
+
+text-align:center;
+
+border-top:1px solid rgba(255,215,0,.15);
+
+position:relative;
+
+z-index:10;
+
+}
+
+footer h2{
+
+font-family:'Playfair Display',serif;
+
+font-size:38px;
+
+color:#FFD700;
+
+margin-bottom:20px;
+
+}
+
+footer p{
+
+font-size:17px;
+
+line-height:1.8;
+
+color:rgba(255,255,255,.8);
+
+margin-bottom:12px;
+
+}

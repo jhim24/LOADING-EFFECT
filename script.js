@@ -1,168 +1,86 @@
+/* ==========================================================
+   HAPPY BIRTHDAY WEBSITE V7
+   SCRIPT.JS
+   PART 1
+========================================================== */
+
+"use strict";
+
 /* ==========================================
 LOGIN PROTECTION
 ========================================== */
 
 if(sessionStorage.getItem("birthdayLogin")!=="true"){
 
-    window.location.href="login.html";
+location.replace("login.html");
 
 }
 
+/* ==========================================
+DOM READY
+========================================== */
 
-/* ==========================================================
-   HAPPY BIRTHDAY WEBSITE V6
-   SCRIPT.JS
-   PART 1
-========================================================== */
-
-window.addEventListener("DOMContentLoaded",()=>{
+document.addEventListener("DOMContentLoaded",()=>{
 
 startCinematicIntro();
 
-createStars();
-
-createParticles();
-
-createBalloons();
+initBackground();
 
 initReveal();
 
 });
 
-/* ==========================================================
-   CINEMATIC INTRO
-========================================================== */
+/* ==========================================
+CINEMATIC INTRO
+========================================== */
 
 function startCinematicIntro(){
 
-const cinematic=document.getElementById("cinematicIntro");
+const intro=document.getElementById("cinematicIntro");
 
-if(!cinematic) return;
+if(!intro) return;
 
-cinematic.style.display="flex";
-cinematic.style.opacity="1";
+document.body.style.overflow="hidden";
+
+intro.style.display="flex";
+
+requestAnimationFrame(()=>{
+
+intro.style.opacity="1";
+
+});
 
 setTimeout(()=>{
 
-    cinematic.style.opacity="0";
-    cinematic.style.pointerEvents="none";
+intro.style.opacity="0";
 
-    setTimeout(()=>{
+intro.style.pointerEvents="none";
 
-      cinematic.remove();
-    },1000);
+setTimeout(()=>{
+
+intro.remove();
+
+document.body.style.overflowX="hidden";
+
+document.body.style.overflowY="auto";
+
+},1200);
 
 },5000);
 
 }
 
 /* ==========================================
-STARS
+BACKGROUND INITIALIZER
 ========================================== */
 
-function createStars(){
+function initBackground(){
 
-const stars=document.getElementById("stars");
+createStars();
 
-if(!stars) return;
+createParticles();
 
-for(let i=0;i<180;i++){
-
-const star=document.createElement("div");
-
-star.className="star";
-
-star.style.left=Math.random()*100+"%";
-
-star.style.top=Math.random()*100+"%";
-
-star.style.animationDuration=
-
-(2+Math.random()*4)+"s";
-
-star.style.opacity=Math.random();
-
-stars.appendChild(star);
-
-}
-
-}
-
-/* ==========================================
-GOLD PARTICLES
-========================================== */
-
-function createParticles(){
-
-const particles=document.getElementById("particles");
-
-if(!particles) return;
-
-for(let i=0;i<60;i++){
-
-const p=document.createElement("div");
-
-p.className="particle";
-
-p.style.left=Math.random()*100+"%";
-
-p.style.top=Math.random()*100+"%";
-
-p.style.animationDuration=
-
-(8+Math.random()*6)+"s";
-
-particles.appendChild(p);
-
-}
-
-}
-
-/* ==========================================
-BALLOONS
-========================================== */
-
-function createBalloons(){
-
-const balloons=document.getElementById("balloons");
-
-if(!balloons) return;
-
-const colors=[
-
-"#C8102E",
-
-"#FFD700",
-
-"#FFFFFF",
-
-"#E63946"
-
-];
-
-for(let i=0;i<12;i++){
-
-const balloon=document.createElement("div");
-
-balloon.className="balloon";
-
-balloon.style.left=Math.random()*100+"%";
-
-balloon.style.background=
-
-colors[Math.floor(Math.random()*colors.length)];
-
-balloon.style.animationDuration=
-
-(15+Math.random()*8)+"s";
-
-balloon.style.animationDelay=
-
-Math.random()*6+"s";
-
-balloons.appendChild(balloon);
-
-}
+createBalloons();
 
 }
 
@@ -172,32 +90,226 @@ SCROLL REVEAL
 
 function initReveal(){
 
-const reveals=document.querySelectorAll(".reveal");
+const items=document.querySelectorAll(".reveal");
 
-function reveal(){
+if(items.length===0) return;
 
-reveals.forEach(item=>{
+const observer=new IntersectionObserver((entries)=>{
 
-const top=item.getBoundingClientRect().top;
+entries.forEach(entry=>{
 
-if(top<window.innerHeight-120){
+if(entry.isIntersecting){
 
-item.classList.add("active");
+entry.target.classList.add("active");
+
+observer.unobserve(entry.target);
 
 }
 
 });
 
+},{
+
+threshold:.15
+
+});
+
+items.forEach(item=>{
+
+observer.observe(item);
+
+});
+
 }
 
-window.addEventListener("scroll",reveal);
+/* ==========================================
+UTILITY
+========================================== */
 
-reveal();
+function random(min,max){
+
+return Math.random()*(max-min)+min;
 
 }
+
+/* ==========================================
+END PART 1
+========================================== */
+
+console.log("✅ Script V7 Part 1 Loaded");
 /* ==========================================================
+   HAPPY BIRTHDAY WEBSITE V7
    SCRIPT.JS
    PART 2
+========================================================== */
+
+/* ==========================================
+STARS
+========================================== */
+
+function createStars(){
+
+const container=document.getElementById("stars");
+
+if(!container) return;
+
+container.innerHTML="";
+
+const total=window.innerWidth<768?80:180;
+
+const fragment=document.createDocumentFragment();
+
+for(let i=0;i<total;i++){
+
+const star=document.createElement("div");
+
+star.className="star";
+
+star.style.left=random(0,100)+"%";
+
+star.style.top=random(0,100)+"%";
+
+star.style.opacity=random(.2,1);
+
+star.style.animationDuration=random(2,5)+"s";
+
+star.style.animationDelay=random(0,5)+"s";
+
+fragment.appendChild(star);
+
+}
+
+container.appendChild(fragment);
+
+}
+
+/* ==========================================
+GOLD PARTICLES
+========================================== */
+
+function createParticles(){
+
+const container=document.getElementById("particles");
+
+if(!container) return;
+
+container.innerHTML="";
+
+const total=window.innerWidth<768?30:60;
+
+const fragment=document.createDocumentFragment();
+
+for(let i=0;i<total;i++){
+
+const particle=document.createElement("div");
+
+particle.className="particle";
+
+particle.style.left=random(0,100)+"%";
+
+particle.style.top=random(20,100)+"%";
+
+particle.style.animationDuration=random(8,15)+"s";
+
+particle.style.animationDelay=random(0,8)+"s";
+
+fragment.appendChild(particle);
+
+}
+
+container.appendChild(fragment);
+
+}
+
+/* ==========================================
+BALLOONS
+========================================== */
+
+function createBalloons(){
+
+const container=document.getElementById("balloons");
+
+if(!container) return;
+
+container.innerHTML="";
+
+const colors=[
+
+"#C8102E",
+
+"#FFD700",
+
+"#FFFFFF",
+
+"#FF5C77",
+
+"#F7C948"
+
+];
+
+const total=window.innerWidth<768?6:12;
+
+const fragment=document.createDocumentFragment();
+
+for(let i=0;i<total;i++){
+
+const balloon=document.createElement("div");
+
+balloon.className="balloon";
+
+balloon.style.left=random(0,100)+"%";
+
+balloon.style.background=
+
+colors[Math.floor(Math.random()*colors.length)];
+
+balloon.style.animationDuration=
+
+random(15,25)+"s";
+
+balloon.style.animationDelay=
+
+random(0,8)+"s";
+
+fragment.appendChild(balloon);
+
+}
+
+container.appendChild(fragment);
+
+}
+
+/* ==========================================
+RESPONSIVE RELOAD
+========================================== */
+
+let resizeTimer;
+
+window.addEventListener("resize",()=>{
+
+clearTimeout(resizeTimer);
+
+resizeTimer=setTimeout(()=>{
+
+createStars();
+
+createParticles();
+
+createBalloons();
+
+},300);
+
+});
+
+/* ==========================================
+END PART 2
+========================================== */
+
+console.log("✨ Script V7 Part 2 Loaded");
+/* ==========================================================
+   HAPPY BIRTHDAY WEBSITE V7
+   SCRIPT.JS
+   PART 3
 ========================================================== */
 
 /* ==========================================
@@ -219,80 +331,98 @@ const musicBtn=document.getElementById("musicBtn");
 const birthdayMusic=document.getElementById("birthdayMusic");
 
 /* ==========================================
-TYPEWRITER MESSAGE
+MESSAGE
 ========================================== */
 
-const message=
+const birthdayText=
 
 `Happy Birthday Ryan Cortez Manebog!
 
-May God bless you with good health,
-happiness,
-success,
-peace,
-and many more wonderful birthdays.
+May God continue to bless you with good health, happiness, peace, success, wisdom, and many more birthdays to celebrate.
 
-Always remember that your family loves you very much.
+Thank you for being a wonderful husband, father, son, brother, and friend.
+
+Always remember that your family loves you with all our hearts.
 
 ❤️ Happy Birthday ❤️`;
-
-/* ==========================================
-OPEN MODAL
-========================================== */
-
-if(celebrateBtn){
-
-celebrateBtn.addEventListener("click",()=>{
-
-birthdayModal.style.display="flex";
-
-startTyping();
-
-startFireworks();
-
-});
-
-}
-
-/* ==========================================
-CLOSE MODAL
-========================================== */
-
-if(closeModal){
-
-closeModal.addEventListener("click",()=>{
-
-birthdayModal.style.display="none";
-
-stopFireworks();
-
-});
-
-}
 
 /* ==========================================
 TYPEWRITER
 ========================================== */
 
+let typingTimer=null;
+
 function startTyping(){
 
-birthdayMessage.innerHTML="";
+if(!birthdayMessage) return;
 
-let i=0;
+clearInterval(typingTimer);
 
-const timer=setInterval(()=>{
+birthdayMessage.textContent="";
 
-birthdayMessage.innerHTML+=message.charAt(i);
+let index=0;
 
-i++;
+typingTimer=setInterval(()=>{
 
-if(i>=message.length){
+birthdayMessage.textContent+=birthdayText.charAt(index);
 
-clearInterval(timer);
+index++;
+
+if(index>=birthdayText.length){
+
+clearInterval(typingTimer);
 
 }
 
-},30);
+},25);
+
+}
+
+/* ==========================================
+MODAL
+========================================== */
+
+function openBirthdayModal(){
+
+if(!birthdayModal) return;
+
+birthdayModal.style.display="flex";
+
+document.body.style.overflow="hidden";
+
+startTyping();
+
+startFireworks();
+
+launchConfetti();
+
+}
+
+function closeBirthdayPopup(){
+
+if(!birthdayModal) return;
+
+birthdayModal.style.display="none";
+
+document.body.style.overflowY="auto";
+
+stopFireworks();
+
+}
+
+/* ==========================================
+BUTTON EVENTS
+========================================== */
+
+if(celebrateBtn){
+
+celebrateBtn.addEventListener("click",openBirthdayModal);
+
+}
+
+if(closeModal){
+
+closeModal.addEventListener("click",closeBirthdayPopup);
 
 }
 
@@ -302,33 +432,9 @@ MUSIC
 
 let musicPlaying=false;
 
-function toggleMusic(){
+function updateMusicButtons(){
 
-if(!birthdayMusic) return;
-
-if(!musicPlaying){
-
-birthdayMusic.play();
-
-musicPlaying=true;
-
-}else{
-
-birthdayMusic.pause();
-
-musicPlaying=false;
-
-}
-
-updateMusicButton();
-
-}
-
-function updateMusicButton(){
-
-const text=
-
-musicPlaying
+const icon=musicPlaying
 
 ? "<i class='fa-solid fa-pause'></i> Pause Music"
 
@@ -336,15 +442,45 @@ musicPlaying
 
 if(playMusicBtn){
 
-playMusicBtn.innerHTML=text;
+playMusicBtn.innerHTML=icon;
 
 }
 
 if(musicBtn){
 
-musicBtn.innerHTML=text;
+musicBtn.innerHTML=icon;
 
 }
+
+}
+
+async function toggleMusic(){
+
+if(!birthdayMusic) return;
+
+try{
+
+if(musicPlaying){
+
+birthdayMusic.pause();
+
+musicPlaying=false;
+
+}else{
+
+await birthdayMusic.play();
+
+musicPlaying=true;
+
+}
+
+}catch(error){
+
+console.log("Music blocked by browser.");
+
+}
+
+updateMusicButtons();
 
 }
 
@@ -361,14 +497,63 @@ musicBtn.addEventListener("click",toggleMusic);
 }
 
 /* ==========================================
+ESC KEY
+========================================== */
+
+document.addEventListener("keydown",(e)=>{
+
+if(e.key==="Escape"){
+
+closeBirthdayPopup();
+
+}
+
+});
+
+/* ==========================================
+CLICK OUTSIDE
+========================================== */
+
+if(birthdayModal){
+
+birthdayModal.addEventListener("click",(e)=>{
+
+if(e.target===birthdayModal){
+
+closeBirthdayPopup();
+
+}
+
+});
+
+}
+
+/* ==========================================
+END PART 3
+========================================== */
+
+console.log("🎂 Script V7 Part 3 Loaded");
+/* ==========================================================
+   HAPPY BIRTHDAY WEBSITE V7
+   SCRIPT.JS
+   PART 4
+========================================================== */
+
+/* ==========================================
 FIREWORKS
 ========================================== */
 
 const canvas=document.getElementById("fireworksCanvas");
 
-const ctx=canvas.getContext("2d");
+const ctx=canvas?canvas.getContext("2d"):null;
+
+let fireworkParticles=[];
+
+let fireworkInterval=null;
 
 function resizeCanvas(){
+
+if(!canvas) return;
 
 canvas.width=window.innerWidth;
 
@@ -376,19 +561,19 @@ canvas.height=window.innerHeight;
 
 }
 
+if(canvas){
+
 resizeCanvas();
 
 window.addEventListener("resize",resizeCanvas);
 
-let fireworkParticles=[];
-
-let fireworkTimer;
+}
 
 /* ==========================================
 PARTICLE
 ========================================== */
 
-class Particle{
+class FireworkParticle{
 
 constructor(x,y,color){
 
@@ -398,11 +583,11 @@ this.y=y;
 
 this.color=color;
 
-this.radius=2+Math.random()*3;
+this.radius=Math.random()*3+2;
 
-this.dx=(Math.random()-.5)*10;
+this.dx=(Math.random()-0.5)*10;
 
-this.dy=(Math.random()-.5)*10;
+this.dy=(Math.random()-0.5)*10;
 
 this.life=100;
 
@@ -424,23 +609,11 @@ draw(){
 
 ctx.beginPath();
 
-ctx.arc(
-
-this.x,
-
-this.y,
-
-this.radius,
-
-0,
-
-Math.PI*2
-
-);
+ctx.arc(this.x,this.y,this.radius,0,Math.PI*2);
 
 ctx.fillStyle=this.color;
 
-ctx.shadowBlur=20;
+ctx.shadowBlur=15;
 
 ctx.shadowColor=this.color;
 
@@ -449,10 +622,6 @@ ctx.fill();
 }
 
 }
-/* ==========================================================
-   SCRIPT.JS
-   PART 3 (FINAL)
-========================================================== */
 
 /* ==========================================
 CREATE FIREWORK
@@ -460,12 +629,20 @@ CREATE FIREWORK
 
 function createFirework(){
 
+if(!ctx) return;
+
 const colors=[
-"#C8102E",
+
 "#FFD700",
+
 "#FFFFFF",
-"#FF5252",
+
+"#C8102E",
+
+"#FF6B6B",
+
 "#FFA500"
+
 ];
 
 const color=colors[Math.floor(Math.random()*colors.length)];
@@ -474,11 +651,13 @@ const x=Math.random()*canvas.width;
 
 const y=Math.random()*canvas.height*0.45;
 
-for(let i=0;i<90;i++){
+const count=window.innerWidth<768?50:90;
+
+for(let i=0;i<count;i++){
 
 fireworkParticles.push(
 
-new Particle(x,y,color)
+new FireworkParticle(x,y,color)
 
 );
 
@@ -487,181 +666,62 @@ new Particle(x,y,color)
 }
 
 /* ==========================================
-ANIMATE FIREWORKS
+ANIMATION
 ========================================== */
 
 function animateFireworks(){
 
-    ctx.clearRect(0,0,canvas.width,canvas.height);
+if(!ctx) return;
 
-    for(let i=fireworkParticles.length-1;i>=0;i--){
+ctx.clearRect(0,0,canvas.width,canvas.height);
 
-        fireworkParticles[i].update();
+for(let i=fireworkParticles.length-1;i>=0;i--){
 
-        fireworkParticles[i].draw();
+const p=fireworkParticles[i];
 
-        if(fireworkParticles[i].life<=0){
+p.update();
 
-            fireworkParticles.splice(i,1);
+p.draw();
 
-        }
+if(p.life<=0){
 
-    }
-
-    requestAnimationFrame(animateFireworks);
+fireworkParticles.splice(i,1);
 
 }
 
+}
+
+requestAnimationFrame(animateFireworks);
+
+}
+
+if(canvas){
+
 animateFireworks();
+
+}
+
 /* ==========================================
-START / STOP FIREWORKS
+START / STOP
 ========================================== */
 
 function startFireworks(){
 
-clearInterval(fireworkTimer);
+stopFireworks();
 
-fireworkTimer=setInterval(createFirework,500);
+createFirework();
+
+fireworkInterval=setInterval(createFirework,700);
 
 }
 
 function stopFireworks(){
 
-clearInterval(fireworkTimer);
+clearInterval(fireworkInterval);
+
+fireworkParticles=[];
 
 }
-
-/* ==========================================
-GALLERY
-========================================== */
-
-const galleryBtn=document.getElementById("galleryBtn");
-
-const galleryModal=document.getElementById("galleryModal");
-
-const galleryImage=document.getElementById("galleryImage");
-
-const closeGallery=document.getElementById("closeGallery");
-
-const prevPhoto=document.getElementById("prevPhoto");
-
-const nextPhoto=document.getElementById("nextPhoto");
-
-const gallery=[
-
-"assets/gallery/gallery1.jpg",
-
-"assets/gallery/gallery2.jpg",
-
-"assets/gallery/gallery3.jpg",
-
-"assets/gallery/gallery4.jpg",
-
-"assets/gallery/gallery5.jpg",
-
-"assets/gallery/gallery6.jpg",
-
-"assets/gallery/gallery7.jpg",
-
-"assets/gallery/gallery8.jpg",
-
-"assets/gallery/gallery9.jpg"
-
-];
-
-let current=0;
-
-/* ==========================================
-OPEN GALLERY
-========================================== */
-
-if(galleryBtn){
-
-galleryBtn.onclick=()=>{
-
-galleryModal.style.display="flex";
-
-galleryImage.src=gallery[current];
-
-};
-
-}
-
-if(closeGallery){
-
-closeGallery.onclick=()=>{
-
-galleryModal.style.display="none";
-
-};
-
-}
-
-if(nextPhoto){
-
-nextPhoto.onclick=()=>{
-
-current++;
-
-if(current>=gallery.length){
-
-current=0;
-
-}
-
-galleryImage.src=gallery[current];
-
-};
-
-}
-
-if(prevPhoto){
-
-prevPhoto.onclick=()=>{
-
-current--;
-
-if(current<0){
-
-current=gallery.length-1;
-
-}
-
-galleryImage.src=gallery[current];
-
-};
-
-}
-
-/* ==========================================
-KEYBOARD
-========================================== */
-
-document.addEventListener("keydown",(e)=>{
-
-if(!galleryModal ||
-
-galleryModal.style.display!="flex") return;
-
-if(e.key==="ArrowRight"){
-
-nextPhoto.click();
-
-}
-
-if(e.key==="ArrowLeft"){
-
-prevPhoto.click();
-
-}
-
-if(e.key==="Escape"){
-
-galleryModal.style.display="none";
-
-}
-
-});
 
 /* ==========================================
 CONFETTI
@@ -669,35 +729,23 @@ CONFETTI
 
 function launchConfetti(){
 
-for(let i=0;i<180;i++){
+const total=window.innerWidth<768?80:180;
+
+for(let i=0;i<total;i++){
 
 const conf=document.createElement("div");
 
-conf.style.position="fixed";
-
-conf.style.width="10px";
-
-conf.style.height="16px";
+conf.className="confetti";
 
 conf.style.left=Math.random()*100+"%";
-
-conf.style.top="-20px";
 
 conf.style.background=
 
 `hsl(${Math.random()*360},100%,60%)`;
 
-conf.style.pointerEvents="none";
+conf.style.animationDuration=
 
-conf.style.zIndex="99999";
-
-conf.style.transform=
-
-`rotate(${Math.random()*360}deg)`;
-
-conf.style.animation=
-
-`confettiFall ${3+Math.random()*3}s linear forwards`;
+(3+Math.random()*3)+"s";
 
 document.body.appendChild(conf);
 
@@ -719,23 +767,15 @@ function createHeart(){
 
 const heart=document.createElement("div");
 
-heart.innerHTML="❤️";
+heart.className="floating-heart";
 
-heart.style.position="fixed";
+heart.innerHTML="❤️";
 
 heart.style.left=Math.random()*100+"%";
 
-heart.style.bottom="-40px";
+heart.style.fontSize=
 
-heart.style.fontSize=(20+Math.random()*25)+"px";
-
-heart.style.pointerEvents="none";
-
-heart.style.zIndex="9999";
-
-heart.style.animation=
-
-`heartUp ${5+Math.random()*3}s linear forwards`;
+(18+Math.random()*20)+"px";
 
 document.body.appendChild(heart);
 
@@ -743,11 +783,11 @@ setTimeout(()=>{
 
 heart.remove();
 
-},8000);
+},7000);
 
 }
 
-setInterval(createHeart,1800);
+setInterval(createHeart,2200);
 
 /* ==========================================
 FLOWERS
@@ -759,7 +799,9 @@ const flowers=[
 
 "🌺",
 
-"🌼"
+"🌼",
+
+"🌷"
 
 ];
 
@@ -767,25 +809,17 @@ function createFlower(){
 
 const flower=document.createElement("div");
 
+flower.className="floating-flower";
+
 flower.innerHTML=
 
 flowers[Math.floor(Math.random()*flowers.length)];
 
-flower.style.position="fixed";
-
 flower.style.left=Math.random()*100+"%";
 
-flower.style.top="-40px";
+flower.style.fontSize=
 
-flower.style.fontSize=(18+Math.random()*18)+"px";
-
-flower.style.pointerEvents="none";
-
-flower.style.zIndex="9999";
-
-flower.style.animation=
-
-`flowerFall ${6+Math.random()*4}s linear forwards`;
+(18+Math.random()*20)+"px";
 
 document.body.appendChild(flower);
 
@@ -793,28 +827,274 @@ setTimeout(()=>{
 
 flower.remove();
 
-},9000);
+},8000);
 
 }
 
-setInterval(createFlower,2500);
+setInterval(createFlower,2800);
 
 /* ==========================================
-CELEBRATE EFFECT
+END PART 4
 ========================================== */
 
-if(celebrateBtn){
+console.log("🎆 Script V7 Part 4 Loaded");
+/* ==========================================================
+   HAPPY BIRTHDAY WEBSITE V7
+   SCRIPT.JS
+   PART 5 (FINAL)
+========================================================== */
 
-celebrateBtn.addEventListener("click",()=>{
+/* ==========================================
+GALLERY
+========================================== */
 
-launchConfetti();
+const galleryBtn=document.getElementById("galleryBtn");
+const galleryModal=document.getElementById("galleryModal");
+const galleryImage=document.getElementById("galleryImage");
+const closeGallery=document.getElementById("closeGallery");
+const prevPhoto=document.getElementById("prevPhoto");
+const nextPhoto=document.getElementById("nextPhoto");
+
+const gallery=[
+
+"assets/gallery/gallery1.jpg",
+"assets/gallery/gallery2.jpg",
+"assets/gallery/gallery3.jpg",
+"assets/gallery/gallery4.jpg",
+"assets/gallery/gallery5.jpg",
+"assets/gallery/gallery6.jpg",
+"assets/gallery/gallery7.jpg",
+"assets/gallery/gallery8.jpg",
+"assets/gallery/gallery9.jpg"
+
+];
+
+let currentPhoto=0;
+
+/* ==========================================
+SHOW IMAGE
+========================================== */
+
+function showPhoto(index){
+
+if(!galleryImage) return;
+
+if(index<0){
+
+index=gallery.length-1;
+
+}
+
+if(index>=gallery.length){
+
+index=0;
+
+}
+
+currentPhoto=index;
+
+galleryImage.src=gallery[currentPhoto];
+
+}
+
+/* ==========================================
+OPEN GALLERY
+========================================== */
+
+if(galleryBtn){
+
+galleryBtn.addEventListener("click",()=>{
+
+galleryModal.style.display="flex";
+
+document.body.style.overflow="hidden";
+
+showPhoto(currentPhoto);
 
 });
 
 }
 
 /* ==========================================
-END
+CLOSE
 ========================================== */
 
-console.log("🎂 Happy Birthday Website V6 Loaded Successfully");
+function closeGalleryModal(){
+
+if(!galleryModal) return;
+
+galleryModal.style.display="none";
+
+document.body.style.overflowY="auto";
+
+}
+
+if(closeGallery){
+
+closeGallery.addEventListener("click",closeGalleryModal);
+
+}
+
+/* ==========================================
+NEXT / PREVIOUS
+========================================== */
+
+if(nextPhoto){
+
+nextPhoto.addEventListener("click",()=>{
+
+showPhoto(currentPhoto+1);
+
+});
+
+}
+
+if(prevPhoto){
+
+prevPhoto.addEventListener("click",()=>{
+
+showPhoto(currentPhoto-1);
+
+});
+
+}
+
+/* ==========================================
+KEYBOARD SUPPORT
+========================================== */
+
+document.addEventListener("keydown",(e)=>{
+
+if(!galleryModal ||
+
+galleryModal.style.display!=="flex") return;
+
+switch(e.key){
+
+case"ArrowRight":
+
+showPhoto(currentPhoto+1);
+
+break;
+
+case"ArrowLeft":
+
+showPhoto(currentPhoto-1);
+
+break;
+
+case"Escape":
+
+closeGalleryModal();
+
+break;
+
+}
+
+});
+
+/* ==========================================
+CLICK OUTSIDE
+========================================== */
+
+if(galleryModal){
+
+galleryModal.addEventListener("click",(e)=>{
+
+if(e.target===galleryModal){
+
+closeGalleryModal();
+
+}
+
+});
+
+}
+
+/* ==========================================
+MOBILE SWIPE
+========================================== */
+
+let touchStartX=0;
+
+let touchEndX=0;
+
+if(galleryModal){
+
+galleryModal.addEventListener("touchstart",(e)=>{
+
+touchStartX=e.changedTouches[0].clientX;
+
+},{passive:true});
+
+galleryModal.addEventListener("touchend",(e)=>{
+
+touchEndX=e.changedTouches[0].clientX;
+
+if(touchStartX-touchEndX>50){
+
+showPhoto(currentPhoto+1);
+
+}
+
+else if(touchEndX-touchStartX>50){
+
+showPhoto(currentPhoto-1);
+
+}
+
+},{passive:true});
+
+}
+
+/* ==========================================
+PRELOAD IMAGES
+========================================== */
+
+gallery.forEach(src=>{
+
+const img=new Image();
+
+img.src=src;
+
+});
+
+/* ==========================================
+PAGE VISIBILITY
+========================================== */
+
+document.addEventListener("visibilitychange",()=>{
+
+if(document.hidden){
+
+if(birthdayMusic && !birthdayMusic.paused){
+
+birthdayMusic.pause();
+
+}
+
+stopFireworks();
+
+}
+
+});
+
+/* ==========================================
+PERFORMANCE
+========================================== */
+
+window.addEventListener("pageshow",()=>{
+
+if(canvas){
+
+resizeCanvas();
+
+}
+
+});
+
+/* ==========================================
+FINISHED
+========================================== */
+
+console.log("🎉 HAPPY BIRTHDAY WEBSITE V7 LOADED SUCCESSFULLY");

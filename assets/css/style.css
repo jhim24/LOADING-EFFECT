@@ -1551,3 +1551,210 @@ height:220px;
 }
 
 }
+/* ==========================================================
+   STYLE.CSS
+   PART 6
+   BIRTHDAY MODAL
+========================================================== */
+
+#birthdayModal{
+
+position:fixed;
+
+inset:0;
+
+display:none;
+
+justify-content:center;
+
+align-items:center;
+
+padding:20px;
+
+background:rgba(0,0,0,.75);
+
+backdrop-filter:blur(15px);
+
+z-index:999999;
+
+}
+
+.modal-card{
+
+width:100%;
+
+max-width:650px;
+
+padding:40px 30px;
+
+border-radius:28px;
+
+background:rgba(255,255,255,.08);
+
+backdrop-filter:blur(18px);
+
+border:1px solid rgba(255,215,0,.25);
+
+text-align:center;
+
+box-shadow:
+
+0 20px 60px rgba(0,0,0,.45);
+
+animation:modalShow .45s ease;
+
+}
+
+.modal-icon{
+
+font-size:90px;
+
+margin-bottom:20px;
+
+animation:heroFloat 4s ease-in-out infinite;
+
+}
+
+.modal-card h1{
+
+font-family:'Playfair Display',serif;
+
+font-size:46px;
+
+color:#FFD700;
+
+margin-bottom:8px;
+
+}
+
+.modal-card h2{
+
+font-size:26px;
+
+color:#FFFFFF;
+
+margin-bottom:22px;
+
+}
+
+.modal-card p{
+
+font-size:18px;
+
+line-height:1.9;
+
+color:rgba(255,255,255,.90);
+
+margin-bottom:30px;
+
+white-space:pre-line;
+
+}
+
+.modal-buttons{
+
+display:flex;
+
+justify-content:center;
+
+gap:15px;
+
+flex-wrap:wrap;
+
+}
+
+.modal-buttons button{
+
+min-width:180px;
+
+height:56px;
+
+border-radius:50px;
+
+font-size:16px;
+
+font-weight:700;
+
+}
+
+#playMusic{
+
+background:#FFD700;
+
+color:#111;
+
+}
+
+#closeModal{
+
+background:#C8102E;
+
+color:#FFFFFF;
+
+}
+
+@keyframes modalShow{
+
+from{
+
+opacity:0;
+
+transform:translateY(40px) scale(.9);
+
+}
+
+to{
+
+opacity:1;
+
+transform:translateY(0) scale(1);
+
+}
+
+}
+
+@media(max-width:768px){
+
+.modal-card{
+
+padding:28px 20px;
+
+}
+
+.modal-icon{
+
+font-size:70px;
+
+}
+
+.modal-card h1{
+
+font-size:34px;
+
+}
+
+.modal-card h2{
+
+font-size:22px;
+
+}
+
+.modal-card p{
+
+font-size:16px;
+
+}
+
+.modal-buttons{
+
+flex-direction:column;
+
+}
+
+.modal-buttons button{
+
+width:100%;
+
+}
+
+}

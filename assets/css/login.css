@@ -767,3 +767,328 @@ left:160%;
 }
 
 }
+/* ==========================================================
+   LOGIN.CSS
+   PART 4
+   LOADING & GIFT SCREEN
+========================================================== */
+
+/* ==========================================
+LOADING SCREEN
+========================================== */
+
+#loadingScreen{
+
+position:fixed;
+
+inset:0;
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+background:
+radial-gradient(circle,#320000,#080808);
+
+z-index:999999;
+
+animation:fadeIn .5s ease;
+
+}
+
+.loading-card{
+
+width:90%;
+
+max-width:420px;
+
+padding:40px 25px;
+
+text-align:center;
+
+border-radius:28px;
+
+background:rgba(255,255,255,.08);
+
+backdrop-filter:blur(20px);
+
+border:1px solid rgba(255,215,0,.25);
+
+box-shadow:
+
+0 20px 50px rgba(0,0,0,.45);
+
+}
+
+.loading-logo{
+
+font-size:72px;
+
+margin-bottom:20px;
+
+animation:bounceLogo 2s infinite;
+
+}
+
+.loading-card h2{
+
+font-size:26px;
+
+color:#FFD700;
+
+margin-bottom:25px;
+
+}
+
+.progress{
+
+width:100%;
+
+height:10px;
+
+border-radius:50px;
+
+background:rgba(255,255,255,.12);
+
+overflow:hidden;
+
+margin-bottom:18px;
+
+}
+
+.progress-bar{
+
+width:0;
+
+height:100%;
+
+border-radius:50px;
+
+background:
+
+linear-gradient(90deg,#C8102E,#FFD700);
+
+transition:width .25s linear;
+
+}
+
+#loadingText{
+
+font-size:15px;
+
+color:#FFFFFF;
+
+opacity:.9;
+
+}
+
+/* ==========================================
+GIFT SCREEN
+========================================== */
+
+#giftScreen{
+
+position:fixed;
+
+inset:0;
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+padding:20px;
+
+background:
+radial-gradient(circle,#3b0000,#050505);
+
+z-index:999999;
+
+animation:fadeIn .6s ease;
+
+}
+
+.gift-card{
+
+width:100%;
+
+max-width:420px;
+
+padding:35px 25px;
+
+border-radius:30px;
+
+text-align:center;
+
+background:rgba(255,255,255,.08);
+
+backdrop-filter:blur(18px);
+
+border:1px solid rgba(255,215,0,.25);
+
+box-shadow:
+
+0 20px 60px rgba(0,0,0,.45);
+
+}
+
+.gift-card h2{
+
+font-size:32px;
+
+color:#FFD700;
+
+margin-bottom:12px;
+
+}
+
+.gift-card p{
+
+font-size:16px;
+
+color:#FFFFFF;
+
+margin-bottom:30px;
+
+}
+
+#giftBox{
+
+width:140px;
+
+height:140px;
+
+margin:auto;
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+font-size:80px;
+
+cursor:pointer;
+
+border-radius:50%;
+
+background:
+
+linear-gradient(135deg,#FFD700,#D4AF37);
+
+box-shadow:
+
+0 0 25px rgba(255,215,0,.5),
+
+0 0 60px rgba(255,215,0,.25);
+
+transition:.4s;
+
+animation:giftFloat 3s ease-in-out infinite;
+
+}
+
+#giftBox:hover{
+
+transform:scale(1.08);
+
+}
+
+/* ==========================================
+ANIMATIONS
+========================================== */
+
+@keyframes fadeIn{
+
+from{
+
+opacity:0;
+
+}
+
+to{
+
+opacity:1;
+
+}
+
+}
+
+@keyframes bounceLogo{
+
+0%,100%{
+
+transform:translateY(0);
+
+}
+
+50%{
+
+transform:translateY(-10px);
+
+}
+
+}
+
+@keyframes giftFloat{
+
+0%,100%{
+
+transform:translateY(0);
+
+}
+
+50%{
+
+transform:translateY(-12px);
+
+}
+
+}
+
+/* ==========================================
+MOBILE
+========================================== */
+
+@media(max-width:768px){
+
+.loading-card,
+
+.gift-card{
+
+padding:28px 20px;
+
+}
+
+.loading-logo{
+
+font-size:60px;
+
+}
+
+.loading-card h2{
+
+font-size:22px;
+
+}
+
+.gift-card h2{
+
+font-size:28px;
+
+}
+
+#giftBox{
+
+width:120px;
+
+height:120px;
+
+font-size:70px;
+
+}
+
+}

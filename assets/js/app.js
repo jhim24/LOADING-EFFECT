@@ -458,3 +458,129 @@ END PART 3
 ========================================== */
 
 console.log("🎆 APP.JS PART 3 READY");
+/* ==========================================================
+   APP.JS
+   PART 4
+   BIRTHDAY MODAL
+========================================================== */
+
+const birthdayModal=document.getElementById("birthdayModal");
+const closeModal=document.getElementById("closeModal");
+const playMusic=document.getElementById("playMusic");
+const birthdayMusic=document.getElementById("birthdayMusic");
+
+let musicPlaying=false;
+
+/* ==========================================
+OPEN MODAL
+========================================== */
+
+if(celebrateBtn){
+
+celebrateBtn.addEventListener("click",()=>{
+
+birthdayModal.style.display="flex";
+
+document.body.style.overflow="hidden";
+
+startFireworks();
+
+launchConfetti();
+
+});
+
+}
+
+/* ==========================================
+CLOSE MODAL
+========================================== */
+
+function closeBirthdayModal(){
+
+birthdayModal.style.display="none";
+
+document.body.style.overflowY="auto";
+
+stopFireworks();
+
+}
+
+if(closeModal){
+
+closeModal.addEventListener("click",closeBirthdayModal);
+
+}
+
+/* ==========================================
+CLICK OUTSIDE
+========================================== */
+
+birthdayModal.addEventListener("click",(e)=>{
+
+if(e.target===birthdayModal){
+
+closeBirthdayModal();
+
+}
+
+});
+
+/* ==========================================
+MUSIC
+========================================== */
+
+function toggleBirthdayMusic(){
+
+if(!birthdayMusic) return;
+
+if(!musicPlaying){
+
+birthdayMusic.play();
+
+musicPlaying=true;
+
+playMusic.innerHTML="⏸ Pause Music";
+
+musicBtn.innerHTML="⏸ Music";
+
+}else{
+
+birthdayMusic.pause();
+
+musicPlaying=false;
+
+playMusic.innerHTML="🎵 Play Music";
+
+musicBtn.innerHTML="🎵 Music";
+
+}
+
+}
+
+if(playMusic){
+
+playMusic.addEventListener("click",toggleBirthdayMusic);
+
+}
+
+if(musicBtn){
+
+musicBtn.addEventListener("click",toggleBirthdayMusic);
+
+}
+
+/* ==========================================
+ESC KEY
+========================================== */
+
+document.addEventListener("keydown",(e)=>{
+
+if(e.key==="Escape"){
+
+closeBirthdayModal();
+
+}
+
+});
+
+console.log("🎂 Birthday Modal Ready");

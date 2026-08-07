@@ -49,8 +49,7 @@ setTimeout(()=>{
 
     setTimeout(()=>{
 
-        cinematic.style.display="none";
-
+      cinematic.remove();
     },1000);
 
 },5000);
@@ -381,7 +380,7 @@ resizeCanvas();
 
 window.addEventListener("resize",resizeCanvas);
 
-let particles=[];
+let fireworkParticles=[];
 
 let fireworkTimer;
 
@@ -477,7 +476,7 @@ const y=Math.random()*canvas.height*0.45;
 
 for(let i=0;i<90;i++){
 
-particles.push(
+fireworkParticles.push(
 
 new Particle(x,y,color)
 
@@ -495,15 +494,17 @@ function animateFireworks(){
 
 ctx.clearRect(0,0,canvas.width,canvas.height);
 
-for(let i=particles.length-1;i>=0;i--){
+for(let i=fireworkParticles.length-1;i>=0;i--){
 
-particles[i].update();
+fireworkParticles[i].update();
 
-particles[i].draw();
+fireworkParticles[i].draw();
 
-if(particles[i].life<=0){
+if(fireworkParticles[i].life<=0){
 
-particles.splice(i,1);
+fireworkParticles.splice(i,1);
+
+}
 
 }
 
